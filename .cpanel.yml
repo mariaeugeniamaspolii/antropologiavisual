@@ -2,7 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/montevid/public_html/staging.antropologiavisual.org/
-    - npm ci
-    - npm run build
-    - /bin/cp -R dist/. $DEPLOYPATH
-    
+    - /bin/cp index.html $DEPLOYPATH

@@ -38,7 +38,12 @@ export function ProyectoDetalle() {
           animate={{ scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+          <img
+            src={project.heroImage}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            style={{ filter: 'saturate(0.85) brightness(0.75)' }}
+          />
         </motion.div>
 
         {/* Layered gradients for depth */}
@@ -238,7 +243,12 @@ export function ProyectoDetalle() {
                 className={`overflow-hidden bg-secondary ${i === 0 ? 'md:col-span-2' : ''}`}
                 style={{ aspectRatio: i === 0 ? '16/7' : '4/3' }}
               >
-                <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                <img
+                  src={img}
+                  alt={`${project.title} – imagen ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
@@ -288,7 +298,7 @@ export function ProyectoDetalle() {
                     <div
                       className="w-16 h-20 overflow-hidden bg-secondary flex-shrink-0"
                     >
-                      <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                      <img src={prev.coverImage} alt={prev.title} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <p
@@ -359,7 +369,7 @@ export function ProyectoDetalle() {
                       </h3>
                     </div>
                     <div className="w-16 h-20 overflow-hidden bg-secondary flex-shrink-0">
-                      <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                      <img src={next.coverImage} alt={next.title} className="w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>

@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { projects } from '../data/projects';
 
-const BASE = 'https://images.unsplash.com/photo-';
-
 const categories = ['Todos', ...Array.from(new Set(projects.map(p => p.category)))];
 const formats = ['Todos los formatos', 'Fotografía Documental', 'Documental', 'Etnografía visual comparada', 'Fotografía de larga duración', 'Investigación etnográfica'];
 
@@ -43,7 +41,13 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           className="relative overflow-hidden bg-secondary mb-4"
           style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4' }}
         >
-          <motion.div className="w-full h-full" style={{ backgroundColor: '#000' }} animate={{ scale: hovered ? 1.045 : 1 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} />
+          <motion.img
+            src={project.coverImage}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            animate={{ scale: hovered ? 1.045 : 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          />
 
           {/* Overlay layers */}
           <motion.div
@@ -76,7 +80,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/55"
+              className="text-white"
               style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', fontStyle: 'italic', lineHeight: 1.4 }}
             >
               {project.subtitle}
@@ -143,7 +147,7 @@ export function Proyectos() {
 
   return (
     <div className="bg-background">
-      {/* Hero */}
+      {/* Hero
       <section
         className="relative overflow-hidden"
         style={{ height: '62vh', minHeight: '420px', backgroundColor: '#1A1510' }}
@@ -180,7 +184,7 @@ export function Proyectos() {
             </h1>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Filter bar */}
       <section
@@ -228,7 +232,7 @@ export function Proyectos() {
 
       {/* Grid */}
       <section className="py-14 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
+        <div className="py-14 max-w-6xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}

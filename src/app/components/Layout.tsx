@@ -279,7 +279,7 @@ export function Layout() {
               className="text-primary-foreground/15"
               style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
             >
-              © 2024 Antropología Visual
+              © {new Date().getFullYear()} Antropología Visual
             </p>
             <p
               className="text-primary-foreground/15 italic"

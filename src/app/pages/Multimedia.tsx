@@ -1,21 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { FadeIn } from '../components/FadeIn';
 
 const BASE = 'https://images.unsplash.com/photo-';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 const documentaries = [
   {
@@ -159,14 +146,14 @@ export function Multimedia() {
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-foreground" style={{ height: '55vh', minHeight: '380px' }}>
+      <section className="relative overflow-hidden bg-foreground" style={{ height: '65vh', minHeight: '380px' }}>
         <img
           src={`${BASE}1698899114761-3a154520c816?w=1600&h=900&fit=crop&auto=format&q=80`}
           alt="Archivo multimedia"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 to-foreground/20" />
-        <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-16 md:pb-24">
+        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -174,14 +161,14 @@ export function Multimedia() {
           >
             <p
               className="text-white/40 tracking-[0.3em] uppercase mb-4"
-              style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: '0.65rem' }}
             >
               04 — Multimedia
             </p>
             <h1
               className="text-white"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
                 fontWeight: 400,
                 lineHeight: 1.05,
@@ -196,7 +183,7 @@ export function Multimedia() {
 
       {/* Tabs */}
       <section className="sticky top-[64px] md:top-[80px] z-30 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="flex gap-0 overflow-x-auto">
             {tabs.map(tab => (
               <button
@@ -207,7 +194,7 @@ export function Multimedia() {
                     ? 'border-foreground text-foreground'
                     : 'border-transparent text-muted-foreground hover:text-foreground'
                 }`}
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', letterSpacing: '0.08em' }}
+                style={{ fontSize: '0.8rem', letterSpacing: '0.08em' }}
               >
                 {tab}
               </button>
@@ -217,8 +204,8 @@ export function Multimedia() {
       </section>
 
       {/* Content */}
-      <section className="py-16 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
 
           {/* Documentales */}
           {activeTab === 'Documentales' && (
@@ -251,7 +238,7 @@ export function Multimedia() {
                       <div className="absolute bottom-3 right-3">
                         <span
                           className="bg-foreground/80 text-primary-foreground px-2 py-1"
-                          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.65rem' }}
+                          style={{ fontSize: '0.65rem' }}
                         >
                           {doc.duration}
                         </span>
@@ -262,14 +249,14 @@ export function Multimedia() {
                     <div className="flex flex-wrap gap-3 mb-4">
                       <span
                         className="text-muted-foreground tracking-widest uppercase"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+                        style={{ fontSize: 'var(--text-label)' }}
                       >
                         {doc.year}
                       </span>
                       <span className="text-border">·</span>
                       <span
                         className="text-muted-foreground"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+                        style={{ fontSize: 'var(--text-label)' }}
                       >
                         Dir. {doc.director}
                       </span>
@@ -277,7 +264,7 @@ export function Multimedia() {
                     <h3
                       className="text-foreground mb-2"
                       style={{
-                        fontFamily: 'Playfair Display, serif',
+                        fontFamily: 'var(--font-playfair)',
                         fontSize: 'clamp(1.3rem, 2.5vw, 2rem)',
                         fontWeight: 400,
                         lineHeight: 1.2,
@@ -287,14 +274,14 @@ export function Multimedia() {
                     </h3>
                     <p
                       className="text-muted-foreground mb-6"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', fontStyle: 'italic' }}
+                      style={{ fontSize: '0.9rem', fontStyle: 'italic' }}
                     >
                       {doc.subtitle}
                     </p>
                     <div>
                       <p
                         className="text-muted-foreground/50 tracking-widest uppercase mb-2"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+                        style={{ fontSize: 'var(--text-label)' }}
                       >
                         Festivales
                       </p>
@@ -303,7 +290,7 @@ export function Multimedia() {
                           <span
                             key={f}
                             className="border border-border px-3 py-1 text-muted-foreground"
-                            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+                            style={{ fontSize: '0.7rem' }}
                           >
                             {f}
                           </span>
@@ -339,7 +326,7 @@ export function Multimedia() {
                   >
                     <span
                       className="text-muted-foreground/40 w-8 flex-shrink-0 pt-1"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+                      style={{ fontSize: '0.7rem' }}
                     >
                       {String(i + 1).padStart(2, '0')}
                     </span>
@@ -347,7 +334,7 @@ export function Multimedia() {
                       <h3
                         className="text-foreground mb-1 group-hover:text-accent transition-colors duration-200"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
                           fontWeight: 400,
                           lineHeight: 1.2,
@@ -357,7 +344,7 @@ export function Multimedia() {
                       </h3>
                       <p
                         className="text-muted-foreground"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', fontStyle: 'italic' }}
+                        style={{ fontSize: 'var(--text-body)', fontStyle: 'italic' }}
                       >
                         {rec.desc}
                       </p>
@@ -365,13 +352,13 @@ export function Multimedia() {
                     <div className="flex items-center gap-4 flex-shrink-0">
                       <span
                         className="text-muted-foreground"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                        style={{ fontSize: '0.75rem' }}
                       >
                         {rec.year}
                       </span>
                       <span
                         className="text-muted-foreground/60"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                        style={{ fontSize: '0.75rem' }}
                       >
                         {rec.duration}
                       </span>
@@ -412,14 +399,14 @@ export function Multimedia() {
                   </div>
                   <span
                     className="text-muted-foreground block mb-1"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.08em' }}
+                    style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}
                   >
                     {pub.year} · {pub.publisher}
                   </span>
                   <h3
                     className="text-foreground mb-1 group-hover:text-accent transition-colors duration-200"
                     style={{
-                      fontFamily: 'Playfair Display, serif',
+                      fontFamily: 'var(--font-playfair)',
                       fontSize: 'clamp(1.2rem, 2.2vw, 1.6rem)',
                       fontWeight: 400,
                       lineHeight: 1.2,
@@ -429,13 +416,13 @@ export function Multimedia() {
                   </h3>
                   <p
                     className="text-muted-foreground mb-2"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', fontStyle: 'italic' }}
+                    style={{ fontSize: 'var(--text-body-md)', fontStyle: 'italic' }}
                   >
                     {pub.subtitle}
                   </p>
                   <p
                     className="text-muted-foreground/60"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                    style={{ fontSize: '0.75rem' }}
                   >
                     {pub.authors}
                   </p>
@@ -470,7 +457,7 @@ export function Multimedia() {
                     <h3
                       className="text-foreground mb-1"
                       style={{
-                        fontFamily: 'Playfair Display, serif',
+                        fontFamily: 'var(--font-playfair)',
                         fontSize: 'clamp(1.2rem, 2.2vw, 1.8rem)',
                         fontWeight: 400,
                         lineHeight: 1.2,
@@ -480,13 +467,13 @@ export function Multimedia() {
                     </h3>
                     <p
                       className="text-accent mb-3"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem' }}
+                      style={{ fontSize: 'var(--text-nav)' }}
                     >
                       {iv.role}
                     </p>
                     <p
                       className="text-muted-foreground"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', fontStyle: 'italic' }}
+                      style={{ fontSize: '0.9rem', fontStyle: 'italic' }}
                     >
                       {iv.topic}
                     </p>
@@ -494,19 +481,19 @@ export function Multimedia() {
                   <div className="md:col-span-3 flex md:flex-col items-start md:items-end gap-4 md:gap-3">
                     <span
                       className="text-muted-foreground"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                      style={{ fontSize: '0.75rem' }}
                     >
                       {iv.year}
                     </span>
                     <span
                       className="text-muted-foreground/60"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                      style={{ fontSize: '0.75rem' }}
                     >
                       {iv.duration}
                     </span>
                     <button
                       className="border border-border px-4 py-2 text-muted-foreground hover:bg-foreground hover:text-primary-foreground hover:border-foreground transition-all duration-200"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.1em' }}
+                      style={{ fontSize: '0.7rem', letterSpacing: '0.1em' }}
                     >
                       VER ENTREVISTA
                     </button>

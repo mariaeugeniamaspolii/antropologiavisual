@@ -23,8 +23,8 @@ function FooterForm() {
     return (
       <div className="py-6">
         <p
-          className="text-primary-foreground/50"
-          style={{ fontFamily: 'Playfair Display, serif', fontStyle: 'italic', fontSize: '1rem' }}
+          className="text-primary-foreground/60"
+          style={{ fontFamily: 'var(--font-playfair)', fontStyle: 'italic', fontSize: '1rem' }}
         >
           Mensaje recibido. Te escribiremos pronto.
         </p>
@@ -36,46 +36,60 @@ function FooterForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       {(['name', 'email'] as const).map(field => (
         <div key={field}>
+          <label
+            htmlFor={`footer-${field}`}
+            className="block mb-1 text-primary-foreground/40"
+            style={{ fontSize: 'var(--text-badge)', letterSpacing: '0.15em', textTransform: 'uppercase' }}
+          >
+            {field === 'name' ? 'Nombre' : 'Correo'}
+          </label>
           <input
+            id={`footer-${field}`}
             type={field === 'email' ? 'email' : 'text'}
             name={field}
             value={form[field]}
             onChange={e => setForm(p => ({ ...p, [field]: e.target.value }))}
             onFocus={() => setFocused(field)}
             onBlur={() => setFocused(null)}
-            placeholder={field === 'name' ? 'Nombre' : 'Correo electrónico'}
+            placeholder={field === 'name' ? 'Tu nombre' : 'tu@correo.com'}
             required
-            className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/25 text-primary-foreground/70 transition-colors duration-200"
+            className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/40 text-primary-foreground/70 transition-colors duration-200"
             style={{
-              borderColor: focused === field ? 'rgba(242,235,226,0.4)' : 'rgba(242,235,226,0.12)',
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '0.85rem',
+              borderColor: focused === field ? 'rgba(var(--background-rgb), 0.4)' : 'rgba(var(--background-rgb), 0.12)',
+              fontSize: 'var(--text-body)',
             }}
           />
         </div>
       ))}
       <div>
+        <label
+          htmlFor="footer-message"
+          className="block mb-1 text-primary-foreground/40"
+            style={{ fontSize: 'var(--text-badge)', letterSpacing: '0.15em', textTransform: 'uppercase' }}
+        >
+          Mensaje
+        </label>
         <textarea
+          id="footer-message"
           name="message"
           value={form.message}
           onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
           onFocus={() => setFocused('message')}
           onBlur={() => setFocused(null)}
-          placeholder="Mensaje"
+          placeholder="Tu mensaje"
           required
           rows={3}
-          className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/25 text-primary-foreground/70 resize-none transition-colors duration-200"
+          className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/40 text-primary-foreground/70 resize-none transition-colors duration-200"
           style={{
-            borderColor: focused === 'message' ? 'rgba(242,235,226,0.4)' : 'rgba(242,235,226,0.12)',
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: '0.85rem',
+            borderColor: focused === 'message' ? 'rgba(var(--background-rgb), 0.4)' : 'rgba(var(--background-rgb), 0.12)',
+            fontSize: 'var(--text-body)',
           }}
         />
       </div>
       <button
         type="submit"
         className="w-full py-3 border border-primary-foreground/20 text-primary-foreground/60 hover:border-primary-foreground/50 hover:text-primary-foreground/90 transition-all duration-300"
-        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em' }}
+        style={{ fontSize: '0.7rem', letterSpacing: '0.2em' }}
       >
         ENVIAR
       </button>
@@ -110,7 +124,7 @@ export function Layout() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          backgroundColor: navDark ? 'rgba(242, 235, 226, 0.97)' : 'transparent',
+          backgroundColor: navDark ? 'rgba(var(--background-rgb), 0.97)' : 'transparent',
           borderBottom: navDark ? '1px solid rgba(26,21,16,0.08)' : 'none',
           backdropFilter: navDark ? 'blur(8px)' : 'none',
         }}
@@ -125,10 +139,10 @@ export function Layout() {
             <span
               className="transition-colors duration-400"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: '0.9rem',
                 letterSpacing: '0.05em',
-                color: navDark ? 'var(--foreground)' : 'rgba(255,255,255,0.9)',
+                color: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)',
                 lineHeight: 1,
               }}
             >
@@ -144,16 +158,15 @@ export function Layout() {
                 to={link.to}
                 className="relative transition-colors duration-400"
                 style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '0.78rem',
+                  fontSize: 'var(--text-nav)',
                   letterSpacing: '0.06em',
                   color: navDark
                     ? isActive(link.to)
                       ? 'var(--foreground)'
                       : 'var(--muted-foreground)'
                     : isActive(link.to)
-                    ? 'rgba(255,255,255,0.95)'
-                    : 'rgba(255,255,255,0.55)',
+                    ? 'rgba(var(--white-rgb), 0.95)'
+                    : 'rgba(var(--white-rgb), 0.55)',
                 }}
               >
                 {link.label}
@@ -161,7 +174,7 @@ export function Layout() {
                   <motion.span
                     layoutId="nav-indicator"
                     className="absolute -bottom-0.5 left-0 right-0 h-px"
-                    style={{ backgroundColor: navDark ? 'var(--accent)' : 'rgba(255,255,255,0.5)' }}
+                    style={{ backgroundColor: navDark ? 'var(--accent)' : 'rgba(var(--white-rgb), 0.5)' }}
                     transition={{ duration: 0.3 }}
                   />
                 )}
@@ -190,7 +203,7 @@ export function Layout() {
                 <p
                   className="text-primary-foreground/90 mb-4"
                   style={{
-                    fontFamily: 'Playfair Display, serif',
+                    fontFamily: 'var(--font-playfair)',
                     fontSize: '1.1rem',
                     letterSpacing: '0.04em',
                   }}
@@ -199,8 +212,8 @@ export function Layout() {
                 </p>
               </Link>
               <p
-                className="text-primary-foreground/35 leading-relaxed mb-8"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', lineHeight: 1.75 }}
+                className="text-primary-foreground/50 leading-relaxed mb-8"
+                style={{ fontSize: 'var(--text-body-md)', lineHeight: 1.75 }}
               >
                 Documentar para revelar.<br />
                 Observamos, registramos y narramos culturas, territorios y experiencias humanas para transformarlas en memoria visual.
@@ -212,8 +225,8 @@ export function Layout() {
                   <li key={l.to}>
                     <Link
                       to={l.to}
-                      className="text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-200"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem' }}
+                      className="text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors duration-200"
+                      style={{ fontSize: 'var(--text-nav)' }}
                     >
                       {l.label}
                     </Link>
@@ -225,32 +238,32 @@ export function Layout() {
             {/* Col 2: Contact info */}
             <div>
               <p
-                className="text-primary-foreground/20 tracking-[0.25em] uppercase mb-6"
-                style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
-              >
-                Contacto
+                className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-6"
+              style={{ fontSize: 'var(--text-label)' }}
+            >
+              Contacto
               </p>
               <a
                 href="mailto:contacto@antropologiavisual.org"
-                className="block text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors duration-200 mb-8"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem' }}
+                className="block text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors duration-200 mb-8"
+                style={{ fontSize: 'var(--text-body-md)' }}
               >
                 contacto@antropologiavisual.org
               </a>
 
               <p
-                className="text-primary-foreground/20 tracking-[0.25em] uppercase mb-4"
-                style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
-              >
-                Redes
+                className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-4"
+              style={{ fontSize: 'var(--text-label)' }}
+            >
+              Redes
               </p>
               <div className="flex flex-col gap-2">
                 {['Instagram', 'Vimeo', 'Academia.edu'].map(s => (
                   <a
                     key={s}
                     href="#"
-                    className="text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-200"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem' }}
+                    className="text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors duration-200"
+                    style={{ fontSize: 'var(--text-nav)' }}
                   >
                     {s}
                   </a>
@@ -261,10 +274,10 @@ export function Layout() {
             {/* Col 3: Contact form */}
             <div>
               <p
-                className="text-primary-foreground/20 tracking-[0.25em] uppercase mb-6"
-                style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
-              >
-                Escríbenos
+                className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-6"
+              style={{ fontSize: 'var(--text-label)' }}
+            >
+              Escríbenos
               </p>
               <FooterForm />
             </div>
@@ -273,17 +286,17 @@ export function Layout() {
           {/* Bottom rule */}
           <div
             className="border-t pt-8 flex items-center justify-between"
-            style={{ borderColor: 'rgba(242,235,226,0.06)' }}
+            style={{ borderColor: 'rgba(var(--background-rgb), 0.06)' }}
           >
             <p
-              className="text-primary-foreground/15"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+              className="text-primary-foreground/40"
+              style={{ fontSize: '0.7rem' }}
             >
               © {new Date().getFullYear()} Antropología Visual
             </p>
             <p
-              className="text-primary-foreground/15 italic"
-              style={{ fontFamily: 'Playfair Display, serif', fontSize: '0.72rem' }}
+              className="text-primary-foreground/40 italic"
+              style={{ fontFamily: 'var(--font-playfair)', fontSize: 'var(--text-label-lg)' }}
             >
               La imagen como forma de conocimiento
             </p>

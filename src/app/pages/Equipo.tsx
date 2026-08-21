@@ -29,6 +29,8 @@ export function Equipo() {
             src="/images/team/hero.jpg"
             alt=""
             className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 40%' }}
+
           />
         </div>
 
@@ -161,6 +163,8 @@ export function Equipo() {
           src="/images/team/banner.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 10%' }}
+
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.3)' }} />
       </section>

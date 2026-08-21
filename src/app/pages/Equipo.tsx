@@ -1,22 +1,9 @@
 import { useRef } from 'react';
 import { Link } from 'react-router';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { FadeIn } from '../components/FadeIn';
 
 const BASE = 'https://images.unsplash.com/photo-';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 const team = [
   {
@@ -81,7 +68,7 @@ export function Equipo() {
       <section
         ref={heroRef}
         className="overflow-hidden"
-        style={{ position: 'relative', height: '75vh', minHeight: '480px', backgroundColor: '#1A1510' }}
+        style={{ position: 'relative', height: '65vh', minHeight: '480px', backgroundColor: 'var(--foreground)' }}
       >
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
@@ -90,7 +77,7 @@ export function Equipo() {
         {/* Layered overlay — geological/memory layer feel */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(175deg, rgba(26,21,16,0.6) 0%, rgba(26,21,16,0.2) 40%, rgba(26,21,16,0.7) 100%)' }}
+          style={{ background: 'linear-gradient(175deg, rgba(var(--foreground-rgb),0.6) 0%, rgba(var(--foreground-rgb),0.2) 40%, rgba(var(--foreground-rgb),0.7) 100%)' }}
         />
 
         <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24">
@@ -101,14 +88,14 @@ export function Equipo() {
           >
             <p
               className="text-white/30 mb-4 tracking-widest uppercase"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Equipo
             </p>
             <h1
               className="text-white max-w-2xl"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
                 fontWeight: 400,
                 lineHeight: 1.07,
@@ -129,22 +116,22 @@ export function Equipo() {
             <FadeIn className="md:col-span-7">
               <p
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'var(--font-playfair)',
                   fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
                   fontStyle: 'italic',
                   lineHeight: 1.55,
-                  color: 'rgba(26,21,16,0.82)',
+                  color: 'rgba(var(--foreground-rgb),0.82)',
                 }}
               ><span className="italic">"Somos un equipo encaminado a construir conocimiento a partir de herramientas de registro y representación audiovisuales para dejar planteados marcos amplios y provocar un acceso más abierto a los resultados de las investigaciones."</span></p>
             </FadeIn>
             <FadeIn className="md:col-span-5" delay={0.15}>
               <p
                 className="text-muted-foreground leading-relaxed mb-5"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.88rem', lineHeight: 1.8 }}
+                style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
               ><span className="font-bold">Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</span></p>
               <p
                 className="text-muted-foreground leading-relaxed"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.88rem', lineHeight: 1.8 }}
+                style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
               >Fundado en 2018. En X años hemos documentado comunidades y colaborado con instituciones culturales, universidades y organizaciones.</p>
             </FadeIn>
           </div>
@@ -157,7 +144,7 @@ export function Equipo() {
           <FadeIn className="mb-12 border-t border-border pt-12">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Investigadores y fotógrafos
             </p>
@@ -182,12 +169,12 @@ export function Equipo() {
                   {/* Hover overlay */}
                   <div
                     className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-                    style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.5) 0%, transparent 60%)' }}
+                    style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.5) 0%, transparent 60%)' }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
                     <p
                       className="text-white/70"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', lineHeight: 1.5 }}
+                      style={{ fontSize: 'var(--text-label-lg)', lineHeight: 1.5 }}
                     >
                       {member.interests.join('  ·  ')}
                     </p>
@@ -198,7 +185,7 @@ export function Equipo() {
                 <h3
                   className="text-foreground mb-0.5"
                   style={{
-                    fontFamily: 'Playfair Display, serif',
+                    fontFamily: 'var(--font-playfair)',
                     fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
                     fontWeight: 400,
                     lineHeight: 1.2,
@@ -208,13 +195,13 @@ export function Equipo() {
                 </h3>
                 <p
                   className="text-accent mb-3"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.04em' }}
+                  style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.04em' }}
                 >
                   {member.role}
                 </p>
                 <p
                   className="text-muted-foreground leading-relaxed"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', lineHeight: 1.7 }}
+                  style={{ fontSize: 'var(--text-body-md)', lineHeight: 1.7 }}
                 >
                   {member.bio}
                 </p>
@@ -227,7 +214,7 @@ export function Equipo() {
       {/* Full-bleed image */}
       <section className="relative overflow-hidden" style={{ height: '40vh' }}>
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(26,21,16,0.3)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.3)' }} />
       </section>
 
       {/* Recognitions */}
@@ -236,7 +223,7 @@ export function Equipo() {
           <FadeIn className="mb-12">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Reconocimientos e instituciones
             </p>
@@ -255,7 +242,7 @@ export function Equipo() {
                 <span className="text-accent/40 mt-1" style={{ fontSize: '0.4rem' }}>◆</span>
                 <p
                   className="text-foreground/65"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.5 }}
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.5 }}
                 >
                   {rec}
                 </p>
@@ -268,20 +255,20 @@ export function Equipo() {
       {/* CTA */}
       <section
         className="py-24 px-6 md:px-12"
-        style={{ backgroundColor: '#1A1510' }}
+        style={{ backgroundColor: 'var(--foreground)' }}
       >
         <div className="max-w-6xl mx-auto">
           <FadeIn>
             <p
               className="text-white/25 tracking-[0.25em] uppercase mb-8"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Colaboraciones
             </p>
             <h2
               className="text-white mb-8 max-w-xl"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.8rem, 3.5vw, 3.2rem)',
                 fontWeight: 400,
                 lineHeight: 1.15,
@@ -294,10 +281,9 @@ export function Equipo() {
               to="/contacto"
               className="inline-flex items-center gap-4 group"
               style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '0.72rem',
+                fontSize: 'var(--text-label-lg)',
                 letterSpacing: '0.15em',
-                color: 'rgba(255,255,255,0.45)',
+                color: 'rgba(var(--white-rgb), 0.45)',
               }}
             >
               <span className="uppercase tracking-widest group-hover:text-white/75 transition-colors duration-200">

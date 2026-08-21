@@ -4,6 +4,9 @@
   --font-size: 16px;
   --background: #F2EBE0;
   --foreground: #1A1510;
+  --foreground-rgb: 26, 21, 16;
+  --background-rgb: 242, 235, 226;
+  --white-rgb: 255, 255, 255;
   --card: #E9E1D4;
   --card-foreground: #1A1510;
   --popover: #F2EBE0;
@@ -13,7 +16,7 @@
   --secondary: #DFD6C6;
   --secondary-foreground: #1A1510;
   --muted: #D0C5B2;
-  --muted-foreground: #6A5D4E;
+  --muted-foreground: #5c4040;
   --accent: #8A6848;
   --accent-foreground: #F2EBE0;
   --destructive: #b83222;
@@ -31,6 +34,27 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0rem;
+
+  /* Typography */
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --text-hero: clamp(2.4rem, 5.5vw, 5.2rem);
+  --text-h2: clamp(1.6rem, 3.5vw, 3.2rem);
+  --text-h3: clamp(1.05rem, 2vw, 1.4rem);
+  --text-intro: clamp(1.1rem, 2.2vw, 1.7rem);
+  --text-body: 0.85rem;
+  --text-body-md: 0.82rem;
+  --text-body-lg: 0.95rem;
+  --text-nav: 0.78rem;
+  --text-label: 0.6rem;
+  --text-label-lg: 0.72rem;
+  --text-badge: 0.58rem;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --hero-height: 65vh;
   --sidebar: #E9E1D4;
   --sidebar-foreground: #1A1510;
   --sidebar-primary: #1A1510;
@@ -172,5 +196,86 @@
   ::-webkit-scrollbar-thumb {
     background: var(--muted);
     border-radius: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Design System utility classes */
+  .ds-hero {
+    font-family: var(--font-playfair);
+    font-size: var(--text-hero);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+  }
+
+  .ds-h2 {
+    font-family: var(--font-playfair);
+    font-size: var(--text-h2);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .ds-h3 {
+    font-family: var(--font-playfair);
+    font-size: var(--text-h3);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .ds-intro {
+    font-family: var(--font-playfair);
+    font-size: var(--text-intro);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--muted-foreground);
+  }
+
+  .ds-body {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--muted-foreground);
+  }
+
+  .ds-label {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-label);
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .ds-badge {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-badge);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+  }
+
+  .ds-cta-link {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-label-lg);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .ds-form-label {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-badge);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
   }
 }

@@ -2,22 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { featuredProjects, projects } from '../data/projects';
-
-const BASE = 'https://images.unsplash.com/photo-';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { FadeIn } from '../components/FadeIn';
 
 const collaborators = [
   'FLACSO', 'Magnum Foundation', 'Sundance Documentary Fund',
@@ -36,9 +21,14 @@ export function Home() {
   return (
     <div className="bg-background">
       {/* Hero — full screen */}
-      <section ref={heroRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: '#1A1510' }}>
+      <section ref={heroRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+          <img
+            src="/images/home/hero.gif"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ filter: 'saturate(0.85) brightness(0.7)' }}
+          />
         </motion.div>
 
         {/* Subtle grain */}
@@ -52,7 +42,7 @@ export function Home() {
         />
 
         {/* Gradient vignette */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.7) 0%, rgba(26,21,16,0.1) 40%, transparent 70%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.7) 0%, rgba(var(--foreground-rgb),0.1) 40%, transparent 70%)' }} />
 
         <motion.div
           className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24"
@@ -67,7 +57,6 @@ export function Home() {
             <p
               className="text-white/30 mb-8"
               style={{
-                fontFamily: 'DM Sans, sans-serif',
                 fontSize: '0.62rem',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
@@ -76,9 +65,9 @@ export function Home() {
 
             {/* Poetic statement */}
             <h1
-              className="text-white max-w-3xl"
+              className="text-white"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.6rem, 5.5vw, 5.2rem)',
                 fontWeight: 400,
                 lineHeight: 1.08,
@@ -104,7 +93,7 @@ export function Home() {
             <div className="w-px h-10 bg-white/25" />
             <span
               className="text-white/20 tracking-widest"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.5rem', writingMode: 'vertical-rl' }}
+              style={{ fontSize: '0.5rem', writingMode: 'vertical-rl' }}
             >deslizar</span>
           </motion.div>
         </motion.div>
@@ -121,11 +110,11 @@ export function Home() {
           <FadeIn className="md:col-span-8" delay={0.1}>
             <p
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.25rem, 2.5vw, 1.85rem)',
                 fontStyle: 'italic',
                 lineHeight: 1.55,
-                color: 'rgba(26,21,16,0.82)',
+                color: 'rgba(var(--foreground-rgb),0.82)',
                 fontWeight: 400,
               }}
             >"Somos un equipo encaminado a construir conocimiento a partir de herramientas de registro y representación audiovisuales para dejar planteados marcos amplios y provocar un acceso más abierto a los resultados de las investigaciones."</p>
@@ -133,12 +122,12 @@ export function Home() {
           <FadeIn className="md:col-span-3" delay={0.2}>
             <p
               className="text-muted-foreground leading-relaxed"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.8 }}
+              style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
             >Un colectivo interdisciplinar de fotógrafos e investigadores con base en Uruguay.</p>
             <Link
               to="/equipo"
               className="inline-flex items-center gap-3 mt-6 group"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.12em', color: 'var(--accent)' }}
+              style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.12em', color: 'var(--accent)' }}
             >
               <span className="uppercase tracking-widest">El equipo</span>
               <span className="w-5 h-px bg-accent group-hover:w-8 transition-all duration-300" />
@@ -153,55 +142,59 @@ export function Home() {
           <FadeIn className="mb-12">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Proyectos recientes
             </p>
           </FadeIn>
 
           {/* Main featured project — full width tall */}
-          {featured[0] && (
+          {featured[1] && (
             <FadeIn className="mb-4">
               <Link
-                to={`/proyectos/${featured[0].slug}`}
+                to={`/proyectos/${featured[1].slug}`}
                 className="group block relative overflow-hidden bg-secondary"
                 style={{ aspectRatio: '16/8' }}
               >
-                <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                <img
+                  src={featured[1].coverImage}
+                  alt={featured[1].title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
                 <div
                   className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.72) 0%, rgba(26,21,16,0.08) 50%, transparent 75%)' }}
+                  style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.72) 0%, rgba(var(--foreground-rgb),0.08) 50%, transparent 75%)' }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                   <div className="flex items-end justify-between">
                     <div>
                       <p
                         className="text-white/40 mb-3 tracking-widest uppercase"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.58rem' }}
+                        style={{ fontSize: 'var(--text-badge)' }}
                       >
-                        {featured[0].category} · {featured[0].year}
+                        {featured[1].category} · {featured[1].year}
                       </p>
                       <h2
                         className="text-white mb-1"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1.8rem, 4vw, 3.8rem)',
                           fontWeight: 400,
                           lineHeight: 1.05,
                           letterSpacing: '-0.02em',
                         }}
                       >
-                        CIAR - Centro de interpretación del Arte Rupestre
+                        {featured[1].title}
                       </h2>
                       <p
                         className="text-white/50"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', fontStyle: 'italic' }}
+                        style={{ fontSize: 'var(--text-body)', fontStyle: 'italic' }}
                       >
-                        {featured[0].location}
+                        {featured[1].location}
                       </p>
                     </div>
                     <div className="hidden md:flex items-center gap-2 text-white/40 group-hover:text-white/70 transition-colors duration-300">
-                      <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem', letterSpacing: '0.15em' }}>VER</span>
+                      <span style={{ fontSize: '0.68rem', letterSpacing: '0.15em' }}>VER</span>
                       <div className="w-8 h-px bg-current" />
                     </div>
                   </div>
@@ -216,66 +209,74 @@ export function Home() {
               {featured[1] && (
                 <FadeIn className="md:col-span-3">
                   <Link
-                    to={`/proyectos/${featured[1].slug}`}
+                    to={`/proyectos/${featured[2].slug}`}
                     className="group block relative overflow-hidden bg-secondary"
                     style={{ aspectRatio: '4/3' }}
                   >
-                    <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                    <img
+                      src={featured[2].coverImage}
+                      alt={featured[2].title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                     <div
                       className="absolute inset-0"
-                      style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.7) 0%, transparent 55%)' }}
+                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.7) 0%, transparent 55%)' }}
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                       <p
                         className="text-white/35 mb-2 tracking-widest uppercase"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.55rem' }}
-                      >
-                        {featured[1].category} · {featured[1].year}
-                      </p>
-                      <h3
-                        className="text-white"
-                        style={{
-                          fontFamily: 'Playfair Display, serif',
-                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
-                          fontWeight: 400,
-                          lineHeight: 1.1,
-                        }}
-                      >
-                        Del Butiá
-                      </h3>
-                    </div>
-                  </Link>
-                </FadeIn>
-              )}
-              {featured[2] && (
-                <FadeIn className="md:col-span-2" delay={0.1}>
-                  <Link
-                    to={`/proyectos/${featured[2].slug}`}
-                    className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '3/4' }}
-                  >
-                    <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.72) 0%, transparent 55%)' }}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                      <p
-                        className="text-white/35 mb-2 tracking-widest uppercase"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.55rem' }}
+                        style={{ fontSize: '0.55rem' }}
                       >
                         {featured[2].category} · {featured[2].year}
                       </p>
                       <h3
                         className="text-white"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
+                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
+                          fontWeight: 400,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {featured[2].title}
+                      </h3>
+                    </div>
+                  </Link>
+                </FadeIn>
+              )}
+              {featured[0] && (
+                <FadeIn className="md:col-span-2" delay={0.1}>
+                  <Link
+                    to={`/proyectos/${featured[0].slug}`}
+                    className="group block relative overflow-hidden bg-secondary"
+                    style={{ aspectRatio: '3/4' }}
+                  >
+                    <img
+                      src={featured[0].coverImage}
+                      alt={featured[0].title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.72) 0%, transparent 55%)' }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                      <p
+                        className="text-white/35 mb-2 tracking-widest uppercase"
+                        style={{ fontSize: '0.55rem' }}
+                      >
+                        {featured[0].category} · {featured[0].year}
+                      </p>
+                      <h3
+                        className="text-white"
+                        style={{
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
                           fontWeight: 400,
                           lineHeight: 1.15,
                         }}
                       >
-                        Pesca Artesanal
+                        {featured[0].title}
                       </h3>
                     </div>
                   </Link>
@@ -289,7 +290,7 @@ export function Home() {
             <Link
               to="/proyectos"
               className="inline-flex items-center gap-4 group"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.12em', color: 'var(--muted-foreground)' }}
+              style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.12em', color: 'var(--muted-foreground)' }}
             >
               <span className="uppercase tracking-widest group-hover:text-foreground transition-colors duration-200">
                 Ver todos los proyectos ({projects.length})
@@ -303,7 +304,7 @@ export function Home() {
       {/* Full-bleed separator image */}
       <section className="relative overflow-hidden" style={{ height: '45vh' }}>
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(26,21,16,0.28)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} />
       </section>
 
       {/* Recognitions and collaborators */}
@@ -312,7 +313,7 @@ export function Home() {
           <FadeIn className="mb-16">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Reconocimientos y colaboraciones
             </p>
@@ -337,7 +338,7 @@ export function Home() {
               >
                 <p
                   className="text-muted-foreground/50 hover:text-muted-foreground transition-colors duration-300"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem', lineHeight: 1.4 }}
+                  style={{ fontSize: 'var(--text-nav)', lineHeight: 1.4 }}
                 >
                   {name}
                 </p>
@@ -357,7 +358,7 @@ export function Home() {
                   <p
                     className="text-foreground mb-1"
                     style={{
-                      fontFamily: 'Playfair Display, serif',
+                      fontFamily: 'var(--font-playfair)',
                       fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
                       fontWeight: 400,
                       lineHeight: 1,
@@ -367,7 +368,7 @@ export function Home() {
                   </p>
                   <p
                     className="text-muted-foreground"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem' }}
+                    style={{ fontSize: '0.8rem' }}
                   >
                     {stat.label}
                   </p>

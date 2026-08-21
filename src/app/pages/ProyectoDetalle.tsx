@@ -1,20 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router';
 import { motion } from 'motion/react';
 import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../data/projects';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { FadeIn } from '../components/FadeIn';
 
 export function ProyectoDetalle() {
   const { slug } = useParams<{ slug: string }>();
@@ -30,7 +17,7 @@ export function ProyectoDetalle() {
       {/* Hero */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '92vh', minHeight: '550px', backgroundColor: '#1A1510' }}
+        style={{ height: '92vh', minHeight: '550px', backgroundColor: 'var(--foreground)' }}
       >
         <motion.div
           className="absolute inset-0"
@@ -38,13 +25,18 @@ export function ProyectoDetalle() {
           animate={{ scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+          <img
+            src={project.heroImage}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            style={{ filter: 'saturate(0.85) brightness(0.75)' }}
+          />
         </motion.div>
 
         {/* Layered gradients for depth */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.9) 0%, rgba(26,21,16,0.2) 45%, rgba(26,21,16,0.35) 100%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.9) 0%, rgba(var(--foreground-rgb),0.2) 45%, rgba(var(--foreground-rgb),0.35) 100%)' }}
         />
 
         {/* Back link */}
@@ -53,10 +45,9 @@ export function ProyectoDetalle() {
             to="/proyectos"
             className="inline-flex items-center gap-3 transition-colors duration-200"
             style={{
-              fontFamily: 'DM Sans, sans-serif',
               fontSize: '0.68rem',
               letterSpacing: '0.15em',
-              color: 'rgba(255,255,255,0.35)',
+              color: 'rgba(var(--white-rgb), 0.35)',
             }}
           >
             <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
@@ -79,12 +70,13 @@ export function ProyectoDetalle() {
                 <span
                   key={tag}
                   style={{
-                    fontFamily: 'DM Sans, sans-serif',
-                    fontSize: '0.6rem',
+                    fontSize: 'var(--text-label)',
                     letterSpacing: '0.1em',
                     padding: '4px 10px',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'rgba(255,255,255,0.45)',
+                    border: '1px solid var(--popover)' ,
+                    color: 'var(--popover)' ,
+                    backgroundColor: 'var(--border)'
+
                   }}
                 >
                   {tag}
@@ -95,7 +87,7 @@ export function ProyectoDetalle() {
             <h1
               className="text-white max-w-4xl mb-4"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.4rem, 5.5vw, 5.5rem)',
                 fontWeight: 400,
                 lineHeight: 1.05,
@@ -105,9 +97,9 @@ export function ProyectoDetalle() {
               {project.title}
             </h1>
             <p
-              className="text-white/50 max-w-2xl"
+              className="text-white/75 max-w-2xl"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontStyle: 'italic',
                 fontSize: 'clamp(0.95rem, 1.8vw, 1.25rem)',
                 lineHeight: 1.5,
@@ -124,17 +116,29 @@ export function ProyectoDetalle() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
           <FadeIn className="md:col-span-7">
             <p
+              className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
+              style={{ fontSize: 'var(--text-label)' }}
+            >
+              Sobre el proyecto
+            </p>
+            <p
+              className="text-foreground/80 leading-relaxed"
+              style={{ fontSize: '1rem', lineHeight: 1.88 }}
+            >
+              {project.description}
+            </p>
+            {/* <p
               className="mb-8"
               style={{
                 fontFamily: 'Playfair Display, serif',
                 fontSize: 'clamp(1.1rem, 2.2vw, 1.55rem)',
                 fontStyle: 'italic',
                 lineHeight: 1.58,
-                color: 'rgba(26,21,16,0.8)',
+                color: 'rgba(var(--foreground-rgb),0.8)',
               }}
             >
               {project.introduction}
-            </p>
+            </p> */}
             <div className="w-10 h-px" style={{ backgroundColor: 'var(--accent)' }} />
           </FadeIn>
 
@@ -154,21 +158,16 @@ export function ProyectoDetalle() {
                   style={{ borderBottom: '1px solid var(--border)' }}
                 >
                   <span
-                    className="flex-shrink-0 w-32"
+                    className="text-muted-foreground tracking-[0.25em] uppercase flex-shrink-0 w-32"
                     style={{
-                      fontFamily: 'DM Sans, sans-serif',
                       fontSize: '0.62rem',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: 'var(--muted-foreground)',
-                      opacity: 0.55,
                     }}
                   >
                     {item.label}
                   </span>
                   <span
                     className="text-foreground/75"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem' }}
+                    style={{ fontSize: 'var(--text-body)' }}
                   >
                     {item.value}
                   </span>
@@ -187,7 +186,7 @@ export function ProyectoDetalle() {
               <div className="border-t border-border pt-10">
                 <p
                   className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
-                  style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
                 >
                   Reconocimientos
                 </p>
@@ -197,8 +196,7 @@ export function ProyectoDetalle() {
                       key={award}
                       className="flex items-center gap-2"
                       style={{
-                        fontFamily: 'DM Sans, sans-serif',
-                        fontSize: '0.78rem',
+                        fontSize: 'var(--text-nav)',
                         color: 'var(--muted-foreground)',
                         border: '1px solid var(--border)',
                         padding: '6px 14px',
@@ -221,7 +219,7 @@ export function ProyectoDetalle() {
           <FadeIn className="mb-8">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Galería
             </p>
@@ -238,7 +236,12 @@ export function ProyectoDetalle() {
                 className={`overflow-hidden bg-secondary ${i === 0 ? 'md:col-span-2' : ''}`}
                 style={{ aspectRatio: i === 0 ? '16/7' : '4/3' }}
               >
-                <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                <img
+                  src={img}
+                  alt={`${project.title} – imagen ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
@@ -246,13 +249,13 @@ export function ProyectoDetalle() {
       </section>
 
       {/* Description */}
-      <section className="py-20 md:py-28 px-6 md:px-12" style={{ backgroundColor: 'var(--secondary)' }}>
+      {/* <section className="py-20 md:py-28 px-6 md:px-12" style={{ backgroundColor: 'var(--secondary)' }}>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
           <div className="md:col-span-1" />
           <FadeIn className="md:col-span-8">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)', fontFamily: 'DM Sans, sans-serif' }}
             >
               Sobre el proyecto
             </p>
@@ -264,7 +267,7 @@ export function ProyectoDetalle() {
             </p>
           </FadeIn>
         </div>
-      </section>
+      </section> */}
 
       {/* Prev / Next navigation */}
       <section className="py-0 border-t border-border">
@@ -280,7 +283,7 @@ export function ProyectoDetalle() {
                 <div className="flex-1 p-8 md:p-10">
                   <p
                     className="text-muted-foreground/50 mb-4"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em' }}
+                    style={{ fontSize: 'var(--text-label)', letterSpacing: '0.2em' }}
                   >
                     ← ANTERIOR
                   </p>
@@ -288,19 +291,19 @@ export function ProyectoDetalle() {
                     <div
                       className="w-16 h-20 overflow-hidden bg-secondary flex-shrink-0"
                     >
-                      <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                      <img src={prev.coverImage} alt={prev.title} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <p
                         className="text-muted-foreground mb-1"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem' }}
+                        style={{ fontSize: '0.68rem' }}
                       >
                         {prev.year} · {prev.category}
                       </p>
                       <h3
                         className="text-foreground group-hover:text-accent transition-colors duration-300"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1rem, 2vw, 1.4rem)',
                           fontWeight: 400,
                           lineHeight: 1.2,
@@ -316,7 +319,7 @@ export function ProyectoDetalle() {
               <div className="p-8 md:p-10">
                 <p
                   className="text-muted-foreground/25"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+                  style={{ fontSize: '0.7rem' }}
                 >
                   Primer proyecto
                 </p>
@@ -334,7 +337,7 @@ export function ProyectoDetalle() {
                 <div className="flex-1 p-8 md:p-10 text-right">
                   <p
                     className="text-muted-foreground/50 mb-4"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em' }}
+                    style={{ fontSize: 'var(--text-label)', letterSpacing: '0.2em' }}
                   >
                     SIGUIENTE →
                   </p>
@@ -342,14 +345,14 @@ export function ProyectoDetalle() {
                     <div>
                       <p
                         className="text-muted-foreground mb-1"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem' }}
+                        style={{ fontSize: '0.68rem' }}
                       >
                         {next.year} · {next.category}
                       </p>
                       <h3
                         className="text-foreground group-hover:text-accent transition-colors duration-300"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1rem, 2vw, 1.4rem)',
                           fontWeight: 400,
                           lineHeight: 1.2,
@@ -359,7 +362,7 @@ export function ProyectoDetalle() {
                       </h3>
                     </div>
                     <div className="w-16 h-20 overflow-hidden bg-secondary flex-shrink-0">
-                      <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                      <img src={next.coverImage} alt={next.title} className="w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>
@@ -369,7 +372,7 @@ export function ProyectoDetalle() {
               <div className="p-8 md:p-10 text-right">
                 <p
                   className="text-muted-foreground/25"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+                  style={{ fontSize: '0.7rem' }}
                 >
                   Último proyecto
                 </p>
@@ -382,14 +385,14 @@ export function ProyectoDetalle() {
       {/* CTA */}
       <section
         className="py-24 px-6 md:px-12"
-        style={{ backgroundColor: '#1A1510' }}
+        style={{ backgroundColor: 'var(--foreground)' }}
       >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <FadeIn>
             <h2
               className="text-white max-w-lg"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)',
                 fontWeight: 400,
                 lineHeight: 1.15,
@@ -404,10 +407,9 @@ export function ProyectoDetalle() {
               to="/contacto"
               className="inline-flex items-center gap-4 group"
               style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '0.72rem',
+                fontSize: 'var(--text-label-lg)',
                 letterSpacing: '0.18em',
-                color: 'rgba(255,255,255,0.4)',
+                color: 'rgba(var(--white-rgb), 0.4)',
               }}
             >
               <span className="uppercase tracking-widest group-hover:text-white/70 transition-colors duration-300">

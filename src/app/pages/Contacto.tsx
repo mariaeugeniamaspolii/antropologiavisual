@@ -1,21 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { FadeIn } from '../components/FadeIn';
 
 const BASE = 'https://images.unsplash.com/photo-';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 const inquiryTypes = [
   'Colaboración en investigación',
@@ -37,9 +24,8 @@ export function Contacto() {
   };
 
   const fieldStyle = (name: string) => ({
-    fontFamily: 'DM Sans, sans-serif',
-    fontSize: '0.9rem',
-    borderBottom: `1px solid ${focused === name ? 'rgba(26,21,16,0.45)' : 'rgba(26,21,16,0.12)'}`,
+                fontSize: '0.9rem',
+    borderBottom: `1px solid ${focused === name ? 'rgba(var(--foreground-rgb),0.45)' : 'rgba(var(--foreground-rgb),0.12)'}`,
     transition: 'border-color 0.25s',
   });
 
@@ -48,12 +34,12 @@ export function Contacto() {
       {/* Hero */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '55vh', minHeight: '380px', backgroundColor: '#1A1510' }}
+        style={{ height: '65vh', minHeight: '380px', backgroundColor: 'var(--foreground)' }}
       >
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.85) 0%, rgba(26,21,16,0.2) 60%, transparent 85%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.85) 0%, rgba(var(--foreground-rgb),0.2) 60%, transparent 85%)' }}
         />
         <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24">
           <motion.div
@@ -63,14 +49,14 @@ export function Contacto() {
           >
             <p
               className="text-white/30 mb-4 tracking-widest uppercase"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Contacto
             </p>
             <h1
               className="text-white"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
                 fontWeight: 400,
                 lineHeight: 1.06,
@@ -91,11 +77,11 @@ export function Contacto() {
             <p
               className="mb-12 leading-relaxed"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontStyle: 'italic',
                 fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
                 lineHeight: 1.6,
-                color: 'rgba(26,21,16,0.75)',
+                color: 'rgba(var(--foreground-rgb),0.75)',
               }}
             >
               Estamos abiertos a colaboraciones con investigadores, comunidades, instituciones culturales y medios de comunicación.
@@ -105,14 +91,14 @@ export function Contacto() {
               <div>
                 <p
                   className="text-muted-foreground/45 tracking-widest uppercase mb-2"
-                  style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif' }}
+                  style={{ fontSize: 'var(--text-badge)' }}
                 >
                   Correo
                 </p>
                 <a
                   href="mailto:contacto@antropologiavisual.org"
                   className="text-foreground/70 hover:text-accent transition-colors duration-200"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem' }}
+                  style={{ fontSize: 'var(--text-body)' }}
                 >
                   contacto@antropologiavisual.org
                 </a>
@@ -120,16 +106,16 @@ export function Contacto() {
               <div>
                 <p
                   className="text-muted-foreground/45 tracking-widest uppercase mb-2"
-                  style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif' }}
+                  style={{ fontSize: 'var(--text-badge)' }}
                 >
                   Sede
                 </p>
                 <p
                   className="text-foreground/60"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.6 }}
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.6 }}
                 >
                   Bogotá, Colombia<br />
-                  <span style={{ fontSize: '0.78rem', color: 'var(--muted-foreground)' }}>
+                  <span style={{ fontSize: 'var(--text-nav)', color: 'var(--muted-foreground)' }}>
                     Con equipos en México D.F., Santiago y Lima
                   </span>
                 </p>
@@ -137,7 +123,7 @@ export function Contacto() {
               <div>
                 <p
                   className="text-muted-foreground/45 tracking-widest uppercase mb-3"
-                  style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif' }}
+                  style={{ fontSize: 'var(--text-badge)' }}
                 >
                   Redes
                 </p>
@@ -147,7 +133,7 @@ export function Contacto() {
                       key={s}
                       href="#"
                       className="block text-muted-foreground/45 hover:text-muted-foreground transition-colors duration-200"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem' }}
+                      style={{ fontSize: 'var(--text-body-md)' }}
                     >
                       {s}
                     </a>
@@ -170,7 +156,7 @@ export function Contacto() {
                 <h2
                   className="text-foreground mb-5"
                   style={{
-                    fontFamily: 'Playfair Display, serif',
+                    fontFamily: 'var(--font-playfair)',
                     fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)',
                     fontWeight: 400,
                     lineHeight: 1.15,
@@ -180,14 +166,14 @@ export function Contacto() {
                 </h2>
                 <p
                   className="text-muted-foreground leading-relaxed max-w-md"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.75 }}
+                  style={{ fontSize: '0.9rem', lineHeight: 1.75 }}
                 >
                   Gracias por escribirnos, <strong className="text-foreground font-normal">{form.name}</strong>. Revisamos todos los mensajes con cuidado y te responderemos pronto.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: '', email: '', organization: '', type: inquiryTypes[0], message: '' }); }}
                   className="mt-10 text-muted-foreground/50 hover:text-muted-foreground transition-colors duration-200"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.15em' }}
+                  style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.15em' }}
                 >
                   ENVIAR OTRO MENSAJE
                 </button>
@@ -199,9 +185,9 @@ export function Contacto() {
                     <div key={field}>
                       <label
                         className="block mb-2 tracking-widest uppercase"
-                        style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                      >
-                        {field === 'name' ? 'Nombre *' : 'Correo *'}
+style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                    >
+                      {field === 'name' ? 'Nombre *' : 'Correo *'}
                       </label>
                       <input
                         type={field === 'email' ? 'email' : 'text'}
@@ -223,7 +209,7 @@ export function Contacto() {
                   <div>
                     <label
                       className="block mb-2 tracking-widest uppercase"
-                      style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                      style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
                     >
                       Organización
                     </label>
@@ -242,7 +228,7 @@ export function Contacto() {
                   <div>
                     <label
                       className="block mb-2 tracking-widest uppercase"
-                      style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                      style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
                     >
                       Tipo de consulta
                     </label>
@@ -265,9 +251,9 @@ export function Contacto() {
                 <div>
                   <label
                     className="block mb-2 tracking-widest uppercase"
-                    style={{ fontSize: '0.58rem', fontFamily: 'DM Sans, sans-serif', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                  >
-                    Mensaje *
+style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                    >
+                      Mensaje *
                   </label>
                   <textarea
                     name="message"
@@ -286,7 +272,7 @@ export function Contacto() {
                 <div className="flex items-center justify-between pt-2">
                   <p
                     className="text-muted-foreground/35"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem' }}
+                    style={{ fontSize: '0.7rem' }}
                   >
                     * Campos obligatorios
                   </p>
@@ -294,8 +280,7 @@ export function Contacto() {
                     type="submit"
                     className="transition-colors duration-300"
                     style={{
-                      fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '0.72rem',
+                      fontSize: 'var(--text-label-lg)',
                       letterSpacing: '0.2em',
                       padding: '12px 32px',
                       backgroundColor: 'var(--foreground)',
@@ -322,7 +307,7 @@ export function Contacto() {
           <FadeIn className="mb-12">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Formas de colaboración
             </p>
@@ -347,7 +332,7 @@ export function Contacto() {
                 <h3
                   className="text-foreground mb-3"
                   style={{
-                    fontFamily: 'Playfair Display, serif',
+                    fontFamily: 'var(--font-playfair)',
                     fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
                     fontWeight: 400,
                     lineHeight: 1.3,
@@ -357,7 +342,7 @@ export function Contacto() {
                 </h3>
                 <p
                   className="text-muted-foreground leading-relaxed"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.8 }}
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
                 >
                   {item.desc}
                 </p>

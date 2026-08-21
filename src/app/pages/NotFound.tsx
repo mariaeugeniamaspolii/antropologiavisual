@@ -12,14 +12,14 @@ export function NotFound() {
       >
         <p
           className="text-muted-foreground tracking-[0.3em] uppercase mb-6"
-          style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+          style={{ fontSize: '0.65rem' }}
         >
           Error 404
         </p>
         <h1
           className="text-foreground mb-6"
           style={{
-            fontFamily: 'Playfair Display, serif',
+            fontFamily: 'var(--font-playfair)',
             fontSize: 'clamp(2rem, 5vw, 4rem)',
             fontWeight: 400,
             lineHeight: 1.1,
@@ -30,7 +30,7 @@ export function NotFound() {
         </h1>
         <p
           className="text-muted-foreground mb-10 leading-relaxed"
-          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.7 }}
+          style={{ fontSize: '0.9rem', lineHeight: 1.7 }}
         >
           La página que buscas no existe o ha sido movida. Vuelve al inicio o explora nuestros proyectos.
         </p>
@@ -38,14 +38,14 @@ export function NotFound() {
           <Link
             to="/"
             className="bg-foreground text-primary-foreground px-8 py-4 hover:bg-accent transition-colors duration-300"
-            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', letterSpacing: '0.15em' }}
+            style={{ fontSize: '0.8rem', letterSpacing: '0.15em' }}
           >
             INICIO
           </Link>
           <Link
             to="/proyectos"
             className="border border-border text-foreground px-8 py-4 hover:bg-foreground hover:text-primary-foreground transition-all duration-300"
-            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', letterSpacing: '0.15em' }}
+            style={{ fontSize: '0.8rem', letterSpacing: '0.15em' }}
           >
             VER PROYECTOS
           </Link>

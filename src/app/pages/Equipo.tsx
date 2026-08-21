@@ -2,51 +2,7 @@ import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { FadeIn } from '../components/FadeIn';
 import { useGsapParallax } from '../hooks/useGsapParallax';
-
-const BASE = 'https://images.unsplash.com/photo-';
-
-const team = [
-  {
-    name: 'Valentina Cruz',
-    role: 'Directora & Fotógrafa',
-    origin: 'Bogotá, Colombia',
-    image: `${BASE}1526094114998-bbde692632d4?w=600&h=800&fit=crop&auto=format&q=80`,
-    bio: 'Antropóloga visual y fotógrafa documental especializada en memoria cultural afrodescendiente. Ha expuesto en el Festival Internacional de Fotografía de Cartagena y el Musée du Quai Branly.',
-    interests: ['Memoria afrodescendiente', 'Ritual y performance', 'Archivo visual'],
-  },
-  {
-    name: 'Martín Andrade',
-    role: 'Documentalista & Investigador',
-    origin: 'Ciudad de México',
-    image: `${BASE}1731518220947-fa812c897e03?w=600&h=800&fit=crop&auto=format&q=80`,
-    bio: 'Doctor en Antropología Social por la UNAM. Sus investigaciones abordan las migraciones forzadas y los espacios de frontera. Director de cinco documentales premiados internacionalmente.',
-    interests: ['Migración y frontera', 'Antropología urbana', 'Cine documental'],
-  },
-  {
-    name: 'Lucía Fernández',
-    role: 'Investigadora & Archivista',
-    origin: 'Santiago, Chile',
-    image: `${BASE}1602566356391-67f94029b0ca?w=600&h=800&fit=crop&auto=format&q=80`,
-    bio: 'Historiadora especializada en la recuperación de memorias visuales de la dictadura chilena. Coordina el proyecto de digitalización del Archivo Visual de los Derechos Humanos.',
-    interests: ['Archivo y memoria', 'Historia visual', 'Postdictadura'],
-  },
-  {
-    name: 'Beatriz Salcedo',
-    role: 'Etnógrafa & Realizadora',
-    origin: 'Asunción, Paraguay',
-    image: `${BASE}1542992933-ce75d0187ec1?w=600&h=800&fit=crop&auto=format&q=80`,
-    bio: 'Etnógrafa audiovisual con experiencia de campo en el Sahel occidental y el Sudeste Asiático. Su investigación explora las transformaciones del hábitat rural frente al cambio climático.',
-    interests: ['Hábitat y clima', 'Etnografía del Sahel', 'Arquitectura vernácula'],
-  },
-  {
-    name: 'Catalina Rojas',
-    role: 'Fotógrafa & Investigadora',
-    origin: 'Lima, Perú',
-    image: `${BASE}1495580621852-5de0cc907d2f?w=600&h=800&fit=crop&auto=format&q=80`,
-    bio: 'Fotógrafa especializada en comunidades indígenas andinas. Su trabajo con tejedoras quechua fue publicado en National Geographic. Premio Latinoamericano de Fotografía Documental 2021.',
-    interests: ['Comunidades andinas', 'Textil como archivo', 'Patrimonio inmaterial'],
-  },
-];
+import { team } from '../data/team';
 
 const recognitions = [
   'FLACSO — Investigación colaborativa 2020–2024',
@@ -163,20 +119,12 @@ export function Equipo() {
                   className="relative overflow-hidden bg-secondary mb-5"
                   style={{ aspectRatio: '3/4' }}
                 >
-                  <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-                  {/* Hover overlay */}
-                  <div
-                    className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-                    style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.5) 0%, transparent 60%)' }}
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
-                    <p
-                      className="text-white/70"
-                      style={{ fontSize: 'var(--text-label-lg)', lineHeight: 1.5 }}
-                    >
-                      {member.interests.join('  ·  ')}
-                    </p>
-                  </div>
                 </div>
 
                 {/* Info */}
@@ -196,12 +144,6 @@ export function Equipo() {
                   style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.04em' }}
                 >
                   {member.role}
-                </p>
-                <p
-                  className="text-muted-foreground leading-relaxed"
-                  style={{ fontSize: 'var(--text-body-md)', lineHeight: 1.7 }}
-                >
-                  {member.bio}
                 </p>
               </motion.div>
             ))}

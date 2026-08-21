@@ -48,7 +48,7 @@ export function useGsapParallax(distance = 1080) {
         trigger: el,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: true,
+        scrub: 0.5,
       },
     });
 
@@ -89,7 +89,7 @@ export function useGsapScrollFade(containerRef: React.RefObject<HTMLDivElement |
         trigger,
         start: 'top top',
         end: '75% top',
-        scrub: true,
+        scrub: 0.5,
       },
     });
 

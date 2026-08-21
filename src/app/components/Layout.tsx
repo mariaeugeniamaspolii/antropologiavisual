@@ -3,8 +3,8 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { motion } from 'motion/react';
 
 const navLinks = [
-  { to: '/equipo', label: 'Equipo' },
   { to: '/proyectos', label: 'Proyectos' },
+  { to: '/equipo', label: 'Equipo' },
   { to: '/publicaciones', label: 'Publicaciones' },
   { to: '/contacto', label: 'Contacto' },
 ];

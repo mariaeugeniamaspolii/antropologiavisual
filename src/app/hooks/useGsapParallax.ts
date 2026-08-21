@@ -25,7 +25,7 @@ function getGSAP() {
  * @param distance - Max pixel offset during scroll (default 80)
  * @returns Ref to attach to the <section> container
  */
-export function useGsapParallax(distance = 80) {
+export function useGsapParallax(distance = 1080) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,10 +39,10 @@ export function useGsapParallax(distance = 80) {
     const target = el.firstElementChild;
     if (!target) return;
 
-    gsap.set(target, { y: -distance / 2 });
+    gsap.set(target, { y: -distance});
 
     const tween = gsap.to(target, {
-      y: distance / 2,
+      y: distance,
       ease: 'none',
       scrollTrigger: {
         trigger: el,

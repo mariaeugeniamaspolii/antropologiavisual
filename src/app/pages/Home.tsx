@@ -29,7 +29,7 @@ export function Home() {
             src="/images/home/hero.gif"
             alt=""
             className="w-full h-full object-cover"
-            style={{ filter: 'saturate(0.85) brightness(0.7)' }}
+            style={{ filter: 'saturate(0.85) brightness(0.8)' }}
           />
         </div>
 
@@ -309,7 +309,7 @@ export function Home() {
             src="/images/home/banner.jpg"
             alt=""
             className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 70%' }}
+            style={{ objectPosition: 'center 70%', filter: 'saturate(0.85) brightness(0.8)' }}
           />
         </div>
       </section>

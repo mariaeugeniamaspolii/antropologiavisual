@@ -13,10 +13,10 @@ const collaborators = [
 
 export function Home() {
   const heroSectionRef = useRef<HTMLDivElement>(null);
-  const heroRef = useGsapParallax(80);
+  const heroRef = useGsapParallax(150);
   const heroTextFade = useGsapScrollFade(heroSectionRef);
 
-  const bannerRef = useGsapParallax(40);
+  const bannerRef = useGsapParallax(100);
 
   const featured = featuredProjects.slice(0, 3);
 
@@ -24,7 +24,7 @@ export function Home() {
     <div className="bg-background">
       {/* Hero — full screen */}
       <section ref={heroSectionRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
-        <div ref={heroRef} className="absolute inset-0" style={{ height: '120%', top: '-10%' }}>
+        <div ref={heroRef} className="absolute inset-0" style={{ height: '140%', top: '-20%' }}>
           <img
             src="/images/home/hero.gif"
             alt=""
@@ -304,7 +304,7 @@ export function Home() {
 
       {/* Full-bleed separator image */}
       <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh', backgroundColor: 'var(--foreground)' }}>
-        <div className="absolute inset-0" style={{ height: '130%', top: '-15%' }}>
+        <div className="absolute inset-0" style={{ height: '150%', top: '-25%' }}>
           <img
             src="/images/home/banner.jpg"
             alt=""

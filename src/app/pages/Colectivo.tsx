@@ -1,19 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { FadeIn } from '../components/FadeIn';
 
 const BASE = 'https://images.unsplash.com/photo-';
 
@@ -69,14 +56,14 @@ export function Colectivo() {
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-foreground" style={{ height: '60vh', minHeight: '400px' }}>
+      <section className="relative overflow-hidden bg-foreground" style={{ height: '65vh', minHeight: '400px' }}>
         <img
           src={`${BASE}1770480888187-ef09432bbeb1?w=1600&h=900&fit=crop&auto=format&q=80`}
           alt="El colectivo en trabajo de campo"
           className="w-full h-full object-cover opacity-50"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-foreground/20" />
-        <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-16 md:pb-24">
+        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -84,14 +71,14 @@ export function Colectivo() {
           >
             <p
               className="text-white/40 tracking-[0.3em] uppercase mb-4"
-              style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: '0.65rem' }}
             >
               02 — Colectivo
             </p>
             <h1
               className="text-white"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
                 fontWeight: 400,
                 lineHeight: 1.05,
@@ -105,14 +92,14 @@ export function Colectivo() {
       </section>
 
       {/* Presentation */}
-      <section className="py-28 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-28 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
             <FadeIn className="md:col-span-7">
               <p
                 className="text-foreground/85 leading-relaxed mb-8"
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'var(--font-playfair)',
                   fontSize: 'clamp(1.2rem, 2.5vw, 1.7rem)',
                   fontWeight: 400,
                   fontStyle: 'italic',
@@ -123,13 +110,13 @@ export function Colectivo() {
               </p>
               <p
                 className="text-muted-foreground leading-relaxed mb-6"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.95rem', lineHeight: 1.75 }}
+                style={{ fontSize: '0.95rem', lineHeight: 1.75 }}
               >
                 Fundado en 2016 en Bogotá, el colectivo nació de la convicción de que la imagen fotográfica y audiovisual no es un simple documento sino una forma de investigación en sí misma. Nuestros proyectos combinan el rigor del trabajo etnográfico con la sensibilidad estética del mejor documentalismo contemporáneo.
               </p>
               <p
                 className="text-muted-foreground leading-relaxed"
-                style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.95rem', lineHeight: 1.75 }}
+                style={{ fontSize: '0.95rem', lineHeight: 1.75 }}
               >
                 En ocho años de trabajo hemos documentado comunidades en 23 países, producido más de 16 proyectos de largo aliento y colaborado con instituciones culturales, universidades y organizaciones de derechos humanos en América Latina, África y Asia.
               </p>
@@ -139,13 +126,13 @@ export function Colectivo() {
                 <div className="border-l-2 border-accent pl-6">
                   <p
                     className="text-accent tracking-widest uppercase mb-2"
-                    style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+                    style={{ fontSize: '0.65rem' }}
                   >
                     Nuestra metodología
                   </p>
                   <p
                     className="text-muted-foreground"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.65 }}
+                    style={{ fontSize: '0.9rem', lineHeight: 1.65 }}
                   >
                     Larga duración en campo, construcción colectiva de archivos visuales, devolución de materiales a las comunidades documentadas y publicación crítica de resultados.
                   </p>
@@ -153,13 +140,13 @@ export function Colectivo() {
                 <div className="border-l-2 border-border pl-6">
                   <p
                     className="text-muted-foreground tracking-widest uppercase mb-2"
-                    style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+                    style={{ fontSize: '0.65rem' }}
                   >
                     Colaboraciones
                   </p>
                   <p
                     className="text-muted-foreground"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.65 }}
+                    style={{ fontSize: '0.9rem', lineHeight: 1.65 }}
                   >
                     FLACSO, Universidad de los Andes, Musée du Quai Branly, Magnum Foundation, Sundance Documentary Fund, Human Rights Watch Film Festival.
                   </p>
@@ -171,18 +158,18 @@ export function Colectivo() {
       </section>
 
       {/* Team */}
-      <section className="pb-28 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="pb-28 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
           <FadeIn className="mb-16">
             <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: '0.65rem', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ fontSize: '0.65rem' }}
             >
               El equipo
             </p>
             <h2
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
                 fontWeight: 400,
                 lineHeight: 1.1,
@@ -206,7 +193,7 @@ export function Colectivo() {
                 <div className="md:col-span-1 hidden md:block">
                   <span
                     className="text-muted-foreground/40"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.15em' }}
+                    style={{ fontSize: '0.7rem', letterSpacing: '0.15em' }}
                   >
                     0{i + 1}
                   </span>
@@ -232,7 +219,7 @@ export function Colectivo() {
                   <h3
                     className="text-foreground mb-1"
                     style={{
-                      fontFamily: 'Playfair Display, serif',
+                      fontFamily: 'var(--font-playfair)',
                       fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
                       fontWeight: 400,
                       lineHeight: 1.2,
@@ -242,19 +229,19 @@ export function Colectivo() {
                   </h3>
                   <p
                     className="text-accent mb-1"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', letterSpacing: '0.05em' }}
+                    style={{ fontSize: '0.8rem', letterSpacing: '0.05em' }}
                   >
                     {member.role}
                   </p>
                   <p
                     className="text-muted-foreground mb-6"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                    style={{ fontSize: '0.75rem' }}
                   >
                     {member.origin}
                   </p>
                   <p
                     className="text-muted-foreground leading-relaxed"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.7 }}
+                    style={{ fontSize: '0.9rem', lineHeight: 1.7 }}
                   >
                     {member.bio}
                   </p>
@@ -264,9 +251,9 @@ export function Colectivo() {
                 <div className="md:col-span-3 mt-6 md:mt-0">
                   <p
                     className="text-muted-foreground/60 tracking-widest uppercase mb-4"
-                    style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
-                  >
-                    Intereses
+                      style={{ fontSize: 'var(--text-label)' }}
+                    >
+                      Intereses
                   </p>
                   <ul className="space-y-2">
                     {member.interests.map(interest => (
@@ -274,7 +261,7 @@ export function Colectivo() {
                         <span className="text-accent mt-1.5" style={{ fontSize: '0.4rem' }}>●</span>
                         <span
                           className="text-foreground/70"
-                          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', lineHeight: 1.4 }}
+                          style={{ fontSize: 'var(--text-body-md)', lineHeight: 1.4 }}
                         >
                           {interest}
                         </span>
@@ -283,7 +270,7 @@ export function Colectivo() {
                   </ul>
                   <p
                     className="text-muted-foreground/40 mt-6"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem' }}
+                    style={{ fontSize: '0.75rem' }}
                   >
                     {member.years} años en el colectivo
                   </p>
@@ -306,12 +293,12 @@ export function Colectivo() {
       </section>
 
       {/* Values */}
-      <section className="py-28 px-8 md:px-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-28 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
           <FadeIn className="mb-16">
             <h2
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
                 fontWeight: 400,
                 lineHeight: 1.1,
@@ -342,7 +329,7 @@ export function Colectivo() {
               <FadeIn key={v.num} delay={i * 0.1}>
                 <p
                   className="text-muted-foreground/40 mb-6"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em' }}
+                  style={{ fontSize: '0.7rem', letterSpacing: '0.2em' }}
                 >
                   {v.num}
                 </p>
@@ -350,7 +337,7 @@ export function Colectivo() {
                 <h3
                   className="text-foreground mb-4"
                   style={{
-                    fontFamily: 'Playfair Display, serif',
+                    fontFamily: 'var(--font-playfair)',
                     fontSize: '1.4rem',
                     fontWeight: 400,
                     lineHeight: 1.2,
@@ -360,7 +347,7 @@ export function Colectivo() {
                 </h3>
                 <p
                   className="text-muted-foreground leading-relaxed"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', lineHeight: 1.75 }}
+                  style={{ fontSize: '0.9rem', lineHeight: 1.75 }}
                 >
                   {v.text}
                 </p>
@@ -371,13 +358,13 @@ export function Colectivo() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-8 md:px-16 bg-foreground">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <section className="py-20 px-6 md:px-12 bg-foreground">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <FadeIn>
             <h2
               className="text-primary-foreground"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.5rem, 3.5vw, 2.8rem)',
                 fontWeight: 400,
                 lineHeight: 1.15,
@@ -391,7 +378,7 @@ export function Colectivo() {
             <Link
               to="/contacto"
               className="inline-flex items-center gap-4 border border-white/30 text-primary-foreground px-8 py-4 hover:bg-white hover:text-foreground transition-all duration-300"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', letterSpacing: '0.15em' }}
+              style={{ fontSize: '0.8rem', letterSpacing: '0.15em' }}
             >
               <span className="uppercase tracking-widest">Escríbenos</span>
             </Link>

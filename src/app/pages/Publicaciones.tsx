@@ -1,20 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { publications, type PublicationType } from '../data/publications';
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { FadeIn } from '../components/FadeIn';
+import { FilterButton } from '../components/FilterButton';
 
 const BASE = 'https://images.unsplash.com/photo-';
 
@@ -38,12 +26,12 @@ export function Publicaciones() {
       {/* Hero */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '62vh', minHeight: '420px', backgroundColor: '#1A1510' }}
+        style={{ height: '65vh', minHeight: '420px', backgroundColor: 'var(--foreground)' }}
       >
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(26,21,16,0.85) 0%, rgba(26,21,16,0.2) 60%, transparent 85%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.85) 0%, rgba(var(--foreground-rgb),0.2) 60%, transparent 85%)' }}
         />
         <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24">
           <motion.div
@@ -53,14 +41,14 @@ export function Publicaciones() {
           >
             <p
               className="text-white/30 mb-4 tracking-widest uppercase"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.6rem' }}
+              style={{ fontSize: 'var(--text-label)' }}
             >
               Publicaciones
             </p>
             <h1
               className="text-white max-w-2xl"
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
                 fontWeight: 400,
                 lineHeight: 1.06,
@@ -80,11 +68,11 @@ export function Publicaciones() {
           <FadeIn className="md:col-span-7">
             <p
               style={{
-                fontFamily: 'Playfair Display, serif',
+                fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.1rem, 2.2vw, 1.6rem)',
                 fontStyle: 'italic',
                 lineHeight: 1.55,
-                color: 'rgba(26,21,16,0.78)',
+                color: 'rgba(var(--foreground-rgb),0.78)',
               }}
             >
               Libros, ensayos fotográficos, investigaciones académicas y catálogos de exposición que articulan imagen y pensamiento en torno a las culturas que documentamos.
@@ -93,7 +81,7 @@ export function Publicaciones() {
           <FadeIn className="md:col-span-5" delay={0.15}>
             <p
               className="text-muted-foreground leading-relaxed"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.8 }}
+              style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
             >
               Entendemos la publicación como extensión del trabajo de campo: un espacio donde la imagen y la escritura se articulan para crear formas de conocimiento que persisten en el tiempo.
             </p>
@@ -108,7 +96,7 @@ export function Publicaciones() {
             <FadeIn className="mb-8">
               <p
                 className="text-muted-foreground tracking-[0.25em] uppercase"
-                style={{ fontSize: '0.6rem', fontFamily: 'DM Sans, sans-serif' }}
+                style={{ fontSize: 'var(--text-label)' }}
               >
                 Publicación destacada
               </p>
@@ -123,18 +111,17 @@ export function Publicaciones() {
                   <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
                   <div
                     className="absolute inset-0"
-                    style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(26,21,16,0.3) 100%)' }}
+                    style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(var(--foreground-rgb),0.3) 100%)' }}
                   />
                   {/* Type badge */}
                   <div className="absolute top-4 left-4">
                     <span
                       style={{
-                        fontFamily: 'DM Sans, sans-serif',
-                        fontSize: '0.58rem',
+                        fontSize: 'var(--text-badge)',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
                         padding: '4px 10px',
-                        backgroundColor: 'rgba(242,235,226,0.9)',
+                        backgroundColor: 'rgba(var(--background-rgb), 0.9)',
                         color: 'var(--foreground)',
                       }}
                     >
@@ -147,14 +134,14 @@ export function Publicaciones() {
                 <div>
                   <p
                     className="text-muted-foreground/50 mb-1"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: '0.08em' }}
+                    style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}
                   >
                     {featured.year}{featured.publisher && ` · ${featured.publisher}`}
                   </p>
                   <h2
                     className="text-foreground mb-2"
                     style={{
-                      fontFamily: 'Playfair Display, serif',
+                      fontFamily: 'var(--font-playfair)',
                       fontSize: 'clamp(1.6rem, 3vw, 2.6rem)',
                       fontWeight: 400,
                       lineHeight: 1.12,
@@ -164,26 +151,26 @@ export function Publicaciones() {
                   </h2>
                   <p
                     className="text-accent mb-4"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem', fontStyle: 'italic' }}
+                    style={{ fontSize: 'var(--text-nav)', fontStyle: 'italic' }}
                   >
                     {featured.subtitle}
                   </p>
                   <p
                     className="text-muted-foreground mb-6"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem' }}
+                    style={{ fontSize: 'var(--text-nav)' }}
                   >
                     {featured.authors}
                   </p>
                   <p
                     className="text-foreground/65 leading-relaxed mb-8"
-                    style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.88rem', lineHeight: 1.8 }}
+                    style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
                   >
                     {featured.description}
                   </p>
                   {featured.pages && (
                     <p
                       className="text-muted-foreground/40"
-                      style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem' }}
+                      style={{ fontSize: 'var(--text-label-lg)' }}
                     >
                       {featured.pages} páginas
                     </p>
@@ -204,23 +191,12 @@ export function Publicaciones() {
             style={{ borderBottom: '1px solid var(--border)' }}
           >
             {types.map(type => (
-              <button
+              <FilterButton
                 key={type}
+                label={type}
+                active={activeType === type}
                 onClick={() => setActiveType(type)}
-                className="transition-all duration-200"
-                style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '0.72rem',
-                  letterSpacing: '0.04em',
-                  padding: '5px 14px',
-                  border: '1px solid',
-                  borderColor: activeType === type ? 'var(--foreground)' : 'var(--border)',
-                  backgroundColor: activeType === type ? 'var(--foreground)' : 'transparent',
-                  color: activeType === type ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
-                }}
-              >
-                {type}
-              </button>
+              />
             ))}
           </div>
 
@@ -256,10 +232,9 @@ export function Publicaciones() {
                     <div className="md:col-span-7">
                       <div className="flex items-center gap-3 mb-3">
                         <span
-                          style={{
-                            fontFamily: 'DM Sans, sans-serif',
-                            fontSize: '0.58rem',
-                            letterSpacing: '0.1em',
+                        style={{
+                          fontSize: 'var(--text-badge)',
+                          letterSpacing: '0.1em',
                             textTransform: 'uppercase',
                             padding: '3px 8px',
                             border: '1px solid var(--border)',
@@ -270,7 +245,7 @@ export function Publicaciones() {
                         </span>
                         <span
                           className="text-muted-foreground/40"
-                          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem' }}
+                          style={{ fontSize: '0.68rem' }}
                         >
                           {pub.year}
                         </span>
@@ -278,7 +253,7 @@ export function Publicaciones() {
                       <h3
                         className="text-foreground mb-1"
                         style={{
-                          fontFamily: 'Playfair Display, serif',
+                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1.15rem, 2.2vw, 1.7rem)',
                           fontWeight: 400,
                           lineHeight: 1.18,
@@ -288,13 +263,13 @@ export function Publicaciones() {
                       </h3>
                       <p
                         className="text-muted-foreground mb-4"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', fontStyle: 'italic' }}
+                        style={{ fontSize: '0.8rem', fontStyle: 'italic' }}
                       >
                         {pub.subtitle}
                       </p>
                       <p
                         className="text-foreground/60 leading-relaxed"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', lineHeight: 1.75 }}
+                        style={{ fontSize: 'var(--text-body)', lineHeight: 1.75 }}
                       >
                         {pub.description}
                       </p>
@@ -304,14 +279,14 @@ export function Publicaciones() {
                     <div className="md:col-span-3 md:text-right">
                       <p
                         className="text-muted-foreground/50 mb-2"
-                        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem' }}
+                        style={{ fontSize: 'var(--text-label-lg)' }}
                       >
                         {pub.authors}
                       </p>
                       {pub.publisher && (
                         <p
                           className="text-muted-foreground/35"
-                          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', lineHeight: 1.5 }}
+                          style={{ fontSize: '0.7rem', lineHeight: 1.5 }}
                         >
                           {pub.publisher}
                         </p>
@@ -319,7 +294,7 @@ export function Publicaciones() {
                       {pub.pages && (
                         <p
                           className="text-muted-foreground/30 mt-2"
-                          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem' }}
+                          style={{ fontSize: '0.68rem' }}
                         >
                           {pub.pages} pp.
                         </p>
@@ -337,7 +312,7 @@ export function Publicaciones() {
       {/* Full-bleed separator */}
       <section className="relative overflow-hidden" style={{ height: '35vh' }}>
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(26,21,16,0.35)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.35)' }} />
       </section>
     </div>
   );

@@ -19,7 +19,8 @@ function getGSAP() {
 
 /**
  * GSAP ScrollTrigger parallax hook.
- * Attaches to a section element and animates its first child (the image wrapper).
+ * The first child of the section must be taller than the section (e.g. h-[130%])
+ * so the image can shift within the overflow-hidden container.
  *
  * @param distance - Max pixel offset during scroll (default 80)
  * @returns Ref to attach to the <section> container
@@ -38,10 +39,10 @@ export function useGsapParallax(distance = 80) {
     const target = el.firstElementChild;
     if (!target) return;
 
-    gsap.set(target, { y: 0 });
+    gsap.set(target, { y: -distance / 2 });
 
     const tween = gsap.to(target, {
-      y: distance,
+      y: distance / 2,
       ease: 'none',
       scrollTrigger: {
         trigger: el,

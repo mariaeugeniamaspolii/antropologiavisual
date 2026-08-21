@@ -24,7 +24,7 @@ export function Home() {
     <div className="bg-background">
       {/* Hero — full screen */}
       <section ref={heroSectionRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
-        <div ref={heroRef} className="absolute inset-0">
+        <div ref={heroRef} className="absolute inset-0" style={{ height: '120%', top: '-10%' }}>
           <img
             src="/images/home/hero.gif"
             alt=""
@@ -80,27 +80,11 @@ export function Home() {
         </div>
 
         {/* Scroll cue */}
-        <div
+        <motion.div
           className="absolute bottom-8 right-6 md:right-12"
-          style={{ opacity: 0 }}
-          ref={(el) => {
-            if (el) {
-              const gsap = window.gsap;
-              const ScrollTrigger = window.ScrollTrigger;
-              if (gsap && ScrollTrigger) {
-                gsap.to(el, { opacity: 1, delay: 2, duration: 1 });
-                gsap.to(el, {
-                  opacity: 0,
-                  scrollTrigger: {
-                    trigger: heroSectionRef.current,
-                    start: 'top top',
-                    end: '75% top',
-                    scrub: true,
-                  },
-                });
-              }
-            }
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
         >
           <motion.div
             animate={{ y: [0, 7, 0] }}
@@ -113,7 +97,7 @@ export function Home() {
               style={{ fontSize: '0.5rem', writingMode: 'vertical-rl' }}
             >deslizar</span>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Poetic intro */}
@@ -319,8 +303,8 @@ export function Home() {
       </section>
 
       {/* Full-bleed separator image */}
-      <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh' }}>
-        <div className="absolute inset-0">
+      <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh', backgroundColor: 'var(--foreground)' }}>
+        <div className="absolute inset-0" style={{ height: '130%', top: '-15%' }}>
           <img
             src="/images/home/banner.jpg"
             alt=""
@@ -328,7 +312,6 @@ export function Home() {
             style={{ objectPosition: 'center 70%' }}
           />
         </div>
-        {/* <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} /> */}
       </section>
 
       {/* Recognitions and collaborators */}

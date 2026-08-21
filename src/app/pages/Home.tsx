@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { featuredProjects, projects } from '../data/projects';
+import { team } from '../data/team';
 import { FadeIn } from '../components/FadeIn';
 import { useGsapParallax, useGsapScrollFade } from '../hooks/useGsapParallax';
 
@@ -357,9 +358,9 @@ export function Home() {
           <FadeIn className="mt-20 pt-12 border-t border-border">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
               {[
-                { num: '23', label: 'países documentados' },
-                { num: '16', label: 'proyectos de largo aliento' },
-                { num: '8', label: 'años de trabajo colectivo' },
+                { num: String(projects.length), label: 'proyectos de largo aliento' },
+                { num: String(team.length), label: 'integrantes del colectivo' },
+                { num: String(new Date().getFullYear() - 2014), label: 'años documentando' },
               ].map((stat, i) => (
                 <div key={stat.label}>
                   <p

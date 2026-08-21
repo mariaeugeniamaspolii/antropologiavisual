@@ -25,7 +25,11 @@ export function Equipo() {
         style={{ position: 'relative', height: '65vh', minHeight: '480px', backgroundColor: 'var(--foreground)' }}
       >
         <div className="absolute inset-0">
-          <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+          <img
+            src="/images/team/hero.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Layered overlay — geological/memory layer feel */}
@@ -153,7 +157,11 @@ export function Equipo() {
 
       {/* Full-bleed image */}
       <section className="relative overflow-hidden" style={{ height: '40vh' }}>
-        <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+        <img
+          src="/images/team/banner.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.3)' }} />
       </section>
 

@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { Link } from 'react-router';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { featuredProjects, projects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
+import { useGsapParallax, useGsapScrollFade } from '../hooks/useGsapParallax';
 
 const collaborators = [
   'FLACSO', 'Magnum Foundation', 'Sundance Documentary Fund',
@@ -11,29 +12,26 @@ const collaborators = [
 ];
 
 export function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const heroRef = useGsapParallax(80);
+  const heroTextFade = useGsapScrollFade(heroSectionRef);
 
-  const bannerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: bannerScroll } = useScroll({ target: bannerRef, offset: ['start end', 'end start'] });
-  const bannerY = useTransform(bannerScroll, [0, 1], ['0%', '15%']);
+  const bannerRef = useGsapParallax(40);
 
   const featured = featuredProjects.slice(0, 3);
 
   return (
     <div className="bg-background">
       {/* Hero — full screen */}
-      <section ref={heroRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
-        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+      <section ref={heroSectionRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
+        <div ref={heroRef} className="absolute inset-0">
           <img
             src="/images/home/hero.gif"
             alt=""
             className="w-full h-full object-cover"
             style={{ filter: 'saturate(0.85) brightness(0.7)' }}
           />
-        </motion.div>
+        </div>
 
         {/* Subtle grain */}
         <div
@@ -48,9 +46,9 @@ export function Home() {
         {/* Gradient vignette */}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.7) 0%, rgba(var(--foreground-rgb),0.1) 40%, transparent 70%)' }} />
 
-        <motion.div
+        <div
+          ref={heroTextFade}
           className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-16 md:pb-24"
-          style={{ opacity: heroOpacity }}
         >
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -79,15 +77,30 @@ export function Home() {
               }}
             >Encuentro entre imagen y<br /><em style={{ fontWeight: 400 }}>reflexión antropológica.</em></h1>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Scroll cue */}
-        <motion.div
+        <div
           className="absolute bottom-8 right-6 md:right-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          style={{ opacity: heroOpacity as unknown as number }}
+          style={{ opacity: 0 }}
+          ref={(el) => {
+            if (el) {
+              const gsap = window.gsap;
+              const ScrollTrigger = window.ScrollTrigger;
+              if (gsap && ScrollTrigger) {
+                gsap.to(el, { opacity: 1, delay: 2, duration: 1 });
+                gsap.to(el, {
+                  opacity: 0,
+                  scrollTrigger: {
+                    trigger: heroSectionRef.current,
+                    start: 'top top',
+                    end: '75% top',
+                    scrub: true,
+                  },
+                });
+              }
+            }
+          }}
         >
           <motion.div
             animate={{ y: [0, 7, 0] }}
@@ -100,7 +113,7 @@ export function Home() {
               style={{ fontSize: '0.5rem', writingMode: 'vertical-rl' }}
             >deslizar</span>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Poetic intro */}
@@ -307,15 +320,15 @@ export function Home() {
 
       {/* Full-bleed separator image */}
       <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh' }}>
-        <motion.div className="absolute inset-0" style={{ y: bannerY }}>
+        <div className="absolute inset-0">
           <img
             src="/images/home/banner.jpg"
             alt=""
             className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 65%' }}
+            style={{ objectPosition: 'center 70%' }}
           />
-        </motion.div>
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} />
+        </div>
+        {/* <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} /> */}
       </section>
 
       {/* Recognitions and collaborators */}

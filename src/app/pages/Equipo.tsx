@@ -1,7 +1,7 @@
-import { useRef } from 'react';
 import { Link } from 'react-router';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { FadeIn } from '../components/FadeIn';
+import { useGsapParallax } from '../hooks/useGsapParallax';
 
 const BASE = 'https://images.unsplash.com/photo-';
 
@@ -58,9 +58,7 @@ const recognitions = [
 ];
 
 export function Equipo() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const heroRef = useGsapParallax(90);
 
   return (
     <div className="bg-background">
@@ -70,9 +68,9 @@ export function Equipo() {
         className="overflow-hidden"
         style={{ position: 'relative', height: '65vh', minHeight: '480px', backgroundColor: 'var(--foreground)' }}
       >
-        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+        <div className="absolute inset-0">
           <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
-        </motion.div>
+        </div>
 
         {/* Layered overlay — geological/memory layer feel */}
         <div

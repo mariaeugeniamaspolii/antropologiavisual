@@ -28,7 +28,11 @@ export function Publicaciones() {
         className="relative overflow-hidden"
         style={{ height: '65vh', minHeight: '420px', backgroundColor: 'var(--foreground)' }}
       >
-        <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+        <img
+          src="/images/publications/hero.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.85) 0%, rgba(var(--foreground-rgb),0.2) 60%, transparent 85%)' }}

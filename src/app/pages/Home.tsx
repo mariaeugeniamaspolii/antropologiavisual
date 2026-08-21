@@ -16,6 +16,10 @@ export function Home() {
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: bannerScroll } = useScroll({ target: bannerRef, offset: ['start end', 'end start'] });
+  const bannerY = useTransform(bannerScroll, [0, 1], ['0%', '15%']);
+
   const featured = featuredProjects.slice(0, 3);
 
   return (
@@ -302,12 +306,15 @@ export function Home() {
       </section>
 
       {/* Full-bleed separator image */}
-      <section className="relative overflow-hidden" style={{ height: '45vh' }}>
-        <img
-          src="/images/home/banner.jpg"
-          alt=""
-          className="w-full h-full object-cover"
-        />
+      <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh' }}>
+        <motion.div className="absolute inset-0" style={{ y: bannerY }}>
+          <img
+            src="/images/home/banner.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 65%' }}
+          />
+        </motion.div>
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} />
       </section>
 

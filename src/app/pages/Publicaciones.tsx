@@ -32,6 +32,8 @@ export function Publicaciones() {
           src="/images/publications/hero.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ height: '65vh', objectPosition: 'center top' }}
+
         />
         <div
           className="absolute inset-0"
@@ -236,9 +238,9 @@ export function Publicaciones() {
                     <div className="md:col-span-7">
                       <div className="flex items-center gap-3 mb-3">
                         <span
-                        style={{
-                          fontSize: 'var(--text-badge)',
-                          letterSpacing: '0.1em',
+                          style={{
+                            fontSize: 'var(--text-badge)',
+                            letterSpacing: '0.1em',
                             textTransform: 'uppercase',
                             padding: '3px 8px',
                             border: '1px solid var(--border)',

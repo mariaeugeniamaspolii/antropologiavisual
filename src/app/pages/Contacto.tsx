@@ -40,6 +40,7 @@ export function Contacto() {
           src="/images/contact/hero.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ height: '65vh', objectPosition: 'center 70%' }}
         />
         <div
           className="absolute inset-0"

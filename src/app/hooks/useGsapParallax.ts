@@ -48,7 +48,7 @@ export function useGsapParallax(distance = 1080) {
         trigger: el,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 0.5,
+        scrub: true,
       },
     });
 

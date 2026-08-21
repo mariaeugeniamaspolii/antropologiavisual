@@ -303,7 +303,11 @@ export function Home() {
 
       {/* Full-bleed separator image */}
       <section className="relative overflow-hidden" style={{ height: '45vh' }}>
-        <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+        <img
+          src="/images/home/banner.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.28)' }} />
       </section>
 

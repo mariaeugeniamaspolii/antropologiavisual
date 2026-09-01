@@ -46,7 +46,7 @@ const documentaries = [
 const audioRecordings = [
   {
     title: 'Cantos de Velorio',
-    desc: 'Registro sonoro de alabaos y chiguaos del Chocó, Colombia',
+    desc: 'Registro sonoro de alabaos y chiguaos del Chocó, Uruguay',
     duration: '38:22',
     year: '2023',
   },

@@ -136,7 +136,7 @@ export const projects: Project[] = [
     category: 'Antropología Visual',
     location: 'Durazno y Tacuarembó, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/recorte-paso-de-los-toros.jpg',
-    heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/vaquita-editada-2.jpg',
+    heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/recorte-paso-de-los-toros.jpg',
     galleryImages: [
       'https://www.antropologiavisual.org/wp-content/uploads/2015/08/vaquita-y-mas-450x600.jpg',
       'https://www.antropologiavisual.org/wp-content/uploads/2015/08/IMGP1307_614x461.jpg',

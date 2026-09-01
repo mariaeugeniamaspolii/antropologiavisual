@@ -30,7 +30,7 @@ export function Home() {
             src="/images/home/hero.gif"
             alt=""
             className="w-full h-full object-cover"
-            style={{ filter: 'saturate(0.85) brightness(0.8)' }}
+            style={{ filter: 'saturate(0.85) brightness(0.8)', objectPosition: '50% 30%' }}
           />
         </div>
 
@@ -358,7 +358,7 @@ export function Home() {
           <FadeIn className="mt-20 pt-12 border-t border-border">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
               {[
-                { num: String(projects.length), label: 'proyectos de largo aliento' },
+                { num: String(projects.length), label: 'proyectos realizados' },
                 { num: String(team.length), label: 'integrantes del colectivo' },
                 { num: String(new Date().getFullYear() - 2014), label: 'años documentando' },
               ].map((stat, i) => (

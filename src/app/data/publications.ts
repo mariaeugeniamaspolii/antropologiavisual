@@ -117,7 +117,7 @@ export const publications: Publication[] = [
     slug: 'territorios-de-la-memoria',
     type: 'Investigación',
     title: 'Territorios de la Memoria',
-    subtitle: 'Cartografías visuales del desplazamiento forzado en Colombia',
+    subtitle: 'Cartografías visuales del desplazamiento forzado en Uruguay',
     authors: 'Lucía Fernández, Martín Andrade',
     year: '2022',
     publisher: 'Cuadernos de Antropología Social, n° 55',

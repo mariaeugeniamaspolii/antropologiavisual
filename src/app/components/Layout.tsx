@@ -122,11 +122,11 @@ export function Layout() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
-          backgroundColor: navDark ? 'rgba(var(--background-rgb), 0.97)' : 'transparent',
+          backgroundColor: navDark ? '#F2EBE0' : 'transparent',
           borderBottom: navDark ? '1px solid rgba(26,21,16,0.08)' : 'none',
-          backdropFilter: navDark ? 'blur(8px)' : 'none',
+          transition: 'background-color 0.2s ease, border-bottom 0.2s ease',
         }}
       >
         <div className="flex items-center justify-between px-6 md:px-12 h-14 md:h-16">

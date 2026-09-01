@@ -245,6 +245,7 @@ export function Publicaciones() {
                             padding: '3px 8px',
                             border: '1px solid var(--border)',
                             color: 'var(--accent)',
+                            borderRadius: 'var(--radius)',
                           }}
                         >
                           {pub.type}

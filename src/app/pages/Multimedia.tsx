@@ -290,7 +290,7 @@ export function Multimedia() {
                           <span
                             key={f}
                             className="border border-border px-3 py-1 text-muted-foreground"
-                            style={{ fontSize: '0.7rem' }}
+                            style={{ fontSize: '0.7rem', borderRadius: 'var(--radius)' }}
                           >
                             {f}
                           </span>

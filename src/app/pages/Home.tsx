@@ -156,7 +156,7 @@ export function Home() {
               <Link
                 to={`/proyectos/${featured[1].slug}`}
                 className="group block relative overflow-hidden bg-secondary"
-                style={{ aspectRatio: '16/8' }}
+                style={{ aspectRatio: '16/8', borderRadius: 'var(--radius)' }}
               >
                 <img
                   src={featured[1].coverImage}
@@ -213,7 +213,7 @@ export function Home() {
                   <Link
                     to={`/proyectos/${featured[2].slug}`}
                     className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '4/3' }}
+                    style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
                   >
                     <img
                       src={featured[2].coverImage}
@@ -251,7 +251,7 @@ export function Home() {
                   <Link
                     to={`/proyectos/${featured[0].slug}`}
                     className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                   >
                     <img
                       src={featured[0].coverImage}
@@ -360,7 +360,7 @@ export function Home() {
               {[
                 { num: String(projects.length), label: 'proyectos realizados' },
                 { num: String(team.length), label: 'integrantes del colectivo' },
-                { num: String(new Date().getFullYear() - 2014), label: 'años documentando' },
+                { num: String(new Date().getFullYear() - 2010), label: 'años documentando' },
               ].map((stat, i) => (
                 <div key={stat.label}>
                   <p

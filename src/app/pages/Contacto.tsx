@@ -119,7 +119,7 @@ export function Contacto() {
                   className="text-foreground/60"
                   style={{ fontSize: 'var(--text-body)', lineHeight: 1.6 }}
                 >
-                  Bogotá, Colombia<br />
+                  Montevideo, Uruguay<br />
                   <span style={{ fontSize: 'var(--text-nav)', color: 'var(--muted-foreground)' }}>
                     Con equipos en México D.F., Santiago y Lima
                   </span>

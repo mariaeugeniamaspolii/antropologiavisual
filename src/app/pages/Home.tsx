@@ -58,7 +58,7 @@ export function Home() {
           >
             {/* Label */}
             <p
-              className="text-white/30 mb-8"
+              className="text-white/50 mb-8"
               style={{
                 fontSize: '0.62rem',
                 letterSpacing: '0.3em',
@@ -94,7 +94,7 @@ export function Home() {
           >
             <div className="w-px h-10 bg-white/25" />
             <span
-              className="text-white/20 tracking-widest"
+              className="text-white/45 tracking-widest"
               style={{ fontSize: '0.5rem', writingMode: 'vertical-rl' }}
             >deslizar</span>
           </motion.div>
@@ -154,13 +154,13 @@ export function Home() {
           {featured[1] && (
             <FadeIn className="mb-4">
               <Link
-                to={`/proyectos/${featured[1].slug}`}
+                to={`/proyectos/${featured[0].slug}`}
                 className="group block relative overflow-hidden bg-secondary"
                 style={{ aspectRatio: '16/8', borderRadius: 'var(--radius)' }}
               >
                 <img
-                  src={featured[1].coverImage}
-                  alt={featured[1].title}
+                  src={featured[0].coverImage}
+                  alt={featured[0].title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div
@@ -171,10 +171,10 @@ export function Home() {
                   <div className="flex items-end justify-between">
                     <div>
                       <p
-                        className="text-white/40 mb-3 tracking-widest uppercase"
+                        className="text-white/55 mb-3 tracking-widest uppercase"
                         style={{ fontSize: 'var(--text-badge)' }}
                       >
-                        {featured[1].category} · {featured[1].year}
+                        {featured[0].category} · {featured[0].year}
                       </p>
                       <h2
                         className="text-white mb-1"
@@ -186,16 +186,16 @@ export function Home() {
                           letterSpacing: '-0.02em',
                         }}
                       >
-                        {featured[1].title}
+                        {featured[0].title}
                       </h2>
                       <p
                         className="text-white/50"
                         style={{ fontSize: 'var(--text-body)', fontStyle: 'italic' }}
                       >
-                        {featured[1].location}
+                        {featured[0].location}
                       </p>
                     </div>
-                    <div className="hidden md:flex items-center gap-2 text-white/40 group-hover:text-white/70 transition-colors duration-300">
+                    <div className="hidden md:flex items-center gap-2 text-white/55 group-hover:text-white/70 transition-colors duration-300">
                       <span style={{ fontSize: '0.68rem', letterSpacing: '0.15em' }}>VER</span>
                       <div className="w-8 h-px bg-current" />
                     </div>
@@ -211,9 +211,47 @@ export function Home() {
               {featured[1] && (
                 <FadeIn className="md:col-span-3">
                   <Link
-                    to={`/proyectos/${featured[2].slug}`}
+                    to={`/proyectos/${featured[1].slug}`}
                     className="group block relative overflow-hidden bg-secondary"
                     style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
+                  >
+                    <img
+                      src={featured[1].coverImage}
+                      alt={featured[1].title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.7) 0%, transparent 55%)' }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                      <p
+                        className="text-white/35 mb-2 tracking-widest uppercase"
+                        style={{ fontSize: '0.55rem' }}
+                      >
+                        {featured[1].category} · {featured[1].year}
+                      </p>
+                      <h3
+                        className="text-white"
+                        style={{
+                          fontFamily: 'var(--font-playfair)',
+                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
+                          fontWeight: 400,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {featured[1].title}
+                      </h3>
+                    </div>
+                  </Link>
+                </FadeIn>
+              )}
+              {featured[2] && (
+                <FadeIn className="md:col-span-2" delay={0.1}>
+                  <Link
+                    to={`/proyectos/${featured[2].slug}`}
+                    className="group block relative overflow-hidden bg-secondary"
+                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                   >
                     <img
                       src={featured[2].coverImage}
@@ -222,7 +260,7 @@ export function Home() {
                     />
                     <div
                       className="absolute inset-0"
-                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.7) 0%, transparent 55%)' }}
+                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.72) 0%, transparent 55%)' }}
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                       <p
@@ -235,50 +273,12 @@ export function Home() {
                         className="text-white"
                         style={{
                           fontFamily: 'var(--font-playfair)',
-                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
-                          fontWeight: 400,
-                          lineHeight: 1.1,
-                        }}
-                      >
-                        {featured[2].title}
-                      </h3>
-                    </div>
-                  </Link>
-                </FadeIn>
-              )}
-              {featured[0] && (
-                <FadeIn className="md:col-span-2" delay={0.1}>
-                  <Link
-                    to={`/proyectos/${featured[0].slug}`}
-                    className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
-                  >
-                    <img
-                      src={featured[0].coverImage}
-                      alt={featured[0].title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.72) 0%, transparent 55%)' }}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                      <p
-                        className="text-white/35 mb-2 tracking-widest uppercase"
-                        style={{ fontSize: '0.55rem' }}
-                      >
-                        {featured[0].category} · {featured[0].year}
-                      </p>
-                      <h3
-                        className="text-white"
-                        style={{
-                          fontFamily: 'var(--font-playfair)',
                           fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
                           fontWeight: 400,
                           lineHeight: 1.15,
                         }}
                       >
-                        {featured[0].title}
+                        {featured[2].title}
                       </h3>
                     </div>
                   </Link>

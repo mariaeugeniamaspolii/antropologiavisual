@@ -160,7 +160,7 @@ export function Multimedia() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/40 tracking-[0.3em] uppercase mb-4"
+              className="text-white/55 tracking-[0.3em] uppercase mb-4"
               style={{ fontSize: '0.65rem' }}
             >
               04 — Multimedia

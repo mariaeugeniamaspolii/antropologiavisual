@@ -46,7 +46,7 @@ export function Publicaciones() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/30 mb-4 tracking-widest uppercase"
+              className="text-white/50 mb-4 tracking-widest uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Publicaciones

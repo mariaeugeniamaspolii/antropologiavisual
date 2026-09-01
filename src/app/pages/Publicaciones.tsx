@@ -112,7 +112,7 @@ export function Publicaciones() {
                 {/* Book cover */}
                 <div
                   className="relative overflow-hidden bg-secondary group"
-                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto' }}
+                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto', borderRadius: 'var(--radius)' }}
                 >
                   <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
                   <div
@@ -228,7 +228,7 @@ export function Publicaciones() {
                     <div className="md:col-span-2">
                       <div
                         className="relative overflow-hidden bg-secondary"
-                        style={{ aspectRatio: '3/4' }}
+                        style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                       >
                         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
                       </div>

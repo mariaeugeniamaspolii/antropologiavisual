@@ -123,7 +123,7 @@ export function Equipo() {
                 {/* Portrait */}
                 <div
                   className="relative overflow-hidden bg-secondary mb-5"
-                  style={{ aspectRatio: '3/4' }}
+                  style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                 >
                   <img
                     src={member.image}

@@ -27,7 +27,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {/* Image container */}
         <div
           className="relative overflow-hidden bg-secondary mb-4"
-          style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4' }}
+          style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4', borderRadius: 'var(--radius)' }}
         >
           <motion.img
             src={project.coverImage}

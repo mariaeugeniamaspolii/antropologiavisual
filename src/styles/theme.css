@@ -186,10 +186,6 @@
     border-radius: var(--radius);
   }
 
-  img {
-    border-radius: var(--radius);
-  }
-
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;

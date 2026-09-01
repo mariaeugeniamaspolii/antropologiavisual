@@ -221,7 +221,7 @@ export function Multimedia() {
                   <div className="md:col-span-4">
                     <div
                       className="relative overflow-hidden bg-secondary"
-                      style={{ aspectRatio: '16/9' }}
+                      style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
                     >
                       <img
                         src={doc.image}
@@ -388,7 +388,7 @@ export function Multimedia() {
                 >
                   <div
                     className="relative overflow-hidden bg-secondary mb-5"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                   >
                     <img
                       src={pub.image}

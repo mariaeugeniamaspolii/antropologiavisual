@@ -92,7 +92,7 @@ export function Equipo() {
               <p
                 className="text-muted-foreground leading-relaxed"
                 style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              >Fundado en 2018. En X años hemos documentado comunidades y colaborado con instituciones culturales, universidades y organizaciones.</p>
+              >Fundado en 2010. En {String(new Date().getFullYear() - 2010)} años hemos documentado comunidades y colaborado con instituciones culturales, universidades y organizaciones.</p>
             </FadeIn>
           </div>
         </div>
@@ -123,7 +123,7 @@ export function Equipo() {
                 {/* Portrait */}
                 <div
                   className="relative overflow-hidden bg-secondary mb-5"
-                  style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
+                  style={{ aspectRatio: '3/4' }}
                 >
                   <img
                     src={member.image}

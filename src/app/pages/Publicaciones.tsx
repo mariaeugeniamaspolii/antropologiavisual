@@ -19,7 +19,6 @@ export function Publicaciones() {
 
   const filtered = activeType === 'Todos' ? publications : publications.filter(p => p.type === activeType);
   const featured = publications.find(p => p.featured);
-
   return (
     <div className="bg-background">
       {/* Hero */}
@@ -98,14 +97,6 @@ export function Publicaciones() {
       {featured && (
         <section className="pb-20 px-6 md:px-12">
           <div className="max-w-6xl mx-auto">
-            <FadeIn className="mb-8">
-              <p
-                className="text-muted-foreground tracking-[0.25em] uppercase"
-                style={{ fontSize: 'var(--text-label)' }}
-              >
-                Publicación destacada
-              </p>
-            </FadeIn>
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center border border-border p-8 md:p-12">
                 {/* Book cover */}
@@ -145,7 +136,7 @@ export function Publicaciones() {
                     className="text-muted-foreground/50 mb-1"
                     style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}
                   >
-                    {featured.year}{featured.publisher && ` · ${featured.publisher}`}
+                    {featured.year}
                   </p>
                   <h2
                     className="text-foreground mb-2"
@@ -176,14 +167,6 @@ export function Publicaciones() {
                   >
                     {featured.description}
                   </p>
-                  {featured.pages && (
-                    <p
-                      className="text-muted-foreground/40"
-                      style={{ fontSize: 'var(--text-label-lg)' }}
-                    >
-                      {featured.pages} páginas
-                    </p>
-                  )}
                 </div>
               </div>
             </FadeIn>
@@ -297,22 +280,6 @@ export function Publicaciones() {
                       >
                         {pub.authors}
                       </p>
-                      {pub.publisher && (
-                        <p
-                          className="text-muted-foreground/35"
-                          style={{ fontSize: '0.7rem', lineHeight: 1.5 }}
-                        >
-                          {pub.publisher}
-                        </p>
-                      )}
-                      {pub.pages && (
-                        <p
-                          className="text-muted-foreground/30 mt-2"
-                          style={{ fontSize: '0.68rem' }}
-                        >
-                          {pub.pages} pp.
-                        </p>
-                      )}
                     </div>
                   </motion.div>
                 ))}

@@ -88,11 +88,7 @@ export function Equipo() {
               <p
                 className="text-muted-foreground leading-relaxed mb-5"
                 style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              ><span className="font-bold">Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</span></p>
-              <p
-                className="text-muted-foreground leading-relaxed"
-                style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              >Fundado en 2010. En {String(new Date().getFullYear() - 2010)} años hemos documentado comunidades y colaborado con instituciones culturales, universidades y organizaciones.</p>
+                >Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</p>
             </FadeIn>
           </div>
         </div>

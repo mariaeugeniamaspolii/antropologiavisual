@@ -29,6 +29,8 @@ export function Equipo() {
             src="/images/team/hero.jpg"
             alt=""
             className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 40%' }}
+
           />
         </div>
 
@@ -45,7 +47,7 @@ export function Equipo() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/30 mb-4 tracking-widest uppercase"
+              className="text-white/50 mb-4 tracking-widest uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Equipo
@@ -86,11 +88,7 @@ export function Equipo() {
               <p
                 className="text-muted-foreground leading-relaxed mb-5"
                 style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              ><span className="font-bold">Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</span></p>
-              <p
-                className="text-muted-foreground leading-relaxed"
-                style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              >Fundado en 2018. En X años hemos documentado comunidades y colaborado con instituciones culturales, universidades y organizaciones.</p>
+                >Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</p>
             </FadeIn>
           </div>
         </div>
@@ -161,6 +159,8 @@ export function Equipo() {
           src="/images/team/banner.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 10%' }}
+
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.3)' }} />
       </section>

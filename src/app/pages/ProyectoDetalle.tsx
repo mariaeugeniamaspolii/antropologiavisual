@@ -75,8 +75,8 @@ export function ProyectoDetalle() {
                     padding: '4px 10px',
                     border: '1px solid var(--popover)' ,
                     color: 'var(--popover)' ,
-                    backgroundColor: 'var(--border)'
-
+                    backgroundColor: 'var(--border)',
+                    borderRadius: 'var(--radius)',
                   }}
                 >
                   {tag}
@@ -200,6 +200,7 @@ export function ProyectoDetalle() {
                         color: 'var(--muted-foreground)',
                         border: '1px solid var(--border)',
                         padding: '6px 14px',
+                        borderRadius: 'var(--radius)',
                       }}
                     >
                       <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>◆</span>
@@ -234,7 +235,7 @@ export function ProyectoDetalle() {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className={`overflow-hidden bg-secondary ${i === 0 ? 'md:col-span-2' : ''}`}
-                style={{ aspectRatio: i === 0 ? '16/7' : '4/3' }}
+                style={{ aspectRatio: i === 0 ? '16/7' : '4/3', borderRadius: 'var(--radius)' }}
               >
                 <img
                   src={img}

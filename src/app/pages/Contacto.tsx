@@ -32,7 +32,7 @@ export function Contacto() {
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section
+      {/* <section
         className="relative overflow-hidden"
         style={{ height: '65vh', minHeight: '380px', backgroundColor: 'var(--foreground)' }}
       >
@@ -40,6 +40,7 @@ export function Contacto() {
           src="/images/contact/hero.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ height: '65vh', objectPosition: 'center 70%' }}
         />
         <div
           className="absolute inset-0"
@@ -52,7 +53,7 @@ export function Contacto() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/30 mb-4 tracking-widest uppercase"
+              className="text-white/50 mb-4 tracking-widest uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Contacto
@@ -71,7 +72,7 @@ export function Contacto() {
             </h1>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Form + info */}
       <section className="py-24 md:py-36 px-6 md:px-12">
@@ -118,10 +119,7 @@ export function Contacto() {
                   className="text-foreground/60"
                   style={{ fontSize: 'var(--text-body)', lineHeight: 1.6 }}
                 >
-                  Bogotá, Colombia<br />
-                  <span style={{ fontSize: 'var(--text-nav)', color: 'var(--muted-foreground)' }}>
-                    Con equipos en México D.F., Santiago y Lima
-                  </span>
+                  Montevideo, Uruguay
                 </p>
               </div>
               <div>
@@ -132,7 +130,7 @@ export function Contacto() {
                   Redes
                 </p>
                 <div className="space-y-2">
-                  {['Instagram', 'Vimeo', 'Academia.edu', 'YouTube'].map(s => (
+                  {['Instagram', 'Facebook','YouTube'].map(s => (
                     <a
                       key={s}
                       href="#"
@@ -209,49 +207,6 @@ style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacit
                   ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label
-                      className="block mb-2 tracking-widest uppercase"
-                      style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                    >
-                      Organización
-                    </label>
-                    <input
-                      type="text"
-                      name="organization"
-                      value={form.organization}
-                      onChange={e => setForm(p => ({ ...p, organization: e.target.value }))}
-                      onFocus={() => setFocused('organization')}
-                      onBlur={() => setFocused(null)}
-                      placeholder="Universidad, institución..."
-                      className="w-full bg-transparent py-3 outline-none placeholder:text-muted-foreground/30 text-foreground"
-                      style={fieldStyle('organization')}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block mb-2 tracking-widest uppercase"
-                      style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                    >
-                      Tipo de consulta
-                    </label>
-                    <select
-                      name="type"
-                      value={form.type}
-                      onChange={e => setForm(p => ({ ...p, type: e.target.value }))}
-                      onFocus={() => setFocused('type')}
-                      onBlur={() => setFocused(null)}
-                      className="w-full bg-transparent py-3 outline-none text-foreground cursor-pointer"
-                      style={fieldStyle('type')}
-                    >
-                      {inquiryTypes.map(t => (
-                        <option key={t} value={t} className="bg-background">{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
                 <div>
                   <label
                     className="block mb-2 tracking-widest uppercase"
@@ -303,7 +258,7 @@ style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacit
       </section>
 
       {/* Collaboration types */}
-      <section
+      {/* <section
         className="py-20 md:py-28 px-6 md:px-12"
         style={{ backgroundColor: 'var(--secondary)' }}
       >
@@ -354,7 +309,7 @@ style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacit
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

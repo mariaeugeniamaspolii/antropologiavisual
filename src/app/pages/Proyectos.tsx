@@ -27,7 +27,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {/* Image container */}
         <div
           className="relative overflow-hidden bg-secondary mb-4"
-          style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4' }}
+          style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4', borderRadius: 'var(--radius)' }}
         >
           <motion.img
             src={project.coverImage}
@@ -151,7 +151,7 @@ export function Proyectos() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/30 mb-4 tracking-widest uppercase"
+              className="text-white/50 mb-4 tracking-widest uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Proyectos

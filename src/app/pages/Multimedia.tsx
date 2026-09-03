@@ -46,7 +46,7 @@ const documentaries = [
 const audioRecordings = [
   {
     title: 'Cantos de Velorio',
-    desc: 'Registro sonoro de alabaos y chiguaos del Chocó, Colombia',
+    desc: 'Registro sonoro de alabaos y chiguaos del Chocó, Uruguay',
     duration: '38:22',
     year: '2023',
   },
@@ -160,7 +160,7 @@ export function Multimedia() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/40 tracking-[0.3em] uppercase mb-4"
+              className="text-white/55 tracking-[0.3em] uppercase mb-4"
               style={{ fontSize: '0.65rem' }}
             >
               04 — Multimedia
@@ -221,7 +221,7 @@ export function Multimedia() {
                   <div className="md:col-span-4">
                     <div
                       className="relative overflow-hidden bg-secondary"
-                      style={{ aspectRatio: '16/9' }}
+                      style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
                     >
                       <img
                         src={doc.image}
@@ -290,7 +290,7 @@ export function Multimedia() {
                           <span
                             key={f}
                             className="border border-border px-3 py-1 text-muted-foreground"
-                            style={{ fontSize: '0.7rem' }}
+                            style={{ fontSize: '0.7rem', borderRadius: 'var(--radius)' }}
                           >
                             {f}
                           </span>
@@ -388,7 +388,7 @@ export function Multimedia() {
                 >
                   <div
                     className="relative overflow-hidden bg-secondary mb-5"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                   >
                     <img
                       src={pub.image}

@@ -38,7 +38,7 @@ function FooterForm() {
         <div key={field}>
           <label
             htmlFor={`footer-${field}`}
-            className="block mb-1 text-primary-foreground/40"
+            className="block mb-1 text-primary-foreground/50"
             style={{ fontSize: 'var(--text-badge)', letterSpacing: '0.15em', textTransform: 'uppercase' }}
           >
             {field === 'name' ? 'Nombre' : 'Correo'}
@@ -53,7 +53,7 @@ function FooterForm() {
             onBlur={() => setFocused(null)}
             placeholder={field === 'name' ? 'Tu nombre' : 'tu@correo.com'}
             required
-            className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/40 text-primary-foreground/70 transition-colors duration-200"
+            className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/50 text-primary-foreground/70 transition-colors duration-200"
             style={{
               borderColor: focused === field ? 'rgba(var(--background-rgb), 0.4)' : 'rgba(var(--background-rgb), 0.12)',
               fontSize: 'var(--text-body)',
@@ -79,7 +79,7 @@ function FooterForm() {
           placeholder="Tu mensaje"
           required
           rows={3}
-          className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/40 text-primary-foreground/70 resize-none transition-colors duration-200"
+          className="w-full bg-transparent border-b py-2 outline-none placeholder:text-primary-foreground/50 text-primary-foreground/70 resize-none transition-colors duration-200"
           style={{
             borderColor: focused === 'message' ? 'rgba(var(--background-rgb), 0.4)' : 'rgba(var(--background-rgb), 0.12)',
             fontSize: 'var(--text-body)',
@@ -88,7 +88,7 @@ function FooterForm() {
       </div>
       <button
         type="submit"
-        className="w-full py-3 border border-primary-foreground/20 text-primary-foreground/60 hover:border-primary-foreground/50 hover:text-primary-foreground/90 transition-all duration-300"
+        className="w-full py-3 border border-primary-foreground/20 text-primary-foreground/70 hover:border-primary-foreground/50 hover:text-primary-foreground/90 transition-all duration-300"
         style={{ fontSize: '0.7rem', letterSpacing: '0.2em' }}
       >
         ENVIAR
@@ -122,11 +122,11 @@ export function Layout() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
-          backgroundColor: navDark ? 'rgba(var(--background-rgb), 0.97)' : 'transparent',
+          backgroundColor: navDark ? '#F2EBE0' : 'transparent',
           borderBottom: navDark ? '1px solid rgba(26,21,16,0.08)' : 'none',
-          backdropFilter: navDark ? 'blur(8px)' : 'none',
+          transition: 'background-color 0.2s ease, border-bottom 0.2s ease',
         }}
       >
         <div className="flex items-center justify-between px-6 md:px-12 h-14 md:h-16">

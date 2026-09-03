@@ -18,6 +18,7 @@ export function FilterButton({ label, active, onClick }: FilterButtonProps) {
         borderColor: active ? 'var(--foreground)' : 'var(--border)',
         backgroundColor: active ? 'var(--foreground)' : 'transparent',
         color: active ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
+        borderRadius: 'var(--radius)',
       }}
     >
       {label}

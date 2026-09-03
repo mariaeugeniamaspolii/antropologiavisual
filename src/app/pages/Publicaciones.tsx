@@ -6,13 +6,12 @@ import { FilterButton } from '../components/FilterButton';
 
 const BASE = 'https://images.unsplash.com/photo-';
 
-const types: (PublicationType | 'Todos')[] = ['Todos', 'Ensayo fotográfico', 'Libro', 'Investigación', 'Catálogo'];
+const types: (PublicationType | 'Todos')[] = ['Todos', 'Libro', 'Revista', 'Artículo'];
 
 const typeLabels: Record<PublicationType, string> = {
-  'Ensayo fotográfico': 'Ensayo',
   'Libro': 'Libro',
-  'Investigación': 'Investigación',
-  'Catálogo': 'Catálogo',
+  'Revista': 'Revista',
+  'Artículo': 'Artículo',
 };
 
 export function Publicaciones() {
@@ -20,7 +19,6 @@ export function Publicaciones() {
 
   const filtered = activeType === 'Todos' ? publications : publications.filter(p => p.type === activeType);
   const featured = publications.find(p => p.featured);
-
   return (
     <div className="bg-background">
       {/* Hero */}
@@ -32,6 +30,8 @@ export function Publicaciones() {
           src="/images/publications/hero.jpg"
           alt=""
           className="w-full h-full object-cover"
+          style={{ height: '65vh', objectPosition: 'center top' }}
+
         />
         <div
           className="absolute inset-0"
@@ -44,7 +44,7 @@ export function Publicaciones() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-white/30 mb-4 tracking-widest uppercase"
+              className="text-white/50 mb-4 tracking-widest uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Publicaciones
@@ -97,22 +97,18 @@ export function Publicaciones() {
       {featured && (
         <section className="pb-20 px-6 md:px-12">
           <div className="max-w-6xl mx-auto">
-            <FadeIn className="mb-8">
-              <p
-                className="text-muted-foreground tracking-[0.25em] uppercase"
-                style={{ fontSize: 'var(--text-label)' }}
-              >
-                Publicación destacada
-              </p>
-            </FadeIn>
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center border border-border p-8 md:p-12">
                 {/* Book cover */}
                 <div
                   className="relative overflow-hidden bg-secondary group"
-                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto' }}
+                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto', borderRadius: 'var(--radius)' }}
                 >
-                  <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                  <img
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div
                     className="absolute inset-0"
                     style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(var(--foreground-rgb),0.3) 100%)' }}
@@ -140,7 +136,7 @@ export function Publicaciones() {
                     className="text-muted-foreground/50 mb-1"
                     style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}
                   >
-                    {featured.year}{featured.publisher && ` · ${featured.publisher}`}
+                    {featured.year}
                   </p>
                   <h2
                     className="text-foreground mb-2"
@@ -171,14 +167,6 @@ export function Publicaciones() {
                   >
                     {featured.description}
                   </p>
-                  {featured.pages && (
-                    <p
-                      className="text-muted-foreground/40"
-                      style={{ fontSize: 'var(--text-label-lg)' }}
-                    >
-                      {featured.pages} páginas
-                    </p>
-                  )}
                 </div>
               </div>
             </FadeIn>
@@ -226,9 +214,13 @@ export function Publicaciones() {
                     <div className="md:col-span-2">
                       <div
                         className="relative overflow-hidden bg-secondary"
-                        style={{ aspectRatio: '3/4' }}
+                        style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                       >
-                        <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                        <img
+                          src={pub.coverImage}
+                          alt={pub.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
 
@@ -236,13 +228,14 @@ export function Publicaciones() {
                     <div className="md:col-span-7">
                       <div className="flex items-center gap-3 mb-3">
                         <span
-                        style={{
-                          fontSize: 'var(--text-badge)',
-                          letterSpacing: '0.1em',
+                          style={{
+                            fontSize: 'var(--text-badge)',
+                            letterSpacing: '0.1em',
                             textTransform: 'uppercase',
                             padding: '3px 8px',
                             border: '1px solid var(--border)',
                             color: 'var(--accent)',
+                            borderRadius: 'var(--radius)',
                           }}
                         >
                           {pub.type}
@@ -287,22 +280,6 @@ export function Publicaciones() {
                       >
                         {pub.authors}
                       </p>
-                      {pub.publisher && (
-                        <p
-                          className="text-muted-foreground/35"
-                          style={{ fontSize: '0.7rem', lineHeight: 1.5 }}
-                        >
-                          {pub.publisher}
-                        </p>
-                      )}
-                      {pub.pages && (
-                        <p
-                          className="text-muted-foreground/30 mt-2"
-                          style={{ fontSize: '0.68rem' }}
-                        >
-                          {pub.pages} pp.
-                        </p>
-                      )}
                     </div>
                   </motion.div>
                 ))}

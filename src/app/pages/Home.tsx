@@ -359,8 +359,8 @@ export function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
               {[
                 { num: String(projects.length), label: 'proyectos realizados' },
-                { num: String(team.length), label: 'integrantes del colectivo' },
-                { num: String(new Date().getFullYear() - 2010), label: 'años documentando' },
+                { num: String(team.length), label: 'participantes del colectivo' },
+                { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
               ].map((stat, i) => (
                 <div key={stat.label}>
                   <p

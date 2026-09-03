@@ -6,13 +6,12 @@ import { FilterButton } from '../components/FilterButton';
 
 const BASE = 'https://images.unsplash.com/photo-';
 
-const types: (PublicationType | 'Todos')[] = ['Todos', 'Ensayo fotográfico', 'Libro', 'Investigación', 'Catálogo'];
+const types: (PublicationType | 'Todos')[] = ['Todos', 'Libro', 'Revista', 'Artículo'];
 
 const typeLabels: Record<PublicationType, string> = {
-  'Ensayo fotográfico': 'Ensayo',
   'Libro': 'Libro',
-  'Investigación': 'Investigación',
-  'Catálogo': 'Catálogo',
+  'Revista': 'Revista',
+  'Artículo': 'Artículo',
 };
 
 export function Publicaciones() {
@@ -114,7 +113,11 @@ export function Publicaciones() {
                   className="relative overflow-hidden bg-secondary group"
                   style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto', borderRadius: 'var(--radius)' }}
                 >
-                  <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                  <img
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div
                     className="absolute inset-0"
                     style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(var(--foreground-rgb),0.3) 100%)' }}
@@ -230,7 +233,11 @@ export function Publicaciones() {
                         className="relative overflow-hidden bg-secondary"
                         style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
                       >
-                        <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
+                        <img
+                          src={pub.coverImage}
+                          alt={pub.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
 

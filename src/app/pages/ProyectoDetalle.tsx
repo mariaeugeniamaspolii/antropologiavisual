@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
@@ -6,6 +7,7 @@ import { FadeIn } from '../components/FadeIn';
 export function ProyectoDetalle() {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
+  const [galleryCount, setGalleryCount] = useState(12);
 
   if (!project) return <Navigate to="/proyectos" replace />;
 
@@ -227,15 +229,15 @@ export function ProyectoDetalle() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {project.galleryImages.map((img, i) => (
+            {project.galleryImages.slice(0, galleryCount).map((img, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className={`overflow-hidden bg-secondary ${i === 0 ? 'md:col-span-2' : ''}`}
-                style={{ aspectRatio: i === 0 ? '16/7' : '4/3', borderRadius: 'var(--radius)' }}
+                className={`overflow-hidden bg-secondary`}
+                style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
               >
                 <img
                   src={img}
@@ -246,6 +248,25 @@ export function ProyectoDetalle() {
               </motion.div>
             ))}
           </div>
+
+          {project.galleryImages.length > galleryCount && (
+            <FadeIn className="mt-8 text-center">
+              <button
+                onClick={() => setGalleryCount(prev => prev + 12)}
+                className="inline-flex items-center gap-2 transition-colors duration-200"
+                style={{
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.15em',
+                  color: 'var(--muted-foreground)',
+                  padding: '10px 24px',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius)',
+                }}
+              >
+                Ver más
+              </button>
+            </FadeIn>
+          )}
         </div>
       </section>
 

@@ -68,10 +68,10 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Close button — fixed top-right of viewport */}
+        {/* Close button — fixed position relative to viewport */}
         <button
           onClick={onClose}
-          className="absolute top-16 right-4 md:top-20 md:right-8 z-10 transition-opacity duration-200 hover:opacity-70"
+          className="fixed top-4 right-4 md:top-6 md:right-6 z-10 transition-opacity duration-200 hover:opacity-70"
           style={{ color: 'rgba(255, 255, 255, 0.6)' }}
           aria-label="Cerrar"
         >
@@ -80,9 +80,9 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
           </svg>
         </button>
 
-        {/* Counter — fixed bottom center of viewport */}
+        {/* Counter — fixed position relative to viewport */}
         <div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-10 text-center"
           style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
         >
           {currentIndex + 1} / {images.length}

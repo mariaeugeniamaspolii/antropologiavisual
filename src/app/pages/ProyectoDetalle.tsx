@@ -320,7 +320,7 @@ export function ProyectoDetalle() {
                         className="text-muted-foreground mb-1"
                         style={{ fontSize: '0.68rem' }}
                       >
-                        {prev.year} · {prev.category}
+                        {prev.year} · {prev.category.join(', ')}
                       </p>
                       <h3
                         className="text-foreground group-hover:text-accent transition-colors duration-300"
@@ -369,7 +369,7 @@ export function ProyectoDetalle() {
                         className="text-muted-foreground mb-1"
                         style={{ fontSize: '0.68rem' }}
                       >
-                        {next.year} · {next.category}
+                        {next.year} · {next.category.join(', ')}
                       </p>
                       <h3
                         className="text-foreground group-hover:text-accent transition-colors duration-300"

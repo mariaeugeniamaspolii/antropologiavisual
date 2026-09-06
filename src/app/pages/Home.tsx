@@ -124,10 +124,6 @@ export function Home() {
               audiovisuales para construir y compartir conocimiento."</p>
           </FadeIn>
           <FadeIn className="md:col-span-3" delay={0.2}>
-            <p
-              className="text-muted-foreground leading-relaxed"
-              style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
-            >Un colectivo interdisciplinar de fotógrafos e investigadores con base en Uruguay.</p>
             <Link
               to="/equipo"
               className="inline-flex items-center gap-3 mt-6 group"

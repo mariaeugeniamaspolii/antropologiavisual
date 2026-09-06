@@ -71,7 +71,7 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
         {/* Close button — fixed top-right of viewport */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 md:top-7 md:right-7 z-10 transition-opacity duration-200 hover:opacity-70"
+          className="absolute top-16 right-4 md:top-20 md:right-8 z-10 transition-opacity duration-200 hover:opacity-70"
           style={{ color: 'rgba(255, 255, 255, 0.6)' }}
           aria-label="Cerrar"
         >
@@ -82,7 +82,7 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
 
         {/* Counter — fixed bottom center of viewport */}
         <div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
           style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
         >
           {currentIndex + 1} / {images.length}

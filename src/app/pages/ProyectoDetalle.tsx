@@ -68,9 +68,9 @@ export function ProyectoDetalle() {
           >
             {/* Meta chips */}
             <div className="flex flex-wrap gap-2 mb-6">
-              {[project.category, project.year, project.location].map(tag => (
+              {[...project.category, project.year, project.location].map((tag, i) => (
                 <span
-                  key={tag}
+                  key={`${tag}-${i}`}
                   style={{
                     fontSize: 'var(--text-label)',
                     letterSpacing: '0.1em',

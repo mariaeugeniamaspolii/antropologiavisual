@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
+import { ImageLightbox } from '../components/ImageLightbox';
 
 export function ProyectoDetalle() {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
   const [galleryCount, setGalleryCount] = useState(12);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!project) return <Navigate to="/proyectos" replace />;
 
@@ -236,8 +238,9 @@ export function ProyectoDetalle() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className={`overflow-hidden bg-secondary`}
+                className="overflow-hidden bg-secondary cursor-pointer"
                 style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
+                onClick={() => setLightboxIndex(i)}
               >
                 <img
                   src={img}
@@ -442,6 +445,16 @@ export function ProyectoDetalle() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Image Lightbox */}
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={project.galleryImages.slice(0, galleryCount)}
+          startIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          altPrefix={project.title}
+        />
+      )}
     </div>
   );
 }

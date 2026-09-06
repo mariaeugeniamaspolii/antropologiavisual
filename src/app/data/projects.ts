@@ -397,8 +397,9 @@ export function getRelatedProjects(slugs: string[]): Project[] {
 
 export function getPrevNextProjects(slug: string): { prev: Project | null; next: Project | null } {
   const idx = projects.findIndex(p => p.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
   return {
-    prev: idx > 0 ? projects[idx - 1] : null,
-    next: idx < projects.length - 1 ? projects[idx + 1] : null,
+    prev: idx > 0 ? projects[idx - 1] : projects[projects.length - 1],
+    next: idx < projects.length - 1 ? projects[idx + 1] : projects[0],
   };
 }

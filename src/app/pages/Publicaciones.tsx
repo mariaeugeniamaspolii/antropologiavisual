@@ -17,8 +17,9 @@ const typeLabels: Record<PublicationType, string> = {
 export function Publicaciones() {
   const [activeType, setActiveType] = useState<PublicationType | 'Todos'>('Todos');
 
-  const filtered = activeType === 'Todos' ? publications : publications.filter(p => p.type === activeType);
   const featured = publications.find(p => p.featured);
+  const filtered = (activeType === 'Todos' ? publications : publications.filter(p => p.type === activeType))
+    .filter(p => p.slug !== featured?.slug);
   return (
     <div className="bg-background">
       {/* Hero */}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { projects } from '../data/projects';
+import { projects, type ProjectRatio } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
 
@@ -9,6 +9,12 @@ const categories = ['Todos', 'Documental', 'Audio'];
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
+
+  const ratioMap: Record<ProjectRatio, string> = {
+    square: '1 / 1',
+    portrait: '3 / 4',
+    landscape: '4 / 3',
+  };
 
   return (
     <motion.div
@@ -26,7 +32,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {/* Image container */}
         <div
           className="relative overflow-hidden bg-secondary mb-4"
-          style={{ aspectRatio: index % 4 === 1 ? '2/3' : index % 3 === 0 ? '4/3' : '3/4', borderRadius: 'var(--radius)' }}
+          style={{ aspectRatio: ratioMap[project.ratio], borderRadius: 'var(--radius)' }}
         >
           <motion.img
             src={project.coverImage}

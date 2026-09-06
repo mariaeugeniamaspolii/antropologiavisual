@@ -1,3 +1,5 @@
+export type ProjectRatio = 'square' | 'portrait' | 'landscape';
+
 export interface Project {
   id: number;
   slug: string;
@@ -5,6 +7,7 @@ export interface Project {
   subtitle: string;
   year: string;
   category: string[];
+  ratio: ProjectRatio;
   format?: string;
   location: string;
   coverImage: string;
@@ -30,6 +33,7 @@ export const projects: Project[] = [
     subtitle: 'Nuevas formas expositivas para vincularse con la prehistoria del Uruguay',
     year: '2018',
     category: [],
+    ratio: 'portrait',
     location: 'Salto, Uruguay',
     coverImage: '/images/projects/ciar/cover.jpg',
     heroImage: '/images/projects/ciar/hero.jpg',
@@ -66,6 +70,7 @@ export const projects: Project[] = [
     subtitle: 'Vuelta del Palmar',
     year: '2012',
     category: [],
+    ratio: 'portrait',
     location: 'Vuelta del Palmar, Rocha, Uruguay',
     coverImage: '/images/projects/del-butia/cover.jpg',
     heroImage: '/images/projects/del-butia/cover.jpg',
@@ -98,6 +103,7 @@ export const projects: Project[] = [
     subtitle: 'Un homenaje al pueblo Nuevo Berlín en las canciones de sus artistas',
     year: '2018',
     category: [],
+    ratio: 'portrait',
     location: 'Nuevo Berlín, Uruguay',
     coverImage: '/images/projects/voces-nuevo-berlin/cover.jpg',
     heroImage: '/images/projects/voces-nuevo-berlin/hero.jpg',
@@ -135,6 +141,7 @@ export const projects: Project[] = [
     subtitle: 'Interactivo',
     year: '2010',
     category: [],
+    ratio: 'landscape',
     location: 'Durazno y Tacuarembó, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/recorte-paso-de-los-toros.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/recorte-paso-de-los-toros.jpg',
@@ -190,6 +197,7 @@ export const projects: Project[] = [
     subtitle: 'Geolocalización',
     year: '2015',
     category: [],
+    ratio: 'landscape',
     location: 'Montevideo, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/prueba-banner-3.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/prueba-banner-3.jpg',
@@ -208,6 +216,7 @@ export const projects: Project[] = [
     subtitle: 'Interactivo',
     year: '2015',
     category: [],
+    ratio: 'landscape',
     location: 'Laguna de Rocha, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/pesca.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/pesca.jpg',
@@ -233,6 +242,7 @@ export const projects: Project[] = [
     subtitle: 'Documental',
     year: '2009',
     category: ['Documental', 'Audio'],
+    ratio: 'portrait',
     location: 'Tacuarembó, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Dibujo-editado1-400x440.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Dibujo-editado1-400x440.jpg',
@@ -251,6 +261,7 @@ export const projects: Project[] = [
     subtitle: 'Documental',
     year: '2009',
     category: ['Documental', 'Audio'],
+    ratio: 'portrait',
     location: 'Villa Ansina, Tacuarembó, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/la-casita-del-hornero1-400x440.png',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/la-casita-del-hornero1-400x440.png',
@@ -269,6 +280,7 @@ export const projects: Project[] = [
     subtitle: 'Documental',
     year: 'Null',
     category: ['Documental'],
+    ratio: 'portrait',
     location: 'Castillos, Rocha, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/foto-circo-editada1-400x440.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/foto-circo-editada1-400x440.jpg',
@@ -287,6 +299,7 @@ export const projects: Project[] = [
     subtitle: 'Documental',
     year: 'Null',
     category: ['Documental'],
+    ratio: 'portrait',
     location: 'Sarandí del Yí, Durazno, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/fogon-e1440514905601-400x440.png',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/fogon-e1440514905601-400x440.png',
@@ -305,6 +318,7 @@ export const projects: Project[] = [
     subtitle: 'Documental',
     year: 'Null',
     category: ['Documental'],
+    ratio: 'portrait',
     location: 'Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/1934765_10153931295203617_1756525958480582883_n-400x440.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/1934765_10153931295203617_1756525958480582883_n-400x440.jpg',
@@ -322,6 +336,7 @@ export const projects: Project[] = [
     subtitle: 'Audios',
     year: '2015',
     category: ['Audio'],
+    ratio: 'landscape',
     location: 'Tacuarembó, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/foto-documental-pp1-400x280.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/foto-documental-pp1-400x280.jpg',
@@ -339,6 +354,7 @@ export const projects: Project[] = [
     subtitle: 'Audios',
     year: '2015',
     category: ['Audio'],
+    ratio: 'landscape',
     location: 'Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/09/tierra-en-pila-foto-400x280.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/09/tierra-en-pila-foto-400x280.jpg',
@@ -350,29 +366,13 @@ export const projects: Project[] = [
     relatedSlugs: ['apenas-ranas-del-caraguata', 'cafe-de-coco'],
   },
   {
-    id: 15,
-    slug: 'la-casita-del-hornero-audios',
-    title: 'La Casita del Hornero',
-    subtitle: 'Audios',
-    year: '2015',
-    category: ['Audio'],
-    location: 'Villa Ansina, Tacuarembó, Uruguay',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/hornero-e1440514767453-400x280.png',
-    heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/hornero-e1440514767453-400x280.png',
-    galleryImages: [],
-    introduction: 'Ambientes sonoros del predio de las familias que trabajan como ladrilleros en Villa Ansina.',
-    description: 'Ambientes sonoros del predio de las familias Pereyra/Baez/Barreto que trabajan como ladrilleros en Villa Ansina, Tacuarembó. El proyecto Tierra en Pila experimenta la musicalidad de los ambientes sonoros de los documentales de antropologiavisual.org, versionando sus músicas originales.',
-    director: 'Gabriel de Souza',
-    photography: 'Colectivo antropologiavisual.org',
-    relatedSlugs: ['los-narradores-del-caraguata-musica-original', 'cafe-de-coco'],
-  },
-  {
     id: 17,
     slug: 'los-lobos-por-el-zorro',
     title: 'Los lobos por El Zorro',
     subtitle: 'Audios',
     year: '2015',
     category: ['Audio'],
+    ratio: 'landscape',
     location: 'Cabo Polonio, Rocha, Uruguay',
     coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Imagen-140-400x280.jpg',
     heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Imagen-140-400x280.jpg',

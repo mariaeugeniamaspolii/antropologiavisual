@@ -44,24 +44,6 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.55) 0%, rgba(var(--foreground-rgb),0.05) 50%, transparent 75%)' }}
           />
 
-          {/* Category badge */}
-          {project.category && (
-            <div className="absolute top-3 left-3">
-              <span
-                className="px-2.5 py-1"
-                style={{
-                  backgroundColor: 'rgba(var(--background-rgb), 0.9)',
-                  fontSize: 'var(--text-badge)',
-                  letterSpacing: '0.1em',
-                  color: 'var(--foreground)',
-                  borderRadius: 'var(--radius)',
-                }}
-              >
-                {project.category}
-              </span>
-            </div>
-          )}
-
           {/* Hover: bottom text reveal */}
           <motion.div
             className="absolute bottom-0 left-0 right-0 p-5"
@@ -132,7 +114,7 @@ export function Proyectos() {
 
   const filtered = activeCategory === 'Todos'
     ? projects
-    : projects.filter(p => p.category === activeCategory);
+    : projects.filter(p => p.category.includes(activeCategory));
 
   return (
     <div className="bg-background">

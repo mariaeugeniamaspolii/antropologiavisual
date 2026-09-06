@@ -24,7 +24,7 @@ export function Contacto() {
   };
 
   const fieldStyle = (name: string) => ({
-                fontSize: '0.9rem',
+    fontSize: '0.9rem',
     borderBottom: `1px solid ${focused === name ? 'rgba(var(--foreground-rgb),0.45)' : 'rgba(var(--foreground-rgb),0.12)'}`,
     transition: 'border-color 0.25s',
   });
@@ -101,11 +101,11 @@ export function Contacto() {
                   Correo
                 </p>
                 <a
-                  href="mailto:contacto@antropologiavisual.org"
+                  href="mailto:gadesouza@gmail.com"
                   className="text-foreground/70 hover:text-accent transition-colors duration-200"
                   style={{ fontSize: 'var(--text-body)' }}
                 >
-                  contacto@antropologiavisual.org
+                  gadesouza@gmail.com
                 </a>
               </div>
               <div>
@@ -129,15 +129,21 @@ export function Contacto() {
                 >
                   Redes
                 </p>
-                <div className="space-y-2">
-                  {['Instagram', 'Facebook','YouTube'].map(s => (
+                <div className="flex flex-col gap-2">
+                  {[
+                    { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/' },
+                    { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ' },
+                    { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org' },
+                  ].map(({ name, url }) => (
                     <a
-                      key={s}
-                      href="#"
+                      key={name}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block text-muted-foreground/45 hover:text-muted-foreground transition-colors duration-200"
                       style={{ fontSize: 'var(--text-body-md)' }}
                     >
-                      {s}
+                      {name}
                     </a>
                   ))}
                 </div>
@@ -187,9 +193,9 @@ export function Contacto() {
                     <div key={field}>
                       <label
                         className="block mb-2 tracking-widest uppercase"
-style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                    >
-                      {field === 'name' ? 'Nombre *' : 'Correo *'}
+                        style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                      >
+                        {field === 'name' ? 'Nombre *' : 'Correo *'}
                       </label>
                       <input
                         type={field === 'email' ? 'email' : 'text'}
@@ -210,9 +216,9 @@ style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacit
                 <div>
                   <label
                     className="block mb-2 tracking-widest uppercase"
-style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                    >
-                      Mensaje *
+                    style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
+                  >
+                    Mensaje *
                   </label>
                   <textarea
                     name="message"
@@ -257,59 +263,6 @@ style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacit
         </div>
       </section>
 
-      {/* Collaboration types */}
-      {/* <section
-        className="py-20 md:py-28 px-6 md:px-12"
-        style={{ backgroundColor: 'var(--secondary)' }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="mb-12">
-            <p
-              className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Formas de colaboración
-            </p>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14">
-            {[
-              {
-                title: 'Investigación conjunta',
-                desc: 'Proyectos de larga duración con instituciones académicas y organizaciones de la sociedad civil. Compartimos metodología, archivos y créditos de investigación.',
-              },
-              {
-                title: 'Documentación encargada',
-                desc: 'Documentamos proyectos culturales, comunitarios y de derechos humanos con alineación ética y metodológica con nuestro trabajo.',
-              },
-              {
-                title: 'Talleres y formación',
-                desc: 'Impartimos talleres de fotografía documental, etnografía visual y archivo comunitario para investigadores, activistas y comunicadores.',
-              },
-            ].map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.08}>
-                <div className="w-5 h-px mb-6" style={{ backgroundColor: 'var(--accent)' }} />
-                <h3
-                  className="text-foreground mb-3"
-                  style={{
-                    fontFamily: 'var(--font-playfair)',
-                    fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-                    fontWeight: 400,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="text-muted-foreground leading-relaxed"
-                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
-                >
-                  {item.desc}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 }

@@ -65,7 +65,7 @@ function FooterForm() {
         <label
           htmlFor="footer-message"
           className="block mb-1 text-primary-foreground/40"
-            style={{ fontSize: 'var(--text-badge)', letterSpacing: '0.15em', textTransform: 'uppercase' }}
+          style={{ fontSize: 'var(--text-badge)', letterSpacing: '0.15em', textTransform: 'uppercase' }}
         >
           Mensaje
         </label>
@@ -165,8 +165,8 @@ export function Layout() {
                       ? 'var(--foreground)'
                       : 'var(--muted-foreground)'
                     : isActive(link.to)
-                    ? 'rgba(var(--white-rgb), 0.95)'
-                    : 'rgba(var(--white-rgb), 0.55)',
+                      ? 'rgba(var(--white-rgb), 0.95)'
+                      : 'rgba(var(--white-rgb), 0.55)',
                 }}
               >
                 {link.label}
@@ -211,13 +211,6 @@ export function Layout() {
                   Antropología Visual
                 </p>
               </Link>
-              <p
-                className="text-primary-foreground/50 leading-relaxed mb-8"
-                style={{ fontSize: 'var(--text-body-md)', lineHeight: 1.75 }}
-              >
-                Documentar para revelar.<br />
-                Observamos, registramos y narramos culturas, territorios y experiencias humanas para transformarlas en memoria visual.
-              </p>
 
               {/* Nav links in footer */}
               <ul className="space-y-2">
@@ -239,33 +232,39 @@ export function Layout() {
             <div>
               <p
                 className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-6"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Contacto
+                style={{ fontSize: 'var(--text-label)' }}
+              >
+                Contacto
               </p>
               <a
-                href="mailto:contacto@antropologiavisual.org"
+                href="mailto:gadesouza@gmail.com"
                 className="block text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors duration-200 mb-8"
                 style={{ fontSize: 'var(--text-body-md)' }}
               >
-                contacto@antropologiavisual.org
+                gadesouza@gmail.com
               </a>
 
               <p
                 className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-4"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Redes
+                style={{ fontSize: 'var(--text-label)' }}
+              >
+                Redes
               </p>
               <div className="flex flex-col gap-2">
-                {['Instagram', 'Vimeo', 'Academia.edu'].map(s => (
+                {[
+                  { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/' },
+                  { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ' },
+                  { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org' },
+                ].map(({ name, url }) => (
                   <a
-                    key={s}
-                    href="#"
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors duration-200"
                     style={{ fontSize: 'var(--text-nav)' }}
                   >
-                    {s}
+                    {name}
                   </a>
                 ))}
               </div>
@@ -275,9 +274,9 @@ export function Layout() {
             <div>
               <p
                 className="text-primary-foreground/40 tracking-[0.25em] uppercase mb-6"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Escríbenos
+                style={{ fontSize: 'var(--text-label)' }}
+              >
+                Escríbenos
               </p>
               <FooterForm />
             </div>
@@ -298,7 +297,16 @@ export function Layout() {
               className="text-primary-foreground/40 italic"
               style={{ fontFamily: 'var(--font-playfair)', fontSize: 'var(--text-label-lg)' }}
             >
-              La imagen como forma de conocimiento
+              Diseño y desarrollo por{' '}
+              <a
+                href="https://mariaeugeniamaspoli.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-foreground/70 transition-colors duration-200"
+              >
+                <strong>María Eugenia Máspoli</strong>
+              </a>
+              {' '}y <strong>Sofía Morelli</strong>
             </p>
           </div>
         </div>

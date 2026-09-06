@@ -64,7 +64,7 @@ export function Home() {
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
               }}
-            >Colectivo de Antropología Visual — desde 2016</p>
+            >Colectivo de Antropología Visual — desde 2006</p>
 
             {/* Poetic statement */}
             <h1
@@ -119,7 +119,9 @@ export function Home() {
                 color: 'rgba(var(--foreground-rgb),0.82)',
                 fontWeight: 400,
               }}
-            >"Somos un equipo encaminado a construir conocimiento a partir de herramientas de registro y representación audiovisuales para dejar planteados marcos amplios y provocar un acceso más abierto a los resultados de las investigaciones."</p>
+            >"Exploramos el encuentro entre la imagen y la antropología para observar, registrar
+              y narrar procesos, personas y territorios. Utilizamos distintas herramientas
+              audiovisuales para construir y compartir conocimiento."</p>
           </FadeIn>
           <FadeIn className="md:col-span-3" delay={0.2}>
             <p
@@ -356,9 +358,10 @@ export function Home() {
 
           {/* Awards highlight */}
           <FadeIn className="mt-20 pt-12 border-t border-border">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 align-items-start">
+              
               {[
-                { num: String(projects.length), label: 'proyectos realizados' },
+                // { num: String(projects.length), label: 'proyectos realizados' },
                 { num: String(team.length), label: 'participantes del colectivo' },
                 { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
               ].map((stat, i) => (
@@ -382,6 +385,10 @@ export function Home() {
                   </p>
                 </div>
               ))}
+              <p 
+              className="text-muted-foreground leading-relaxed"
+              style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}>Una trayectoria construida a través de distintas miradas de registro audiovisual,
+                con la intención de compartir aquello que encontramos en el camino.</p>
             </div>
           </FadeIn>
         </div>

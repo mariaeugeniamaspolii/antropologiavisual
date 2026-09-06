@@ -5,8 +5,7 @@ import { projects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
 
-const categories = ['Todos', ...Array.from(new Set(projects.map(p => p.category)))];
-const formats = ['Todos los formatos', 'Fotografía Documental', 'Documental', 'Etnografía visual comparada', 'Fotografía de larga duración', 'Investigación etnográfica'];
+const categories = ['Todos', 'Documental', 'Audio'];
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
@@ -46,19 +45,22 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           />
 
           {/* Category badge */}
-          <div className="absolute top-3 left-3">
-            <span
-              className="px-2.5 py-1"
-              style={{
-                backgroundColor: 'rgba(var(--background-rgb), 0.9)',
-                fontSize: 'var(--text-badge)',
-                letterSpacing: '0.1em',
-                color: 'var(--foreground)',
-              }}
-            >
-              {project.category}
-            </span>
-          </div>
+          {project.category && (
+            <div className="absolute top-3 left-3">
+              <span
+                className="px-2.5 py-1"
+                style={{
+                  backgroundColor: 'rgba(var(--background-rgb), 0.9)',
+                  fontSize: 'var(--text-badge)',
+                  letterSpacing: '0.1em',
+                  color: 'var(--foreground)',
+                  borderRadius: 'var(--radius)',
+                }}
+              >
+                {project.category}
+              </span>
+            </div>
+          )}
 
           {/* Hover: bottom text reveal */}
           <motion.div

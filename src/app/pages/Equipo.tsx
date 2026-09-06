@@ -62,8 +62,8 @@ export function Equipo() {
                 letterSpacing: '-0.025em',
               }}
             >
-              Miradas<br />
-              <em>que convergen.</em>
+              Distintas<br />
+              <em>miradas</em>
             </h1>
           </motion.div>
         </div>
@@ -82,13 +82,15 @@ export function Equipo() {
                   lineHeight: 1.55,
                   color: 'rgba(var(--foreground-rgb),0.82)',
                 }}
-              ><span className="italic">"Somos un equipo encaminado a construir conocimiento a partir de herramientas de registro y representación audiovisuales para dejar planteados marcos amplios y provocar un acceso más abierto a los resultados de las investigaciones."</span></p>
+              ><span className="italic">"Somos un colectivo que explora el encuentro entre la imagen
+                y la reflexión antropológica. Desde hace {new Date().getFullYear() - 2006} años documentamos comunidades y
+                desarrollamos proyectos junto a instituciones culturales, universidades y organizaciones."</span></p>
             </FadeIn>
             <FadeIn className="md:col-span-5" delay={0.15}>
               <p
                 className="text-muted-foreground leading-relaxed mb-5"
                 style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-                >Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</p>
+              >Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</p>
             </FadeIn>
           </div>
         </div>

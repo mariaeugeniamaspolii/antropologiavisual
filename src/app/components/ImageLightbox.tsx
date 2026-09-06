@@ -68,28 +68,20 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Close button — fixed position relative to viewport */}
-        <button
-          onClick={onClose}
-          className="fixed top-4 right-4 md:top-6 md:right-6 z-10 transition-opacity duration-200 hover:opacity-70"
-          style={{ color: 'rgba(255, 255, 255, 0.6)' }}
-          aria-label="Cerrar"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-
-        {/* Counter — fixed position relative to viewport */}
-        <div
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-10 text-center"
-          style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
-        >
-          {currentIndex + 1} / {images.length}
-        </div>
-
         {/* Centered content block */}
         <div className="relative flex flex-col items-center max-w-[800px] w-full mx-4 md:mx-6">
+
+          {/* Close button — top-right of content block */}
+          <button
+            onClick={onClose}
+            className="absolute -top-10 right-0 md:-top-12 md:right-0 z-10 transition-opacity duration-200 hover:opacity-70"
+            style={{ color: 'rgba(255, 255, 255, 0.6)' }}
+            aria-label="Cerrar"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
 
           {/* Image + arrows row */}
           <div className="relative flex items-center w-full">
@@ -164,6 +156,14 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
                 </button>
               </>
             )}
+          </div>
+
+          {/* Counter — below image, fixed relative to content block */}
+          <div
+            className="mt-3 text-center"
+            style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
+          >
+            {currentIndex + 1} / {images.length}
           </div>
         </div>
       </motion.div>

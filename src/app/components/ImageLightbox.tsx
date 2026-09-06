@@ -68,70 +68,104 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 md:top-6 md:right-6 z-10 transition-opacity duration-200 hover:opacity-70"
-          style={{ color: 'rgba(255, 255, 255, 0.6)' }}
-          aria-label="Cerrar"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
+        {/* Centered content block */}
+        <div className="relative flex flex-col items-center max-w-[800px] w-full mx-4 md:mx-6">
 
-        {/* Counter */}
-        <div
-          className="absolute top-4 left-4 md:top-6 md:left-6 z-10"
-          style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
-        >
-          {currentIndex + 1} / {images.length}
+          {/* Close button — top-right of content block */}
+          <button
+            onClick={onClose}
+            className="absolute -top-10 right-0 md:-top-12 md:right-0 z-10 transition-opacity duration-200 hover:opacity-70"
+            style={{ color: 'rgba(255, 255, 255, 0.6)' }}
+            aria-label="Cerrar"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Image + arrows row */}
+          <div className="relative flex items-center w-full">
+
+            {/* Prev arrow — desktop outside, mobile overlay */}
+            {images.length > 1 && (
+              <button
+                onClick={goPrev}
+                className="hidden md:flex absolute -left-12 z-10 items-center justify-center transition-opacity duration-200 hover:opacity-70"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
+                aria-label="Imagen anterior"
+              >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
+            {/* Image */}
+            <motion.div
+              key={currentIndex}
+              className="w-full flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <img
+                src={images[currentIndex]}
+                alt={altPrefix ? `${altPrefix} – imagen ${currentIndex + 1}` : `Imagen ${currentIndex + 1}`}
+                className="max-w-[800px] max-h-[75vh] object-contain select-none"
+                draggable={false}
+              />
+            </motion.div>
+
+            {/* Next arrow — desktop outside, mobile overlay */}
+            {images.length > 1 && (
+              <button
+                onClick={goNext}
+                className="hidden md:flex absolute -right-12 z-10 items-center justify-center transition-opacity duration-200 hover:opacity-70"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
+                aria-label="Imagen siguiente"
+              >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+
+            {/* Mobile arrows — overlay on image */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={goPrev}
+                  className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full transition-opacity duration-200 hover:opacity-70"
+                  style={{ color: 'rgba(255, 255, 255, 0.7)', backgroundColor: 'rgba(0, 0, 0, 0.35)' }}
+                  aria-label="Imagen anterior"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={goNext}
+                  className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full transition-opacity duration-200 hover:opacity-70"
+                  style={{ color: 'rgba(255, 255, 255, 0.7)', backgroundColor: 'rgba(0, 0, 0, 0.35)' }}
+                  aria-label="Imagen siguiente"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Counter — below image */}
+          <div
+            className="mt-3 text-center"
+            style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.7rem', letterSpacing: '0.1em' }}
+          >
+            {currentIndex + 1} / {images.length}
+          </div>
         </div>
-
-        {/* Prev arrow */}
-        {images.length > 1 && (
-          <button
-            onClick={goPrev}
-            className="absolute left-2 md:left-6 z-10 transition-opacity duration-200 hover:opacity-70"
-            style={{ color: 'rgba(255, 255, 255, 0.5)' }}
-            aria-label="Imagen anterior"
-          >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-              <path d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-        )}
-
-        {/* Next arrow */}
-        {images.length > 1 && (
-          <button
-            onClick={goNext}
-            className="absolute right-2 md:right-6 z-10 transition-opacity duration-200 hover:opacity-70"
-            style={{ color: 'rgba(255, 255, 255, 0.5)' }}
-            aria-label="Imagen siguiente"
-          >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-              <path d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        )}
-
-        {/* Image */}
-        <motion.div
-          key={currentIndex}
-          className="w-full h-full flex items-center justify-center px-12 md:px-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-        >
-          <img
-            src={images[currentIndex]}
-            alt={altPrefix ? `${altPrefix} – imagen ${currentIndex + 1}` : `Imagen ${currentIndex + 1}`}
-            className="max-w-full max-h-full object-contain select-none"
-            draggable={false}
-          />
-        </motion.div>
       </motion.div>
     </AnimatePresence>
   );

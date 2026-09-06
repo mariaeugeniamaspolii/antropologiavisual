@@ -327,26 +327,50 @@ export function Home() {
           </FadeIn>
 
           {/* Collaborators in elegant text grid */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-y-8 gap-x-6">
+          <div className="flex flex-wrap items-start gap-x-12 gap-y-8">
             {[
-              'ANII',
-              'Departamento de Arqueología',
-              'Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR',
-              'Ministerio de Educación y Cultura MEC',
-              'Patrimonio Cultural de la Nación',
-            ].map((name, i) => (
+              {
+                name: 'ANII',
+                logo: '/images/institutions/ANII.png',
+              },
+              {
+                name: 'Departamento de Arqueología',
+                logo: '/images/institutions/ANII.png',
+              },
+              {
+                name: 'Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR',
+                logo: '/images/institutions/FHCE.png',
+              },
+              {
+                name: 'Ministerio de Educación y Cultura MEC',
+                logo: '/images/institutions/MEC.png',
+              },
+              {
+                name: 'Patrimonio Cultural de la Nación',
+                logo: '/images/institutions/FCC.png',
+              },
+            ].map((item, i) => (
               <motion.div
-                key={name}
+                key={item.name}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: '-30px' }}
                 transition={{ delay: i * 0.05, duration: 0.6 }}
+                className="flex flex-col items-start gap-4"
               >
+                <div className="h-16 flex items-center">
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="max-h-full w-auto object-contain opacity-90"
+                  />
+                </div>
+
                 <p
                   className="text-muted-foreground/50 hover:text-muted-foreground transition-colors duration-300"
                   style={{ fontSize: 'var(--text-nav)', lineHeight: 1.4 }}
                 >
-                  {name}
+                  {/* {item.name} */}
                 </p>
               </motion.div>
             ))}
@@ -354,37 +378,39 @@ export function Home() {
 
           {/* Awards highlight */}
           <FadeIn className="mt-20 pt-12 border-t border-border">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 align-items-start">
-              
-              {[
-                // { num: String(projects.length), label: 'proyectos realizados' },
-                { num: String(team.length), label: 'participantes del colectivo' },
-                { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
-              ].map((stat, i) => (
-                <div key={stat.label}>
-                  <p
-                    className="text-foreground mb-1"
-                    style={{
-                      fontFamily: 'var(--font-playfair)',
-                      fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
-                      fontWeight: 400,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.num}
-                  </p>
-                  <p
-                    className="text-muted-foreground"
-                    style={{ fontSize: '0.8rem' }}
-                  >
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-              <p 
-              className="text-muted-foreground leading-relaxed"
-              style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}>Una trayectoria construida a través de distintas miradas de registro audiovisual,
-                con la intención de compartir aquello que encontramos en el camino.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-end">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+
+                {[
+                  // { num: String(projects.length), label: 'proyectos realizados' },
+                  { num: String(team.length), label: 'participantes del colectivo' },
+                  { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
+                ].map((stat, i) => (
+                  <div key={stat.label}>
+                    <p
+                      className="text-foreground mb-1"
+                      style={{
+                        fontFamily: 'var(--font-playfair)',
+                        fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
+                        fontWeight: 400,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {stat.num}
+                    </p>
+                    <p
+                      className="text-muted-foreground"
+                      style={{ fontSize: '0.8rem' }}
+                    >
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+                <p
+                  className="text-muted-foreground leading-relaxed"
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}>Una trayectoria construida a través de distintas miradas de registro audiovisual,
+                  con la intención de compartir aquello que encontramos en el camino.</p>
             </div>
           </FadeIn>
         </div>

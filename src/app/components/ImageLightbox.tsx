@@ -84,9 +84,9 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
           </button>
 
           {/* Image + arrows row — fixed min-height so X and counter stay stable */}
-          <div className="relative flex items-center w-full min-h-[60vh]">
+          <div className="relative flex items-center justify-center w-full min-h-[50vh] md:min-h-[60vh] py-10">
 
-            {/* Prev arrow — desktop outside, mobile overlay */}
+            {/* Prev arrow — desktop outside */}
             {images.length > 1 && (
               <button
                 onClick={goPrev}
@@ -112,12 +112,12 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
               <img
                 src={images[currentIndex]}
                 alt={altPrefix ? `${altPrefix} – imagen ${currentIndex + 1}` : `Imagen ${currentIndex + 1}`}
-                className="max-w-[800px] max-h-[75vh] object-contain select-none"
+                className="max-w-full md:max-w-[800px] max-h-[65vh] md:max-h-[75vh] object-contain select-none"
                 draggable={false}
               />
             </motion.div>
 
-            {/* Next arrow — desktop outside, mobile overlay */}
+            {/* Next arrow — desktop outside */}
             {images.length > 1 && (
               <button
                 onClick={goNext}

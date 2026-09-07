@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { projects, type ProjectRatio } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
+import { MasonryGrid } from '../components/MasonryGrid';
 
 const categories = ['Todos', 'Documental', 'Audio'];
 
@@ -206,17 +207,13 @@ export function Proyectos() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[1fr] gap-8 md:gap-10"
-              style={{ gridAutoFlow: 'dense' }}
             >
-              {filtered.map((project, i) => (
-                <div
-                  key={project.id}
-                  className={project.ratio === 'portrait' ? 'md:row-span-2' : ''}
-                >
+              <MasonryGrid
+                items={filtered}
+                renderItem={(project, i) => (
                   <ProjectCard project={project} index={i} />
-                </div>
-              ))}
+                )}
+              />
             </motion.div>
           </AnimatePresence>
         </div>

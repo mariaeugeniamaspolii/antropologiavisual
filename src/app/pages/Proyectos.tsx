@@ -206,10 +206,12 @@ export function Proyectos() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+              className="columns-1 md:columns-2 lg:columns-3 gap-8 md:gap-10"
             >
               {filtered.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} />
+                <div key={project.id} className="break-inside-avoid mb-8 md:mb-10">
+                  <ProjectCard project={project} index={i} />
+                </div>
               ))}
             </motion.div>
           </AnimatePresence>

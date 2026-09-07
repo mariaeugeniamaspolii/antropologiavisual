@@ -126,7 +126,7 @@ export function Layout() {
       <header
         className="fixed top-0 left-0 right-0 z-50"
         style={{
-          backgroundColor: navDark ? '#F2EBE0' : 'transparent',
+          backgroundColor: navDark ? '#F2EBE0' : 'rgba(var(--background-rgb), 0)',
           borderBottom: navDark ? '1px solid rgba(26,21,16,0.08)' : 'none',
           transition: 'background-color 0.2s ease, border-bottom 0.2s ease',
         }}
@@ -193,7 +193,7 @@ export function Layout() {
             <motion.span
               className="block w-5 h-px"
               style={{ backgroundColor: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)' }}
-              animate={menuOpen ? { rotate: 45, y: 3.5 } : { rotate: 0, y: 0 }}
+              animate={menuOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
             />
             <motion.span
@@ -205,7 +205,7 @@ export function Layout() {
             <motion.span
               className="block w-5 h-px"
               style={{ backgroundColor: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)' }}
-              animate={menuOpen ? { rotate: -45, y: -3.5 } : { rotate: 0, y: 0 }}
+              animate={menuOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
             />
           </button>
@@ -217,7 +217,7 @@ export function Layout() {
           initial={false}
           animate={menuOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          style={{ backgroundColor: navDark ? '#F2EBE0' : 'rgba(0,0,0,0.85)' }}
+          style={{ backgroundColor: navDark ? '#F2EBE0' : 'rgba(var(--background-rgb), 0)' }}
         >
           <nav className="flex flex-col px-6 pb-6 pt-2 gap-1">
             {navLinks.map(link => (

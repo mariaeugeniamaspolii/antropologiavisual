@@ -77,7 +77,7 @@ export function Equipo() {
             <FadeIn className="md:col-span-7">
               <p
                 style={{
-                  // fontFamily: 'var(--font-playfair)',
+                  fontFamily: 'var(--font-playfair)',
                   fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
                   fontStyle: 'italic',
                   lineHeight: 1.55,
@@ -90,7 +90,7 @@ export function Equipo() {
               <p
                 className="text-muted-foreground leading-relaxed mb-5"
                 style={{ fontSize: '0.88rem', lineHeight: 1.8 }}
-              >Un Colectivo que explora y transita el encuentro entre la imagen y la reflexión antropológica.</p>
+              >Distintas miradas y recorridos que se encuentran y participan en la construcción de cada proyecto.</p>
             </FadeIn>
           </div>
         </div>
@@ -108,7 +108,7 @@ export function Equipo() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8 md:gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 md:gap-10">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
@@ -155,19 +155,6 @@ export function Equipo() {
         </div>
       </section>
 
-      {/* Stats highlight */}
-      <section className="px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <StatsHighlight
-            stats={[
-              { num: String(team.length), label: 'participantes del colectivo' },
-              { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
-            ]}
-            description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."
-          />
-        </div>
-      </section>
-
       {/* Full-bleed image */}
       <section className="relative overflow-hidden" style={{ height: '40vh' }}>
         <img
@@ -181,7 +168,7 @@ export function Equipo() {
       </section>
 
       {/* Recognitions */}
-      <section className="py-24 md:py-32 px-6 md:px-12">
+      <section className="py-24 md:py-36 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="mb-12">
             <p
@@ -212,13 +199,24 @@ export function Equipo() {
               </motion.div>
             ))}
           </div>
+
+
+          {/* Stats highlight */}
+          <StatsHighlight
+            stats={[
+              { num: String(team.length), label: 'participantes del colectivo' },
+              { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
+            ]}
+            description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."
+          />
         </div>
       </section>
 
       {/* CTA */}
-      <section
+      < section
         className="py-24 px-6 md:px-12"
-        style={{ backgroundColor: 'var(--foreground)' }}
+        style={{ backgroundColor: 'var(--foreground)' }
+        }
       >
         <div className="max-w-6xl mx-auto">
           <FadeIn>
@@ -256,7 +254,7 @@ export function Equipo() {
             </Link>
           </FadeIn>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }

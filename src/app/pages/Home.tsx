@@ -173,7 +173,7 @@ export function Home() {
                         className="text-white/55 mb-3 tracking-widest uppercase"
                         style={{ fontSize: 'var(--text-badge)' }}
                       >
-                        {featured[0].category} · {featured[0].year}
+                        {featured[0].year}
                       </p>
                       <h2
                         className="text-white mb-1"
@@ -228,7 +228,7 @@ export function Home() {
                         className="text-white/35 mb-2 tracking-widest uppercase"
                         style={{ fontSize: '0.55rem' }}
                       >
-                        {featured[1].category} · {featured[1].year}
+                      {featured[1].year}
                       </p>
                       <h3
                         className="text-white"
@@ -266,7 +266,7 @@ export function Home() {
                         className="text-white/35 mb-2 tracking-widest uppercase"
                         style={{ fontSize: '0.55rem' }}
                       >
-                        {featured[2].category} · {featured[2].year}
+                      {featured[2].year}
                       </p>
                       <h3
                         className="text-white"

@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { featuredProjects, projects } from '../data/projects';
 import { team } from '../data/team';
 import { FadeIn } from '../components/FadeIn';
+import { StatsHighlight } from '../components/StatsHighlight';
 import { useGsapParallax, useGsapScrollFade } from '../hooks/useGsapParallax';
 
 const collaborators = [
@@ -376,43 +377,14 @@ export function Home() {
             ))}
           </div>
 
-          {/* Awards highlight */}
-          <FadeIn className="mt-20 pt-12 border-t border-border">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-end">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
-
-                {[
-                  // { num: String(projects.length), label: 'proyectos realizados' },
-                  { num: String(team.length), label: 'participantes del colectivo' },
-                  { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
-                ].map((stat, i) => (
-                  <div key={stat.label}>
-                    <p
-                      className="text-foreground mb-1"
-                      style={{
-                        fontFamily: 'var(--font-playfair)',
-                        fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
-                        fontWeight: 400,
-                        lineHeight: 1,
-                      }}
-                    >
-                      {stat.num}
-                    </p>
-                    <p
-                      className="text-muted-foreground"
-                      style={{ fontSize: '0.8rem' }}
-                    >
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-                <p
-                  className="text-muted-foreground leading-relaxed"
-                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}>Una trayectoria construida a través de distintas miradas de registro audiovisual,
-                  con la intención de compartir aquello que encontramos en el camino.</p>
-            </div>
-          </FadeIn>
+          {/* Stats highlight */}
+          <StatsHighlight
+            stats={[
+              { num: String(team.length), label: 'participantes del colectivo' },
+              { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
+            ]}
+            description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."
+          />
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { FadeIn } from '../components/FadeIn';
+import { StatsHighlight } from '../components/StatsHighlight';
 import { useGsapParallax } from '../hooks/useGsapParallax';
 import { team } from '../data/team';
 
@@ -152,6 +153,19 @@ export function Equipo() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Stats highlight */}
+      <section className="px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <StatsHighlight
+            stats={[
+              { num: String(team.length), label: 'participantes del colectivo' },
+              { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
+            ]}
+            description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."
+          />
         </div>
       </section>
 

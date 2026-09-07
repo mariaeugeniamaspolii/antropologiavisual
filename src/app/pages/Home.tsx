@@ -59,7 +59,7 @@ export function Home() {
           >
             {/* Label */}
             <p
-              className="text-white/50 mb-8"
+              className="text-white/80 mb-8"
               style={{
                 fontSize: '0.62rem',
                 letterSpacing: '0.3em',
@@ -113,16 +113,16 @@ export function Home() {
           <FadeIn className="md:col-span-8" delay={0.1}>
             <p
               style={{
-                fontFamily: 'var(--font-playfair)',
+                // fontFamily: 'var(--font-playfair)',
                 fontSize: 'clamp(1.25rem, 2.5vw, 1.85rem)',
                 fontStyle: 'italic',
                 lineHeight: 1.55,
                 color: 'rgba(var(--foreground-rgb),0.82)',
-                fontWeight: 400,
+                fontWeight: 300,
               }}
-            >"Exploramos el encuentro entre la imagen y la antropología para observar, registrar
+            >Exploramos el encuentro entre la imagen y la antropología para observar, registrar
               y narrar procesos, personas y territorios. Utilizamos distintas herramientas
-              audiovisuales para construir y compartir conocimiento."</p>
+              audiovisuales para construir y compartir conocimiento.</p>
           </FadeIn>
           <FadeIn className="md:col-span-3" delay={0.2}>
             <Link
@@ -145,7 +145,7 @@ export function Home() {
               className="text-muted-foreground tracking-[0.25em] uppercase"
               style={{ fontSize: 'var(--text-label)' }}
             >
-              Proyectos recientes
+              Proyectos destacados
             </p>
           </FadeIn>
 

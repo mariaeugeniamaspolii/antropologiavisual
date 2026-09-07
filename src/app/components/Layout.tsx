@@ -99,6 +99,7 @@ function FooterForm() {
 
 export function Layout() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -112,6 +113,7 @@ export function Layout() {
   // Reset scroll position on route change
   useEffect(() => {
     window.scrollTo(0, 0);
+    setMenuOpen(false);
   }, [location.pathname]);
 
   const navDark = scrolled || !isHome;
@@ -150,8 +152,8 @@ export function Layout() {
             </span>
           </Link>
 
-          {/* Nav links */}
-          <nav className="flex items-center gap-5 md:gap-8">
+          {/* Nav links — desktop */}
+          <nav className="hidden md:flex items-center gap-5 md:gap-8">
             {navLinks.map(link => (
               <Link
                 key={link.to}
@@ -181,7 +183,66 @@ export function Layout() {
               </Link>
             ))}
           </nav>
+
+          {/* Hamburger — mobile/tablet */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+            onClick={() => setMenuOpen(prev => !prev)}
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          >
+            <motion.span
+              className="block w-5 h-px"
+              style={{ backgroundColor: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)' }}
+              animate={menuOpen ? { rotate: 45, y: 3.5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+            <motion.span
+              className="block w-5 h-px"
+              style={{ backgroundColor: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)' }}
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.15 }}
+            />
+            <motion.span
+              className="block w-5 h-px"
+              style={{ backgroundColor: navDark ? 'var(--foreground)' : 'rgba(var(--white-rgb), 0.9)' }}
+              animate={menuOpen ? { rotate: -45, y: -3.5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        <motion.div
+          className="md:hidden overflow-hidden"
+          initial={false}
+          animate={menuOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          style={{ backgroundColor: navDark ? '#F2EBE0' : 'rgba(0,0,0,0.85)' }}
+        >
+          <nav className="flex flex-col px-6 pb-6 pt-2 gap-1">
+            {navLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="py-3 border-b transition-colors duration-200"
+                style={{
+                  fontSize: 'var(--text-nav)',
+                  letterSpacing: '0.06em',
+                  borderColor: navDark ? 'rgba(26,21,16,0.06)' : 'rgba(255,255,255,0.08)',
+                  color: navDark
+                    ? isActive(link.to)
+                      ? 'var(--foreground)'
+                      : 'var(--muted-foreground)'
+                    : isActive(link.to)
+                      ? 'rgba(var(--white-rgb), 0.95)'
+                      : 'rgba(var(--white-rgb), 0.55)',
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </motion.div>
       </header>
 
       {/* Content */}

@@ -77,15 +77,14 @@ export function Equipo() {
             <FadeIn className="md:col-span-7">
               <p
                 style={{
-                  fontFamily: 'var(--font-playfair)',
+                  // fontFamily: 'var(--font-playfair)',
                   fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
                   fontStyle: 'italic',
                   lineHeight: 1.55,
                   color: 'rgba(var(--foreground-rgb),0.82)',
-                }}
-              ><span className="italic">"Somos un colectivo que explora el encuentro entre la imagen
+                }}>Somos un colectivo que explora el encuentro entre la imagen
                 y la reflexión antropológica. Desde hace {new Date().getFullYear() - 2006} años documentamos comunidades y
-                desarrollamos proyectos junto a instituciones culturales, universidades y organizaciones."</span></p>
+                desarrollamos proyectos junto a instituciones culturales, universidades y organizaciones.</p>
             </FadeIn>
             <FadeIn className="md:col-span-5" delay={0.15}>
               <p

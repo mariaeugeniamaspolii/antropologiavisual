@@ -68,26 +68,6 @@ export function ProyectoDetalle() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Meta chips */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {[...project.category, project.year, project.location].map((tag, i) => (
-                <span
-                  key={`${tag}-${i}`}
-                  style={{
-                    fontSize: 'var(--text-label)',
-                    letterSpacing: '0.1em',
-                    padding: '4px 10px',
-                    border: '1px solid var(--popover)' ,
-                    color: 'var(--popover)' ,
-                    backgroundColor: 'var(--border)',
-                    borderRadius: 'var(--radius)',
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
             <h1
               className="text-white max-w-4xl mb-4"
               style={{
@@ -155,6 +135,7 @@ export function ProyectoDetalle() {
                 ...(project.format ? [{ label: 'Formato', value: project.format }] : []),
                 { label: 'Duración', value: project.duration || 'N/D' },
                 { label: 'Localización', value: project.location },
+                { label: 'Año', value: project.year },
               ].map(item => (
                 <div
                   key={item.label}

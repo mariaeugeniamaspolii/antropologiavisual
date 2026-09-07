@@ -83,8 +83,8 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
             </svg>
           </button>
 
-          {/* Image + arrows row */}
-          <div className="relative flex items-center w-full">
+          {/* Image + arrows row — fixed min-height so X and counter stay stable */}
+          <div className="relative flex items-center w-full min-h-[60vh]">
 
             {/* Prev arrow — desktop outside, mobile overlay */}
             {images.length > 1 && (

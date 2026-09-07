@@ -7,6 +7,13 @@ import { FadeIn } from '../components/FadeIn';
 import { StatsHighlight } from '../components/StatsHighlight';
 import { useGsapParallax, useGsapScrollFade } from '../hooks/useGsapParallax';
 
+import heroImg from '@/assets/home/hero.gif';
+import bannerImg from '@/assets/home/banner.jpg';
+import aniiLogo from '@/assets/institutions/ANII.png';
+import fhceLogo from '@/assets/institutions/FHCE.png';
+import mecLogo from '@/assets/institutions/MEC.png';
+import fccLogo from '@/assets/institutions/FCC.png';
+
 const collaborators = [
   'FLACSO', 'Magnum Foundation', 'Sundance Documentary Fund',
   'Universidad de los Andes', 'Musée du Quai Branly', 'Tribeca Film Institute',
@@ -28,7 +35,7 @@ export function Home() {
       <section ref={heroSectionRef} className="overflow-hidden" style={{ position: 'relative', height: '100svh', backgroundColor: 'var(--foreground)' }}>
         <div ref={heroRef} className="absolute inset-0" style={{ height: '140%', top: '-20%' }}>
           <img
-            src="/images/home/hero.gif"
+            src={heroImg}
             alt=""
             className="w-full h-full object-cover"
             style={{ filter: 'saturate(0.85) brightness(0.8)', objectPosition: '50% 30%' }}
@@ -306,7 +313,7 @@ export function Home() {
       <section ref={bannerRef} className="relative overflow-hidden" style={{ height: '45vh', backgroundColor: 'var(--foreground)' }}>
         <div className="absolute inset-0" style={{ height: '150%', top: '-25%' }}>
           <img
-            src="/images/home/banner.jpg"
+            src={bannerImg}
             alt=""
             className="w-full h-full object-cover"
             style={{ objectPosition: 'center 70%', filter: 'saturate(0.85) brightness(0.8)' }}
@@ -332,23 +339,23 @@ export function Home() {
             {[
               {
                 name: 'ANII',
-                logo: '/images/institutions/ANII.png',
+                logo: aniiLogo,
               },
               {
                 name: 'Departamento de Arqueología',
-                logo: '/images/institutions/ANII.png',
+                logo: aniiLogo,
               },
               {
                 name: 'Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR',
-                logo: '/images/institutions/FHCE.png',
+                logo: fhceLogo,
               },
               {
                 name: 'Ministerio de Educación y Cultura MEC',
-                logo: '/images/institutions/MEC.png',
+                logo: mecLogo,
               },
               {
                 name: 'Patrimonio Cultural de la Nación',
-                logo: '/images/institutions/FCC.png',
+                logo: fccLogo,
               },
             ].map((item, i) => (
               <motion.div

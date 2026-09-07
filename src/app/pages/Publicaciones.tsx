@@ -4,6 +4,8 @@ import { publications, type PublicationType } from '../data/publications';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
 
+import heroImg from '@/assets/publications/hero.jpg';
+
 const BASE = 'https://images.unsplash.com/photo-';
 
 const types: (PublicationType | 'Todos')[] = ['Todos', 'Libro', 'Revista', 'Artículo'];
@@ -28,7 +30,7 @@ export function Publicaciones() {
         style={{ height: '65vh', minHeight: '420px', backgroundColor: 'var(--foreground)' }}
       >
         <img
-          src="/images/publications/hero.jpg"
+          src={heroImg}
           alt=""
           className="w-full h-full object-cover"
           style={{ height: '65vh', objectPosition: 'center top' }}

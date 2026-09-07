@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { FadeIn } from '../components/FadeIn';
 
+import heroImg from '@/assets/contact/hero.jpg';
+
 const BASE = 'https://images.unsplash.com/photo-';
 
 const inquiryTypes = [
@@ -37,7 +39,7 @@ export function Contacto() {
         style={{ height: '65vh', minHeight: '380px', backgroundColor: 'var(--foreground)' }}
       >
         <img
-          src="/images/contact/hero.jpg"
+          src={heroImg}
           alt=""
           className="w-full h-full object-cover"
           style={{ height: '65vh', objectPosition: 'center 70%' }}

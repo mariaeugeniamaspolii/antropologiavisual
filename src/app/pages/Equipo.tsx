@@ -5,6 +5,9 @@ import { StatsHighlight } from '../components/StatsHighlight';
 import { useGsapParallax } from '../hooks/useGsapParallax';
 import { team } from '../data/team';
 
+import heroImg from '@/assets/team/hero.jpg';
+import bannerImg from '@/assets/team/banner.jpg';
+
 const recognitions = [
   'FLACSO — Investigación colaborativa 2020–2024',
   'Magnum Foundation — Emergency Fund 2022',
@@ -27,7 +30,7 @@ export function Equipo() {
       >
         <div className="absolute inset-0">
           <img
-            src="/images/team/hero.jpg"
+            src={heroImg}
             alt=""
             className="w-full h-full object-cover"
             style={{ objectPosition: 'center 40%' }}
@@ -158,7 +161,7 @@ export function Equipo() {
       {/* Full-bleed image */}
       <section className="relative overflow-hidden" style={{ height: '40vh' }}>
         <img
-          src="/images/team/banner.jpg"
+          src={bannerImg}
           alt=""
           className="w-full h-full object-cover"
           style={{ objectPosition: 'center 10%' }}

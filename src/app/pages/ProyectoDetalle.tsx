@@ -1,15 +1,42 @@
 import { useParams, Link, Navigate } from 'react-router';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
 import { ImageLightbox } from '../components/ImageLightbox';
+import { AudioPlayer, getAudioTracks } from '../components/AudioPlayer';
+
+const galleryModules = import.meta.glob<{
+  default: string;
+}>('@/assets/projects/*/gallery/*.webp', { eager: true });
+
+function getGalleryImages(slug: string): string[] {
+  const needle = `projects/${slug}/gallery/`;
+  const matching = Object.entries(galleryModules)
+    .filter(([key]) => key.includes(needle))
+    .sort(([a], [b]) => {
+      const numA = parseInt(a.match(/\/(\d+)\.webp$/)?.[1] ?? '0', 10);
+      const numB = parseInt(b.match(/\/(\d+)\.webp$/)?.[1] ?? '0', 10);
+      return numA - numB;
+    });
+  return matching.map(([, mod]) => mod.default);
+}
 
 export function ProyectoDetalle() {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? getProjectBySlug(slug) : undefined;
   const [galleryCount, setGalleryCount] = useState(12);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const galleryImages = useMemo(
+    () => (slug ? getGalleryImages(slug) : []),
+    [slug],
+  );
+
+  const audioTracks = useMemo(
+    () => (slug ? getAudioTracks(slug) : []),
+    [slug],
+  );
 
   if (!project) return <Navigate to="/proyectos" replace />;
 
@@ -111,18 +138,6 @@ export function ProyectoDetalle() {
             >
               {project.description}
             </p>
-            {/* <p
-              className="mb-8"
-              style={{
-                fontFamily: 'Playfair Display, serif',
-                fontSize: 'clamp(1.1rem, 2.2vw, 1.55rem)',
-                fontStyle: 'italic',
-                lineHeight: 1.58,
-                color: 'rgba(var(--foreground-rgb),0.8)',
-              }}
-            >
-              {project.introduction}
-            </p> */}
             <div className="w-10 h-px" style={{ backgroundColor: 'var(--accent)' }} />
           </FadeIn>
 
@@ -199,6 +214,25 @@ export function ProyectoDetalle() {
         </section>
       )}
 
+      {/* Audio Player */}
+      {audioTracks.length > 0 && (
+        <section className="pb-20 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto">
+            <FadeIn className="mb-8">
+              <p
+                className="text-muted-foreground tracking-[0.25em] uppercase"
+                style={{ fontSize: 'var(--text-label)' }}
+              >
+                Audio
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <AudioPlayer tracks={audioTracks} />
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
       {/* Gallery */}
       <section className="pb-20 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
@@ -212,7 +246,7 @@ export function ProyectoDetalle() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {project.galleryImages.slice(0, galleryCount).map((img, i) => (
+            {galleryImages.slice(0, galleryCount).map((img, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 18 }}
@@ -233,7 +267,7 @@ export function ProyectoDetalle() {
             ))}
           </div>
 
-          {project.galleryImages.length > galleryCount && (
+          {galleryImages.length > galleryCount && (
             <FadeIn className="mt-8 text-center">
               <button
                 onClick={() => setGalleryCount(prev => prev + 12)}
@@ -253,27 +287,6 @@ export function ProyectoDetalle() {
           )}
         </div>
       </section>
-
-      {/* Description */}
-      {/* <section className="py-20 md:py-28 px-6 md:px-12" style={{ backgroundColor: 'var(--secondary)' }}>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
-          <div className="md:col-span-1" />
-          <FadeIn className="md:col-span-8">
-            <p
-              className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
-              style={{ fontSize: 'var(--text-label)', fontFamily: 'DM Sans, sans-serif' }}
-            >
-              Sobre el proyecto
-            </p>
-            <p
-              className="text-foreground/80 leading-relaxed"
-              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1rem', lineHeight: 1.88 }}
-            >
-              {project.description}
-            </p>
-          </FadeIn>
-        </div>
-      </section> */}
 
       {/* Prev / Next navigation */}
       <section className="py-0 border-t border-border">
@@ -430,7 +443,7 @@ export function ProyectoDetalle() {
       {/* Image Lightbox */}
       {lightboxIndex !== null && (
         <ImageLightbox
-          images={project.galleryImages.slice(0, galleryCount)}
+          images={galleryImages.slice(0, galleryCount)}
           startIndex={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           altPrefix={project.title}

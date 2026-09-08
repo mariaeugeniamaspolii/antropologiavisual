@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router';
 import { motion } from 'motion/react';
+import { getProjectBySlug } from '../data/projects';
+
+const PAGE_TITLES: Record<string, string> = {
+  '/': 'Antropología Visual',
+  '/proyectos': 'Proyectos',
+  '/contacto': 'Contacto',
+  '/equipo': 'Equipo',
+  '/publicaciones': 'Publicaciones',
+};
 
 const navLinks = [
   { to: '/proyectos', label: 'Proyectos' },
@@ -26,6 +35,18 @@ export function Layout() {
   useEffect(() => {
     window.scrollTo(0, 0);
     setMenuOpen(false);
+  }, [location.pathname]);
+
+  // Dynamic page title
+  useEffect(() => {
+    const slugMatch = location.pathname.match(/^\/proyectos\/(.+)$/);
+    if (slugMatch) {
+      const project = getProjectBySlug(slugMatch[1]);
+      document.title = project ? `${project.title} — Antropología Visual` : 'Proyecto — Antropología Visual';
+    } else {
+      const base = PAGE_TITLES[location.pathname] || 'Antropología Visual';
+      document.title = location.pathname === '/' ? base : `${base} — Antropología Visual`;
+    }
   }, [location.pathname]);
 
   const navDark = scrolled || !isHome;
@@ -270,7 +291,16 @@ export function Layout() {
               >
                 <strong>María Eugenia Máspoli</strong>
               </a>
-              {' '}y <strong>Sofía Morelli</strong>
+              {' '}y
+
+              <a
+                href="https://www.linkedin.com/in/sofia-morelli-cobham/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-foreground/70 transition-colors duration-200"
+              >
+                <strong>Sofía Morelli</strong>
+              </a>
             </p>
           </div>
         </div>

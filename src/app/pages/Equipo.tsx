@@ -102,7 +102,7 @@ export function Equipo() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-3 gap-8 md:gap-10 mb-8 md:gap-10">
+          <div className="grid grid-cols-3 gap-8 md:gap-10 mb-8">
             {team.slice(0, 3).map((member, i) => (
               <motion.div
                 key={member.name}
@@ -121,7 +121,7 @@ export function Equipo() {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="lazy" style={{ filter: 'saturate(0.5) contrast(0.92) sepia(0.15)' }}
                   />
                 </div>
 
@@ -166,7 +166,7 @@ export function Equipo() {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="lazy" style={{ filter: 'saturate(.8) contrast(0.9) sepia(0.5)' }}
                   />
                 </div>
 

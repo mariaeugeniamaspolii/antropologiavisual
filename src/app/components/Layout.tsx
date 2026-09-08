@@ -42,10 +42,10 @@ export function Layout() {
     const slugMatch = location.pathname.match(/^\/proyectos\/(.+)$/);
     if (slugMatch) {
       const project = getProjectBySlug(slugMatch[1]);
-      document.title = project ? `${project.title} — Antropología Visual` : 'Proyecto — Antropología Visual';
+      document.title = project ? `${project.title}` : 'Proyecto';
     } else {
       const base = PAGE_TITLES[location.pathname] || 'Antropología Visual';
-      document.title = location.pathname === '/' ? base : `${base} — Antropología Visual`;
+      document.title = location.pathname === '/' ? base : `${base}`;
     }
   }, [location.pathname]);
 
@@ -80,7 +80,7 @@ export function Layout() {
                 lineHeight: 1,
               }}
             >
-              Antropología Visual
+              AntropologíaVisual.org
             </span>
           </Link>
 
@@ -201,7 +201,7 @@ export function Layout() {
                     letterSpacing: '0.04em',
                   }}
                 >
-                  Antropología Visual
+                  AntropologíaVisual.org
                 </p>
               </Link>
 

@@ -111,14 +111,59 @@ export function Equipo() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 md:gap-10">
-            {team.map((member, i) => (
+          <div className="grid grid-cols-3 gap-8 md:gap-10 mb-8 md:gap-10">
+            {team.slice(0, 3).map((member, i) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="group"
+              >
+                {/* Portrait */}
+                <div
+                  className="relative overflow-hidden bg-secondary mb-5"
+                  style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Info */}
+                <h3
+                  className="text-foreground mb-0.5"
+                  style={{
+                    fontFamily: 'var(--font-playfair)',
+                    fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {member.name}
+                </h3>
+                <p
+                  className="text-accent mb-3"
+                  style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.04em' }}
+                >
+                  {member.role}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-4 gap-8 md:gap-10">
+            {team.slice(3).map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: (i + 3) * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="group"
               >
                 {/* Portrait */}

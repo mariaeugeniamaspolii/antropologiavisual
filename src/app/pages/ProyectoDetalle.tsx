@@ -234,6 +234,7 @@ export function ProyectoDetalle() {
       )}
 
       {/* Gallery */}
+      {galleryImages.length > 0 && (
       <section className="pb-20 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="mb-8">
@@ -287,6 +288,7 @@ export function ProyectoDetalle() {
           )}
         </div>
       </section>
+      )}
 
       {/* Prev / Next navigation */}
       <section className="py-0 border-t border-border">

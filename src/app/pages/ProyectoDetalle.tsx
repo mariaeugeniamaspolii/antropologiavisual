@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { motion } from 'motion/react';
 import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../data/projects';
 import { FadeIn } from '../components/FadeIn';
@@ -20,6 +20,55 @@ function getGalleryImages(slug: string): string[] {
       return numA - numB;
     });
   return matching.map(([, mod]) => mod.default);
+}
+
+function GalleryImage({ img, index, projectTitle, onClick }: { img: string; index: number; projectTitle: string; onClick: () => void }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ delay: index * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="relative overflow-hidden bg-secondary cursor-pointer group"
+      style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
+    >
+      <motion.img
+        src={img}
+        alt={`${projectTitle} – imagen ${index + 1}`}
+        className="w-full h-full object-cover"
+        loading="lazy"
+        animate={{ scale: hovered ? 1.045 : 1 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.div
+        className="absolute inset-0"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.4) 0%, transparent 50%)' }}
+      />
+      <motion.div
+        className="absolute top-3 right-3"
+        animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div
+          className="w-8 h-8 flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(var(--background-rgb), 0.9)' }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M11 11L8.5 8.5M8.5 8.5H10.5M8.5 8.5V10.5" stroke="currentColor" strokeWidth="1.2" />
+            <path d="M1 5V1.5H5" stroke="currentColor" strokeWidth="1.2" />
+            <path d="M1.5 1.5L5 5" stroke="currentColor" strokeWidth="1.2" />
+          </svg>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }
 
 export function ProyectoDetalle() {
@@ -248,23 +297,7 @@ export function ProyectoDetalle() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {galleryImages.slice(0, galleryCount).map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ delay: i * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="overflow-hidden bg-secondary cursor-pointer"
-                style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
-                onClick={() => setLightboxIndex(i)}
-              >
-                <img
-                  src={img}
-                  alt={`${project.title} – imagen ${i + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </motion.div>
+              <GalleryImage key={i} img={img} index={i} projectTitle={project.title} onClick={() => setLightboxIndex(i)} />
             ))}
           </div>
 

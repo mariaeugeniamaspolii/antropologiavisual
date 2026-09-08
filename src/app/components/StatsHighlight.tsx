@@ -16,7 +16,7 @@ export function StatsHighlight({ stats, description }: StatsHighlightProps) {
       <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-baseline">
         <div className="flex flex-col gap-6">
           {stats.map((stat) => (
-            <div key={stat.label} className="flex items-baseline gap-3">
+            <div key={stat.label}>
               <span
                 className="text-foreground shrink-0"
                 style={{

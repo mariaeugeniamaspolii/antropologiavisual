@@ -13,8 +13,8 @@ interface StatsHighlightProps {
 export function StatsHighlight({ stats, description }: StatsHighlightProps) {
   return (
     <FadeIn className="mt-20 pt-12 border-t border-border">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-end">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-start">
+        <div className="flex flex-col gap-6">
           {stats.map((stat) => (
             <div key={stat.label}>
               <p

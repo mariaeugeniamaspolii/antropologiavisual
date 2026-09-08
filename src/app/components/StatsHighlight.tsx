@@ -38,7 +38,7 @@ export function StatsHighlight({ stats, description }: StatsHighlightProps) {
           ))}
         </div>
         <p
-          className="text-muted-foreground leading-relaxed"
+          className="text-muted-foreground leading-relaxed max-w-md"
           style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
         >
           {description}

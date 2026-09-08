@@ -387,7 +387,6 @@ export function Home() {
           {/* Stats highlight */}
           <StatsHighlight
             stats={[
-              { num: String(team.length), label: 'participantes del colectivo' },
               { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
             ]}
             description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."

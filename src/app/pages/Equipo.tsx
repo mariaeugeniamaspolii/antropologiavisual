@@ -1,21 +1,12 @@
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { FadeIn } from '../components/FadeIn';
-import { StatsHighlight } from '../components/StatsHighlight';
+import { Recognitions } from '../components/Recognitions';
 import { useGsapParallax } from '../hooks/useGsapParallax';
 import { team } from '../data/team';
 
 import heroImg from '@/assets/team/hero.jpg';
 import bannerImg from '@/assets/team/banner.jpg';
-
-const recognitions = [
-  'FLACSO — Investigación colaborativa 2020–2024',
-  'Magnum Foundation — Emergency Fund 2022',
-  'Sundance Documentary Fund — Beca de producción 2021',
-  'FNPI — Premio Fotografía Documental 2023',
-  'Tribeca Film Institute — Artist in Residence 2022',
-  'World Press Photo — Mención especial 2023',
-];
 
 export function Equipo() {
   const heroRef = useGsapParallax(90);
@@ -216,49 +207,7 @@ export function Equipo() {
       </section>
 
       {/* Recognitions */}
-      <section className="py-24 md:py-36 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="mb-12">
-            <p
-              className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Reconocimientos e instituciones
-            </p>
-            <div className="w-8 h-px bg-accent/50" />
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {recognitions.map((rec, i) => (
-              <motion.div
-                key={rec}
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ delay: i * 0.06, duration: 0.6 }}
-                className="flex items-start gap-4 py-4 border-b border-border"
-              >
-                <span className="text-accent/40 mt-1" style={{ fontSize: '0.4rem' }}>◆</span>
-                <p
-                  className="text-foreground/65"
-                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.5 }}
-                >
-                  {rec}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-
-          {/* Stats highlight */}
-          <StatsHighlight
-            stats={[
-              { num: String(team.length), label: 'participantes del colectivo' },
-              { num: String(new Date().getFullYear() - 2006), label: 'años documentando' },
-            ]}
-            description="Una trayectoria construida a través de distintas miradas de registro audiovisual, con la intención de compartir aquello que encontramos en el camino."
-          />
-        </div>
-      </section>
+      <Recognitions />
 
       {/* CTA */}
       < section

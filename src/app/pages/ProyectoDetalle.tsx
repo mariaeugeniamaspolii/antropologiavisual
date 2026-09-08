@@ -227,6 +227,51 @@ export function ProyectoDetalle() {
         </div>
       </section>
 
+      {/* Links */}
+      {project.links && project.links.length > 0 && (
+        <section className="pb-16 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto">
+            <FadeIn>
+              <div className="border-t border-border pt-10">
+                <p
+                  className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
+                  style={{ fontSize: 'var(--text-label)' }}
+                >
+                  Enlaces
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {project.links.map(link => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 py-3 px-4 transition-colors duration-200 group"
+                      style={{
+                        border: '1px solid var(--border)',
+                        borderRadius: 'var(--radius)',
+                      }}
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 text-muted-foreground group-hover:text-foreground transition-colors duration-200">
+                        <path d="M5 1H2C1.44772 1 1 1.44772 1 2V10C1 10.5523 1.44772 11 2 11H10C10.5523 11 11 10.5523 11 10V7" stroke="currentColor" strokeWidth="1.2" />
+                        <path d="M7 1H11V5" stroke="currentColor" strokeWidth="1.2" />
+                        <path d="M11 1L5.5 6.5" stroke="currentColor" strokeWidth="1.2" />
+                      </svg>
+                      <span
+                        className="text-foreground/75 group-hover:text-foreground transition-colors duration-200"
+                        style={{ fontSize: 'var(--text-body)' }}
+                      >
+                        {link.label}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
       {/* Awards */}
       {project.awards && project.awards.length > 0 && (
         <section className="pb-16 px-6 md:px-12">

@@ -147,7 +147,7 @@ export function Equipo() {
             ))}
           </div>
 
-          <div className="grid grid-cols-4 gap-8 md:gap-10">
+          <div className="grid grid-cols-5 gap-8 md:gap-10">
             {team.slice(3).map((member, i) => (
               <motion.div
                 key={member.name}

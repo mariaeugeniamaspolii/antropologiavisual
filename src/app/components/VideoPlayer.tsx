@@ -37,6 +37,13 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     };
   }, []);
 
+  const togglePlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (playing) { v.pause(); } else { v.play(); }
+    setPlaying(!playing);
+  }, [playing]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.code === 'Space') {
@@ -47,13 +54,6 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [togglePlay]);
-
-  const togglePlay = useCallback(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (playing) { v.pause(); } else { v.play(); }
-    setPlaying(!playing);
-  }, [playing]);
 
   const handleProgressClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const bar = progressRef.current;

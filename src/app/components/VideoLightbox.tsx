@@ -91,8 +91,8 @@ export function VideoLightbox({ videos, index, onClose, onPrev, onNext }: VideoL
             <div className="w-full" style={{ aspectRatio: '16/9' }}>
               <iframe
                 src={`https://www.youtube.com/embed/${getYoutubeId(video.url)}?autoplay=0`}
-                className="w-full h-full"
-                style={{ border: 'none', borderRadius: 'var(--radius)' }}
+                className="w-full h-full rounded-token"
+                style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title={video.title}

@@ -220,8 +220,8 @@ export function Multimedia() {
                 >
                   <div className="md:col-span-4">
                     <div
-                      className="relative overflow-hidden bg-secondary"
-                      style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
+                      className="relative overflow-hidden bg-secondary rounded-token"
+                      style={{ aspectRatio: '16/9' }}
                     >
                       <img
                         src={doc.image}
@@ -289,8 +289,8 @@ export function Multimedia() {
                         {doc.festivals.map(f => (
                           <span
                             key={f}
-                            className="border border-border px-3 py-1 text-muted-foreground"
-                            style={{ fontSize: '0.7rem', borderRadius: 'var(--radius)' }}
+                            className="border border-border px-3 py-1 text-muted-foreground rounded-token"
+                            style={{ fontSize: '0.7rem' }}
                           >
                             {f}
                           </span>
@@ -387,8 +387,8 @@ export function Multimedia() {
                   className="group cursor-pointer"
                 >
                   <div
-                    className="relative overflow-hidden bg-secondary mb-5"
-                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
+                    className="relative overflow-hidden bg-secondary mb-5 rounded-token"
+                    style={{ aspectRatio: '3/4' }}
                   >
                     <img
                       src={pub.image}

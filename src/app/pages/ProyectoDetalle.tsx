@@ -7,6 +7,8 @@ import { ImageLightbox } from '../components/ImageLightbox';
 import { AudioPlayer, getAudioTracks } from '../components/AudioPlayer';
 import { VideoThumbnail } from '../components/VideoThumbnail';
 import { VideoLightbox } from '../components/VideoLightbox';
+import { Badge } from '../components/ui/badge';
+import { ProjectLink } from '../components/ProjectLink';
 
 const galleryModules = import.meta.glob<{
   default: string;
@@ -49,8 +51,8 @@ function GalleryImage({ img, index, projectTitle, onClick }: { img: string; inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden bg-secondary cursor-pointer group"
-      style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
+      className="relative overflow-hidden bg-secondary cursor-pointer group rounded-token"
+      style={{ aspectRatio: '4/3' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
@@ -222,28 +224,15 @@ export function ProyectoDetalle() {
           <FadeIn className="md:col-span-5" delay={0.12}>
             <div className="space-y-0">
               {[
-                { label: 'Dirección', value: project.director },
-                ...(project.fieldwork ? [{ label: 'Trabajo de campo', value: project.fieldwork }] : []),
-                ...(project.format ? [{ label: 'Formato', value: project.format }] : []),
                 { label: 'Localización', value: project.location },
                 { label: 'Año', value: project.year },
               ].map(item => (
                 <div
                   key={item.label}
-                  className="flex gap-4 py-3.5"
-                  style={{ borderBottom: '1px solid var(--border)' }}
+                  className="flex gap-4 mb-3 justify-end"
                 >
                   <span
-                    className="text-muted-foreground tracking-[0.25em] uppercase flex-shrink-0 w-32"
-                    style={{
-                      fontSize: '0.62rem',
-                    }}
-                  >
-                    {item.label}
-                  </span>
-                  <span
-                    className="text-foreground/75"
-                    style={{ fontSize: 'var(--text-body)' }}
+                    className="ds-form-label text-xs"
                   >
                     {item.value}
                   </span>
@@ -268,29 +257,11 @@ export function ProyectoDetalle() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {project.links.map(link => (
-                    <a
+                    <ProjectLink
                       key={link.url}
                       href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 py-3 px-4 transition-colors duration-200 group"
-                      style={{
-                        border: '1px solid var(--border)',
-                        borderRadius: 'var(--radius)',
-                      }}
-                    >
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-                        <path d="M5 1H2C1.44772 1 1 1.44772 1 2V10C1 10.5523 1.44772 11 2 11H10C10.5523 11 11 10.5523 11 10V7" stroke="currentColor" strokeWidth="1.2" />
-                        <path d="M7 1H11V5" stroke="currentColor" strokeWidth="1.2" />
-                        <path d="M11 1L5.5 6.5" stroke="currentColor" strokeWidth="1.2" />
-                      </svg>
-                      <span
-                        className="text-foreground/75 group-hover:text-foreground transition-colors duration-200"
-                        style={{ fontSize: 'var(--text-body)' }}
-                      >
-                        {link.label}
-                      </span>
-                    </a>
+                      label={link.label}
+                    />
                   ))}
                 </div>
               </div>
@@ -311,22 +282,12 @@ export function ProyectoDetalle() {
                 >
                   Reconocimientos
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5">
                   {project.awards.map(award => (
-                    <span
-                      key={award}
-                      className="flex items-center gap-2"
-                      style={{
-                        fontSize: 'var(--text-nav)',
-                        color: 'var(--muted-foreground)',
-                        border: '1px solid var(--border)',
-                        padding: '6px 14px',
-                        borderRadius: 'var(--radius)',
-                      }}
-                    >
+                    <Badge key={award}>
                       <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>◆</span>
                       {award}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
               </div>
@@ -412,14 +373,13 @@ export function ProyectoDetalle() {
             <FadeIn className="mt-8 text-center">
               <button
                 onClick={() => setGalleryCount(prev => prev + 12)}
-                className="inline-flex items-center gap-2 transition-colors duration-200"
+                className="inline-flex items-center gap-2 transition-colors duration-200 rounded-token"
                 style={{
                   fontSize: '0.75rem',
                   letterSpacing: '0.15em',
                   color: 'var(--muted-foreground)',
                   padding: '10px 24px',
                   border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius)',
                 }}
               >
                 Ver más

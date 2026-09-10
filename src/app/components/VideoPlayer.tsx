@@ -93,8 +93,8 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
       <video
         ref={videoRef}
         src={src}
-        className="w-full bg-black"
-        style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
+        className="w-full bg-black rounded-token"
+        style={{ aspectRatio: '16/9' }}
         playsInline
       />
 
@@ -104,8 +104,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
       >
         <button
           onClick={togglePlay}
-          className="w-15 h-15 flex items-center justify-center transition-opacity hover:opacity-70 flex-shrink-0"
-          style={{ borderRadius: 'var(--radius)' }}
+          className="w-15 h-15 flex items-center justify-center transition-opacity hover:opacity-70 flex-shrink-0 rounded-token"
         >
           {playing ? (
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">

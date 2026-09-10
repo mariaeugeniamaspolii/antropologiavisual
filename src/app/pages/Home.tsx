@@ -158,8 +158,8 @@ export function Home() {
             <FadeIn className="mb-4">
               <Link
                 to={`/proyectos/${featured[0].slug}`}
-                className="group block relative overflow-hidden bg-secondary"
-                style={{ aspectRatio: '16/8', borderRadius: 'var(--radius)' }}
+                className="group block relative overflow-hidden bg-secondary rounded-token"
+                style={{ aspectRatio: '16/8' }}
               >
                 <img
                   src={featured[0].coverImage}
@@ -215,8 +215,8 @@ export function Home() {
                 <FadeIn className="md:col-span-3">
                   <Link
                     to={`/proyectos/${featured[1].slug}`}
-                    className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '4/3', borderRadius: 'var(--radius)' }}
+                    className="group block relative overflow-hidden bg-secondary rounded-token"
+                    style={{ aspectRatio: '4/3' }}
                   >
                     <img
                       src={featured[1].coverImage}
@@ -253,8 +253,8 @@ export function Home() {
                 <FadeIn className="md:col-span-2" delay={0.1}>
                   <Link
                     to={`/proyectos/${featured[2].slug}`}
-                    className="group block relative overflow-hidden bg-secondary"
-                    style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
+                    className="group block relative overflow-hidden bg-secondary rounded-token"
+                    style={{ aspectRatio: '3/4' }}
                   >
                     <img
                       src={featured[2].coverImage}

@@ -206,6 +206,10 @@
   }
 
   /* Design System utility classes */
+  .rounded-token {
+    border-radius: var(--radius);
+  }
+
   .ds-hero {
     font-family: var(--font-playfair);
     font-size: var(--text-hero);

@@ -90,7 +90,7 @@ export function VideoLightbox({ videos, index, onClose, onPrev, onNext }: VideoL
           {video.type === 'youtube' ? (
             <div className="w-full" style={{ aspectRatio: '16/9' }}>
               <iframe
-                src={`https://www.youtube.com/embed/${getYoutubeId(video.url)}?autoplay=0`}
+                src={`https://www.youtube.com/embed/${getYoutubeId(video.url)}?autoplay=1`}
                 className="w-full h-full rounded-sm"
                 style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

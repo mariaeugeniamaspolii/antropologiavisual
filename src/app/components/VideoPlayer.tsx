@@ -29,6 +29,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     v.addEventListener('timeupdate', onTime);
     v.addEventListener('loadedmetadata', onDur);
     v.addEventListener('ended', onEnd);
+    v.play().then(() => setPlaying(true)).catch(() => {});
     return () => {
       v.removeEventListener('timeupdate', onTime);
       v.removeEventListener('loadedmetadata', onDur);

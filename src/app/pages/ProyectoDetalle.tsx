@@ -208,6 +208,7 @@ export function ProyectoDetalle() {
             >
               {project.description}
             </p>
+            <div className="w-10 h-px mt-8" style={{ backgroundColor: 'var(--accent)' }} />
             {project.team && (
               <div className="mt-8">
                 <p
@@ -225,8 +226,8 @@ export function ProyectoDetalle() {
                       {item.trim()}
                       {i < arr.length - 1 && (
                         <span className="inline-block mx-3 align-middle">
-                          <svg width="6" height="6" viewBox="0 0 6 6" fill="var(--accent)">
-                            <path d="M3 0L6 3L3 6L0 3L3 0Z" />
+                          <svg width="5" height="5" viewBox="0 0 5 5" fill="var(--accent)">
+                            <circle cx="2.5" cy="2.5" r="2.5" />
                           </svg>
                         </span>
                       )}
@@ -235,7 +236,6 @@ export function ProyectoDetalle() {
                 </p>
               </div>
             )}
-            <div className="w-10 h-px mt-8" style={{ backgroundColor: 'var(--accent)' }} />
           </FadeIn>
 
           <FadeIn className="md:col-span-5" delay={0.12}>
@@ -302,7 +302,9 @@ export function ProyectoDetalle() {
                 <div className="flex flex-wrap gap-2.5">
                   {project.awards.map(award => (
                     <Badge key={award}>
-                      <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>◆</span>
+                      <svg width="5" height="5" viewBox="0 0 5 5" fill="var(--accent)">
+                        <circle cx="2.5" cy="2.5" r="2.5" />
+                      </svg>
                       {award}
                     </Badge>
                   ))}

@@ -11,7 +11,7 @@ export function getAudioTracks(slug: string): { src: string; name: string }[] {
     .sort(([a], [b]) => a.localeCompare(b));
   return matching.map(([, mod]) => {
     const raw = decodeURIComponent(mod.default.split('?')[0].split('/').pop() ?? '');
-    const name = raw.replace(/\.mp3$/, '');
+    const name = raw.replace(/\.mp3$/, '').replace(/-[A-Za-z0-9]{8}$/, '');
     return { src: mod.default, name };
   });
 }

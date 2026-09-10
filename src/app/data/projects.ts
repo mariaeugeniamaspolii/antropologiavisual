@@ -48,7 +48,7 @@ export const projects: Project[] = [
     description: 'Antropología Visual y FHCE presentan el Centro de Interpretación del Arte Rupestre. Proyecto premiado por ANII con el apoyo del Gobierno Departamental de Salto, del Departamento de Arqueología y del Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR. El Centro de Interpretación del Arte Rupestre desplegará nuevas formas expositivas, para provocar nuevas formas de vincularse con la prehistoria del Uruguay.',
     director: 'Gabriel de Souza',
     photography: 'Colectivo antropologiavisual.org',
-    awards: ['Proyecto premiado por ANII'],
+    awards: ['Proyecto premiado por ANII (Agencia Nacional de Investigación e Innovación de Uruguay)'],
     relatedSlugs: ['viviendo-a-monte', 'voces-nuevo-berlin'],
     featured: true,
     links: [],

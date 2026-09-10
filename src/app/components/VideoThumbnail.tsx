@@ -29,8 +29,8 @@ export function VideoThumbnail({ type, url, title, thumbnail, onClick }: VideoTh
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden bg-secondary cursor-pointer group"
-      style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
+      className="relative overflow-hidden bg-secondary cursor-pointer group rounded-sm"
+      style={{ aspectRatio: '16/9' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}

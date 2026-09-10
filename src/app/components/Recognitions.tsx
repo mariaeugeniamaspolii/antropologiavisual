@@ -8,7 +8,7 @@ import mecLogo from '@/assets/institutions/MEC.png';
 import fccLogo from '@/assets/institutions/FCC.png';
 
 const institutions = [
-  { name: 'ANII', logo: aniiLogo },
+  { name: 'ANII ', logo: aniiLogo },
   { name: 'Departamento de Arqueología', logo: aniiLogo },
   { name: 'Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR', logo: fhceLogo },
   { name: 'Ministerio de Educación y Cultura MEC', logo: mecLogo },

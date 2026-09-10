@@ -29,6 +29,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     v.addEventListener('timeupdate', onTime);
     v.addEventListener('loadedmetadata', onDur);
     v.addEventListener('ended', onEnd);
+    v.play().then(() => setPlaying(true)).catch(() => {});
     return () => {
       v.removeEventListener('timeupdate', onTime);
       v.removeEventListener('loadedmetadata', onDur);
@@ -42,6 +43,17 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     if (playing) { v.pause(); } else { v.play(); }
     setPlaying(!playing);
   }, [playing]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlay();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [togglePlay]);
 
   const handleProgressClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const bar = progressRef.current;
@@ -67,7 +79,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
   const cycleVolume = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
-    const levels = [1, 0.5, 0.25, 0];
+    const levels = [1, 0.5, 0];
     const currentIdx = levels.indexOf(volume);
     const nextIdx = (currentIdx + 1) % levels.length;
     const next = levels[nextIdx];
@@ -93,9 +105,10 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
       <video
         ref={videoRef}
         src={src}
-        className="w-full bg-black"
-        style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)' }}
+        className="w-full bg-black rounded-sm cursor-pointer"
+        style={{ aspectRatio: '16/9' }}
         playsInline
+        onClick={togglePlay}
       />
 
       <div
@@ -104,8 +117,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
       >
         <button
           onClick={togglePlay}
-          className="w-15 h-15 flex items-center justify-center transition-opacity hover:opacity-70 flex-shrink-0"
-          style={{ borderRadius: 'var(--radius)' }}
+          className="w-15 h-15 flex items-center justify-center transition-opacity hover:opacity-70 flex-shrink-0 rounded-sm"
         >
           {playing ? (
             <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
@@ -123,18 +135,12 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
           <div
             ref={progressRef}
             onClick={handleProgressClick}
-            className="flex-1 h-3 cursor-pointer relative"
-            style={{
-              backgroundColor: 'AccentColor',
-              borderRadius: '9999px',
-            }}
+            className="flex-1 h-3 cursor-pointer relative bg-muted-foreground/30 rounded-4xl"
           >
             <div
-              className="absolute inset-y-0 left-0"
+              className="absolute inset-y-0 left-0 bg-accent rounded-4xl transition-[width] duration-150 ease-linear"
               style={{
                 width: `${progress}%`,
-                backgroundColor: 'var(--accent)',
-                borderRadius: '9999px',
               }}
             />
           </div>
@@ -161,7 +167,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16.5 12A4.5 4.5 0 0014 8.18v1.7l2.39 2.39c.07-.2.11-.4.11-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.89 8.89 0 0021 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
                 </svg>
-              ) : volume < 0.5 ? (
+              ) : volume < 0.6 ? (
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.5 12A4.5 4.5 0 0016 8.18v7.64c1.2-.9 2-2.32 2-3.82zM5 9v6h4l5 5V4L9 9H5z" />
                 </svg>

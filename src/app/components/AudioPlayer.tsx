@@ -9,8 +9,8 @@ export function getAudioTracks(slug: string): { src: string; name: string }[] {
   const matching = Object.entries(audioModules)
     .filter(([key]) => key.includes(needle))
     .sort(([a], [b]) => a.localeCompare(b));
-  return matching.map(([, mod]) => {
-    const raw = decodeURIComponent(mod.default.split('?')[0].split('/').pop() ?? '');
+  return matching.map(([key, mod]) => {
+    const raw = decodeURIComponent(key.split('?')[0].split('/').pop() ?? '');
     const name = raw.replace(/\.mp3$/, '');
     return { src: mod.default, name };
   });
@@ -63,8 +63,7 @@ export function AudioPlayer({ tracks }: { tracks: Track[] }) {
     };
   }, []);
 
-  const loadTrack = useCallback((index: number) => {
-    const wasPlaying = playing;
+  const loadTrack = useCallback((index: number, shouldPlay = false) => {
     audioRef.current?.pause();
 
     const audio = new Audio(tracks[index].src);
@@ -72,7 +71,7 @@ export function AudioPlayer({ tracks }: { tracks: Track[] }) {
     setCurrentTime(0);
 
     audio.addEventListener('loadedmetadata', () => {
-      if (wasPlaying) audio.play();
+      if (shouldPlay) audio.play();
     });
     audio.addEventListener('timeupdate', () => {
       if (!dragging) setCurrentTime(audio.currentTime);
@@ -82,11 +81,11 @@ export function AudioPlayer({ tracks }: { tracks: Track[] }) {
     audio.addEventListener('pause', () => setPlaying(false));
 
     setActiveIndex(index);
-  }, [tracks, dragging, playing]);
+  }, [tracks, dragging]);
 
   const togglePlay = useCallback((index: number) => {
     if (activeIndex !== index) {
-      loadTrack(index);
+      loadTrack(index, true);
       return;
     }
     if (!audioRef.current) return;

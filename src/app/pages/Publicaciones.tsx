@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { publications, type PublicationType } from '../data/publications';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
+import { ProjectLink } from '../components/ProjectLink';
 
 import heroImg from '@/assets/publications/hero.jpg';
-
-const BASE = 'https://images.unsplash.com/photo-';
 
 const types: (PublicationType | 'Todos')[] = ['Todos', 'Libro', 'Revista', 'Artículo'];
 
@@ -104,8 +103,8 @@ export function Publicaciones() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center border border-border p-8 md:p-12">
                 {/* Book cover */}
                 <div
-                  className="relative overflow-hidden bg-secondary group"
-                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto', borderRadius: 'var(--radius)' }}
+                  className="relative overflow-hidden bg-secondary group rounded-sm"
+                  style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto' }}
                 >
                   <img
                     src={featured.coverImage}
@@ -170,6 +169,17 @@ export function Publicaciones() {
                   >
                     {featured.description}
                   </p>
+                  {featured.links && featured.links.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      {featured.links.map(link => (
+                        <ProjectLink
+                          key={link.url}
+                          href={link.url}
+                          label={link.label}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </FadeIn>
@@ -216,8 +226,8 @@ export function Publicaciones() {
                     {/* Cover thumbnail */}
                     <div className="md:col-span-2">
                       <div
-                        className="relative overflow-hidden bg-secondary"
-                        style={{ aspectRatio: '3/4', borderRadius: 'var(--radius)' }}
+                        className="relative overflow-hidden bg-secondary rounded-sm"
+                        style={{ aspectRatio: '3/4' }}
                       >
                         <img
                           src={pub.coverImage}
@@ -238,16 +248,10 @@ export function Publicaciones() {
                             padding: '3px 8px',
                             border: '1px solid var(--border)',
                             color: 'var(--accent)',
-                            borderRadius: 'var(--radius)',
                           }}
+                          className="rounded-sm"
                         >
                           {pub.type}
-                        </span>
-                        <span
-                          className="text-muted-foreground/40"
-                          style={{ fontSize: '0.68rem' }}
-                        >
-                          {pub.year}
                         </span>
                       </div>
                       <h3
@@ -273,16 +277,33 @@ export function Publicaciones() {
                       >
                         {pub.description}
                       </p>
+                      {pub.links && pub.links.length > 0 && (
+                        <div className="flex flex-col gap-2 mt-4 md:justify-end">
+                          {pub.links.map(link => (
+                            <ProjectLink
+                              key={link.url}
+                              href={link.url}
+                              label={link.label}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     {/* Meta */}
                     <div className="md:col-span-3 md:text-right">
                       <p
-                        className="text-muted-foreground/50 mb-2"
+                        className="text-muted-foreground mb-2"
                         style={{ fontSize: 'var(--text-label-lg)' }}
                       >
                         {pub.authors}
                       </p>
+                      <span
+                        className="text-muted-foreground"
+                        style={{ fontSize: '0.68rem' }}
+                      >
+                        {pub.year}
+                      </span>
                     </div>
                   </motion.div>
                 ))}

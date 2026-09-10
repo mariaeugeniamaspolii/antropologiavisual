@@ -217,13 +217,13 @@ export function ProyectoDetalle() {
                   Equipo
                 </p>
                 <p
-                  className="text-foreground/80 leading-relaxed"
+                  className="text-muted-foreground leading-relaxed"
                   style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
                 >
                   {project.team.split(',').map((item, i, arr) => (
                     <span key={i}>
                       {item.trim()}
-                      {i < arr.length - 1 && <span className="mx-2 text-muted-foreground/50">·</span>}
+                      {i < arr.length - 1 && <span className="mx-2 text-foreground/40">·</span>}
                     </span>
                   ))}
                 </p>

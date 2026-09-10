@@ -76,16 +76,6 @@ function GalleryImage({ img, index, projectTitle, onClick }: { img: string; inde
         animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
         transition={{ duration: 0.3 }}
       >
-        <div
-          className="w-8 h-8 flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(var(--background-rgb), 0.9)' }}
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M11 11L8.5 8.5M8.5 8.5H10.5M8.5 8.5V10.5" stroke="currentColor" strokeWidth="1.2" />
-            <path d="M1 5V1.5H5" stroke="currentColor" strokeWidth="1.2" />
-            <path d="M1.5 1.5L5 5" stroke="currentColor" strokeWidth="1.2" />
-          </svg>
-        </div>
       </motion.div>
     </motion.div>
   );

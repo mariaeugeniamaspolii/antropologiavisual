@@ -76,7 +76,6 @@ export function ImageLightbox({ images, startIndex, onClose, altPrefix = '' }: I
             onClick={onClose}
             className="absolute -top-10 right-0 md:-top-12 md:right-0 z-10 transition-opacity duration-200 hover:opacity-70"
             style={{ color: 'rgba(255, 255, 255, 0.6)' }}
-            aria-label="Cerrar"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M18 6L6 18M6 6l12 12" />

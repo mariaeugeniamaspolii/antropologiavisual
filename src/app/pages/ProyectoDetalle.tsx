@@ -28,7 +28,7 @@ function getGalleryImages(slug: string): string[] {
   return matching.map(([, mod]) => mod.default);
 }
 
-function getVideoFiles(slug: string): { type: 'mp4'; url: string; title: string }[] {
+function getVideoFiles(slug: string): { type: 'mp4'; url: string; title: string; thumbnail?: string }[] {
   const needle = `projects/${slug}/video/`;
   const matching = Object.entries(videoModules)
     .filter(([key]) => key.includes(needle))

@@ -253,12 +253,6 @@ export function Publicaciones() {
                         >
                           {pub.type}
                         </span>
-                        <span
-                          className="text-muted-foreground/40"
-                          style={{ fontSize: '0.68rem' }}
-                        >
-                          {pub.year}
-                        </span>
                       </div>
                       <h3
                         className="text-foreground mb-1"
@@ -283,16 +277,6 @@ export function Publicaciones() {
                       >
                         {pub.description}
                       </p>
-                    </div>
-
-                    {/* Meta */}
-                    <div className="md:col-span-3 md:text-right">
-                      <p
-                        className="text-muted-foreground/50 mb-2"
-                        style={{ fontSize: 'var(--text-label-lg)' }}
-                      >
-                        {pub.authors}
-                      </p>
                       {pub.links && pub.links.length > 0 && (
                         <div className="flex flex-col gap-2 mt-4 md:justify-end">
                           {pub.links.map(link => (
@@ -304,6 +288,22 @@ export function Publicaciones() {
                           ))}
                         </div>
                       )}
+                    </div>
+
+                    {/* Meta */}
+                    <div className="md:col-span-3 md:text-right">
+                      <p
+                        className="text-muted-foreground mb-2"
+                        style={{ fontSize: 'var(--text-label-lg)' }}
+                      >
+                        {pub.authors}
+                      </p>
+                      <span
+                        className="text-muted-foreground"
+                        style={{ fontSize: '0.68rem' }}
+                      >
+                        {pub.year}
+                      </span>
                     </div>
                   </motion.div>
                 ))}

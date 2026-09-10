@@ -14,6 +14,23 @@ Current phase: frontend/design refinement before future WordPress migration.
 - Do not modify unrelated files.
 - Preserve existing functionality unless a change is explicitly requested.
 - Do not perform broad refactors without explicit approval.
+- **NEVER run `npm run build` or `npm build`.** cPanel handles the build on deploy. Running build locally creates unnecessary changes.
+
+## Git
+
+- Active branch: `staging`. Do not modify `main` unless instructed.
+- Do not commit or push unless explicitly requested.
+- When pushing, ALWAYS use this sequence to avoid diverging branches with cPanel:
+  ```bash
+  git add .
+  git commit -m "your message"
+  git pull --rebase origin staging
+  git push origin staging
+  ```
+- If `git pull --rebase` fails with unstaged changes: `git stash` → `git pull --rebase origin staging` → `git stash pop` → `git push origin staging`
+- If rebase has conflicts with `dist/`: remove `dist/` and continue (`git rm -r --cached dist/` → `git rebase --continue`)
+- **NEVER use `git push --force`** — it causes diverging branches with cPanel
+- **NEVER run `git reset --hard`** — it loses user's uncommitted work
 
 ## Context management
 

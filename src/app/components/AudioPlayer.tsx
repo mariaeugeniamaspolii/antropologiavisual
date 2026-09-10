@@ -9,9 +9,9 @@ export function getAudioTracks(slug: string): { src: string; name: string }[] {
   const matching = Object.entries(audioModules)
     .filter(([key]) => key.includes(needle))
     .sort(([a], [b]) => a.localeCompare(b));
-  return matching.map(([, mod]) => {
-    const raw = decodeURIComponent(mod.default.split('?')[0].split('/').pop() ?? '');
-    const name = raw.replace(/\.mp3$/, '').replace(/-[A-Za-z0-9]{8}$/, '');
+  return matching.map(([key, mod]) => {
+    const raw = decodeURIComponent(key.split('?')[0].split('/').pop() ?? '');
+    const name = raw.replace(/\.mp3$/, '');
     return { src: mod.default, name };
   });
 }

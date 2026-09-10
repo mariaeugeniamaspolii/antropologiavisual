@@ -35,9 +35,9 @@ function getVideoFiles(slug: string): { type: 'mp4'; url: string; title: string;
   const matching = Object.entries(videoModules)
     .filter(([key]) => key.includes(needle))
     .sort(([a], [b]) => a.localeCompare(b));
-  return matching.map(([, mod]) => {
-    const raw = decodeURIComponent(mod.default.split('?')[0].split('/').pop() ?? '');
-    const title = raw.replace(/\.mp4$/, '').replace(/-[A-Za-z0-9]{8}$/, '');
+  return matching.map(([key, mod]) => {
+    const raw = decodeURIComponent(key.split('?')[0].split('/').pop() ?? '');
+    const title = raw.replace(/\.mp4$/, '');
     return { type: 'mp4' as const, url: mod.default, title };
   });
 }

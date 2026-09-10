@@ -1,4 +1,19 @@
+const coverModules = import.meta.glob<{
+  default: string;
+}>('@/assets/publications/*/cover.webp', { eager: true });
+
+function getCoverImage(slug: string): string {
+  const needle = `publications/${slug}/cover.webp`;
+  const match = Object.entries(coverModules).find(([key]) => key.includes(needle));
+  return match ? match[1].default : '';
+}
+
 export type PublicationType = 'Libro' | 'Revista' | 'Artículo';
+
+export interface PublicationLink {
+  url: string;
+  label: string;
+}
 
 export interface Publication {
   id: number;
@@ -11,6 +26,7 @@ export interface Publication {
   coverImage: string;
   description: string;
   featured?: boolean;
+  links?: PublicationLink[];
 }
 
 export const publications: Publication[] = [
@@ -22,9 +38,12 @@ export const publications: Publication[] = [
     subtitle: 'Antropología urbana y música electrónica',
     authors: 'Gabriel de Souza',
     year: '2012',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/09/tapa-400x280.jpg',
+    coverImage: getCoverImage('montevideo-electrónico'),
     description: 'El libro Montevideo Electrónico fue el ganador del concurso «Tu tesis en Cultura» realizado por la Intendencia Municipal de Montevideo. Surge de las investigaciones en antropología urbana y antropología de la música del autor. Se metió dentro de los templos de la música techno de la noche montevideana y escribió un libro reflejando éticas y estéticas propias de movimientos jóvenes.',
     featured: true,
+    links: [
+      { url: 'https://drive.google.com/file/d/16YdhZqwLZJOp3JaqKy9TSiv8eTaikYkG/view', label: 'Ver publicación' },
+    ],
   },
   {
     id: 2,
@@ -34,7 +53,7 @@ export const publications: Publication[] = [
     subtitle: 'Conocimientos ecológicos locales sobre el uso de vegetales',
     authors: 'Juan Martín Dabezies',
     year: '2010',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/09/DSCN5230-400x280.jpg',
+    coverImage: getCoverImage('nuevos-lenguajes-de-representación'),
     description: 'La crisis de la modernidad ha despertado una búsqueda de alternativas a las formas modernas de relacionamiento entre el ser humano y su medio ambiente. En este artículo se presenta un trabajo de puesta en valor del patrimonio que se basa en el extrañamiento y la familiarización cultural, documentando los conocimientos asociados al manejo local de la palma Butia capitata.',
   },
   {
@@ -45,7 +64,7 @@ export const publications: Publication[] = [
     subtitle: 'Patrimonialización del palmar de Butiá',
     authors: 'Gabriel de Souza',
     year: '2010',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/10chica-400x280.jpg',
+    coverImage: getCoverImage('nuevos-lenguajes-de-representación'),
     description: 'Publicación sobre nuevos lenguajes de representación y patrimonialización del palmar de Butiá en el departamento de Rocha.',
   },
   {
@@ -56,8 +75,11 @@ export const publications: Publication[] = [
     subtitle: 'Asociación Uruguaya de Antropología Social y Cultural',
     authors: 'AUAS',
     year: '2013',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/trama3-e1440516898958-400x280.jpg',
+    coverImage: getCoverImage('revista-trama'),
     description: 'Trama, revista de la Asociación Uruguaya de Antropología Social y Cultural (AUAS), nace como proyecto premiado por Fondos Concursables para la Cultura / MEC en 2009. Cuatro años y cuatro números más tarde estamos dando continuidad al proyecto fundacional, a través de un nuevo número de Trama, esta vez en formato digital.',
+    links: [
+      { url: 'https://www.auas.org.uy/trama/index.php/Trama/issue/view/14', label: 'Ver publicación' },
+    ],
   },
   {
     id: 5,
@@ -67,7 +89,7 @@ export const publications: Publication[] = [
     subtitle: 'Asociación Uruguaya de Antropología Social y Cultural',
     authors: 'AUAS',
     year: '2015',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Trama-tapa-e1440516535909-400x280.png',
+    coverImage: getCoverImage('revista-trama'),
     description: 'Trama, revista de la Asociación Uruguaya de Antropología Social y Cultural (AUAS), nace como proyecto premiado por Fondos Concursables para la Cultura / MEC en 2009. Cuatro años y cuatro números más tarde estamos dando continuidad al proyecto fundacional, a través de un nuevo número de Trama, esta vez en formato digital.',
   },
   {
@@ -78,8 +100,25 @@ export const publications: Publication[] = [
     subtitle: 'Compilación y edición académica',
     authors: 'Sonnia Romero Gorski (comp.)',
     year: '2010',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/09/Tapa-anuario09-10-400x280.jpg',
+    coverImage: getCoverImage('anuario'),
     description: 'Anuario Antropología Social y Cultural en Uruguay 2009-2010. Compilación y Edición: Sonnia Romero Gorski. Directora del Departamento de Antropología Social, Facultad de Humanidades y Ciencias de la Educación, Universidad de la República.',
+    links: [
+      { url: 'https://drive.google.com/file/d/1Nc__vNzCJAATyLqulV6ICy2z7_aKf3hr/view', label: 'Ver publicación' },
+    ],
+  },
+  {
+    id: 7,
+    slug: 'el-arte-rupestre-del-norte',
+    type: 'Libro',
+    title: 'El arte rupestre del norte del Uruguay',
+    subtitle: 'Experiencia hacia el pasado e imagen turística del presente',
+    authors: 'Gabriel de Souza',
+    year: '2014',
+    coverImage: getCoverImage('el-arte-rupestre-del-norte-del-uruguay-como-experiencia-hacia-el-pasado-e-imagen-turística-del-presente'),
+    description: 'Publicación sobre el arte rupestre del norte del Uruguay como experiencia hacia el pasado e imagen turística del presente.',
+    links: [
+      { url: 'https://drive.google.com/file/d/1w4_LJYqb-Bkuxl20YAuHXWbHQr3FVdun/view', label: 'Ver publicación' },
+    ],
   },
 ];
 

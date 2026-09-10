@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { publications, type PublicationType } from '../data/publications';
 import { FadeIn } from '../components/FadeIn';
 import { FilterButton } from '../components/FilterButton';
+import { ProjectLink } from '../components/ProjectLink';
 
 import heroImg from '@/assets/publications/hero.jpg';
-
-const BASE = 'https://images.unsplash.com/photo-';
 
 const types: (PublicationType | 'Todos')[] = ['Todos', 'Libro', 'Revista', 'Artículo'];
 
@@ -170,6 +169,17 @@ export function Publicaciones() {
                   >
                     {featured.description}
                   </p>
+                  {featured.links && featured.links.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      {featured.links.map(link => (
+                        <ProjectLink
+                          key={link.url}
+                          href={link.url}
+                          label={link.label}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </FadeIn>
@@ -283,6 +293,17 @@ export function Publicaciones() {
                       >
                         {pub.authors}
                       </p>
+                      {pub.links && pub.links.length > 0 && (
+                        <div className="flex flex-col gap-2 mt-4 md:justify-end">
+                          {pub.links.map(link => (
+                            <ProjectLink
+                              key={link.url}
+                              href={link.url}
+                              label={link.label}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))}

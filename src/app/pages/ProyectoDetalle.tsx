@@ -204,7 +204,7 @@ export function ProyectoDetalle() {
             </p>
             <p
               className="text-foreground/80 leading-relaxed"
-              style={{ fontSize: '1rem', lineHeight: 1.88 }}
+              style={{ fontSize: '1rem', lineHeight: 1.88, whiteSpace: 'pre-line' }}
             >
               {project.description}
             </p>

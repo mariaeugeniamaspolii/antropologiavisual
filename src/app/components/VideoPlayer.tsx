@@ -94,9 +94,10 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
       <video
         ref={videoRef}
         src={src}
-        className="w-full bg-black rounded-sm"
+        className="w-full bg-black rounded-sm cursor-pointer"
         style={{ aspectRatio: '16/9' }}
         playsInline
+        onClick={togglePlay}
       />
 
       <div
@@ -123,18 +124,12 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
           <div
             ref={progressRef}
             onClick={handleProgressClick}
-            className="flex-1 h-3 cursor-pointer relative"
-            style={{
-              backgroundColor: 'AccentColor',
-              borderRadius: '9999px',
-            }}
+            className="flex-1 h-3 cursor-pointer relative bg-muted-foreground/30 rounded-4xl"
           >
             <div
-              className="absolute inset-y-0 left-0"
+              className="absolute inset-y-0 left-0 bg-accent rounded-4xl"
               style={{
                 width: `${progress}%`,
-                backgroundColor: 'var(--accent)',
-                borderRadius: '9999px',
               }}
             />
           </div>

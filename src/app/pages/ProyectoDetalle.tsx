@@ -363,13 +363,13 @@ export function ProyectoDetalle() {
             <FadeIn className="mt-8 text-center">
               <button
                 onClick={() => setGalleryCount(prev => prev + 12)}
-                className="inline-flex items-center gap-2 transition-colors duration-200 rounded-sm"
+                className="inline-flex items-center gap-2 rounded-sm transition-all duration-200 hover:bg-foreground hover:text-background"
                 style={{
                   fontSize: '0.75rem',
                   letterSpacing: '0.15em',
-                  color: 'var(--muted-foreground)',
+                  color: 'var(--foreground)',
                   padding: '10px 24px',
-                  border: '1px solid var(--border)',
+                  border: '1px solid var(--foreground)',
                 }}
               >
                 Ver más

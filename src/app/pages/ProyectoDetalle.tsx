@@ -34,7 +34,7 @@ function getVideoFiles(slug: string): { type: 'mp4'; url: string; title: string;
     .filter(([key]) => key.includes(needle))
     .sort(([a], [b]) => a.localeCompare(b));
   return matching.map(([, mod]) => {
-    const raw = decodeURIComponent(mod.default.split('/').pop() ?? '');
+    const raw = decodeURIComponent(mod.default.split('?')[0].split('/').pop() ?? '');
     const title = raw.replace(/\.mp4$/, '');
     return { type: 'mp4' as const, url: mod.default, title };
   });

@@ -208,7 +208,28 @@ export function ProyectoDetalle() {
             >
               {project.description}
             </p>
-            <div className="w-10 h-px" style={{ backgroundColor: 'var(--accent)' }} />
+            {project.team && (
+              <div className="mt-8">
+                <p
+                  className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
+                  style={{ fontSize: 'var(--text-label)' }}
+                >
+                  Equipo
+                </p>
+                <p
+                  className="text-foreground/80 leading-relaxed"
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
+                >
+                  {project.team.split(',').map((item, i, arr) => (
+                    <span key={i}>
+                      {item.trim()}
+                      {i < arr.length - 1 && <span className="mx-2 text-muted-foreground/50">·</span>}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            )}
+            <div className="w-10 h-px mt-8" style={{ backgroundColor: 'var(--accent)' }} />
           </FadeIn>
 
           <FadeIn className="md:col-span-5" delay={0.12}>

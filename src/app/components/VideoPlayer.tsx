@@ -37,6 +37,17 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
     };
   }, []);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlay();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [togglePlay]);
+
   const togglePlay = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -68,7 +79,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
   const cycleVolume = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
-    const levels = [1, 0.5, 0.25, 0];
+    const levels = [1, 0.5, 0];
     const currentIdx = levels.indexOf(volume);
     const nextIdx = (currentIdx + 1) % levels.length;
     const next = levels[nextIdx];
@@ -127,7 +138,7 @@ export function VideoPlayer({ src, title }: VideoPlayerProps) {
             className="flex-1 h-3 cursor-pointer relative bg-muted-foreground/30 rounded-4xl"
           >
             <div
-              className="absolute inset-y-0 left-0 bg-accent rounded-4xl"
+              className="absolute inset-y-0 left-0 bg-accent rounded-4xl transition-[width] duration-150 ease-linear"
               style={{
                 width: `${progress}%`,
               }}

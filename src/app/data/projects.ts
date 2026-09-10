@@ -1,5 +1,12 @@
 export type ProjectRatio = 'square' | 'portrait' | 'landscape';
 
+export interface VideoItem {
+  type: 'mp4' | 'youtube';
+  url: string;
+  title: string;
+  thumbnail?: string;
+}
+
 export interface Project {
   id: number;
   slug: string;
@@ -22,6 +29,7 @@ export interface Project {
   relatedSlugs: string[];
   featured?: boolean;
   links?: { url: string; label: string; }[];
+  videos?: VideoItem[];
 }
 
 export const projects: Project[] = [
@@ -85,7 +93,9 @@ export const projects: Project[] = [
     featured: true,
     links: [
       { url: 'https://comunicacionmaleco.wixsite.com/vocesnuevoberlin', label: 'Sitio web' },
-      { url: 'https://www.youtube.com/watch?app=desktop&v=HdtrVh4b7-0&t=12s', label: 'Video Voces Teatro Young' },
+    ],
+    videos: [
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=HdtrVh4b7-0', title: 'Video Voces Teatro Young' },
     ],
   },
   {
@@ -172,9 +182,11 @@ export const projects: Project[] = [
     duration: '55:48',
     relatedSlugs: ['la-casita-del-hornero', 'castillos-de-tierra'],
     links: [
-      { url: 'https://www.youtube.com/watch?v=SuBDkrJggo0', label: 'Los Narradores del Caraguatá Documental' },
       { url: 'https://www.lr21.com.uy/comunidad/384480-al-rescate-de-lo-desconocido?utm_source=redirects&utm_medium=dominiolargo&utm_campaign=301_Redirects', label: 'Noticias Uruguay, LARED21 Diario Digital' },
       { url: 'https://www.elpais.com.uy/sabado-show/con-el-ojo-urbano', label: 'Nota de El País' },
+    ],
+    videos: [
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=SuBDkrJggo0', title: 'Los Narradores del Caraguatá Documental' },
     ],
   },
   {
@@ -194,9 +206,10 @@ export const projects: Project[] = [
     photography: 'Colectivo antropologiavisual.org',
     duration: '13:35',
     relatedSlugs: ['los-narradores-del-caraguata', 'el-fogon-50-anos'],
-    links: [
-      { url: 'https://www.youtube.com/watch?v=uhpp49bphZM', label: 'La casita del hornero' },
-      { url: 'https://www.youtube.com/watch?v=RqoJHvLzrd8', label: 'CURE' },
+    links: [],
+    videos: [
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=uhpp49bphZM', title: 'La casita del hornero' },
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=RqoJHvLzrd8', title: 'CURE' },
     ],
   },
   {
@@ -235,8 +248,9 @@ export const projects: Project[] = [
     photography: 'Colectivo antropologiavisual.org',
     duration: '15:29',
     relatedSlugs: ['la-casita-del-hornero', 'el-tiempo-de-los-abuelos'],
-    links: [
-      { url: 'https://www.youtube.com/watch?v=Q9zcBQTX6ow', label: 'EL FOGON 50 años' },
+    links: [],
+    videos: [
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=Q9zcBQTX6ow', title: 'EL FOGON 50 años' },
     ],
   },
   {
@@ -255,8 +269,9 @@ export const projects: Project[] = [
     director: 'Gabriel de Souza',
     photography: 'Colectivo antropologiavisual.org',
     relatedSlugs: ['castillos-de-tierra', 'el-fogon-50-anos'],
-    links: [
-      { url: 'https://www.youtube.com/watch?v=gdYXvwnxvks', label: 'El tiempo de los abuelos' },
+    links: [],
+    videos: [
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=gdYXvwnxvks', title: 'El tiempo de los abuelos' },
     ],
   },
 

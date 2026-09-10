@@ -5,10 +5,16 @@ import { getProjectBySlug, getRelatedProjects, getPrevNextProjects } from '../da
 import { FadeIn } from '../components/FadeIn';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { AudioPlayer, getAudioTracks } from '../components/AudioPlayer';
+import { VideoThumbnail } from '../components/VideoThumbnail';
+import { VideoLightbox } from '../components/VideoLightbox';
 
 const galleryModules = import.meta.glob<{
   default: string;
 }>('@/assets/projects/*/gallery/*.webp', { eager: true });
+
+const videoModules = import.meta.glob<{
+  default: string;
+}>('@/assets/projects/*/video/*.mp4', { eager: true });
 
 function getGalleryImages(slug: string): string[] {
   const needle = `projects/${slug}/gallery/`;
@@ -20,6 +26,18 @@ function getGalleryImages(slug: string): string[] {
       return numA - numB;
     });
   return matching.map(([, mod]) => mod.default);
+}
+
+function getVideoFiles(slug: string): { type: 'mp4'; url: string; title: string }[] {
+  const needle = `projects/${slug}/video/`;
+  const matching = Object.entries(videoModules)
+    .filter(([key]) => key.includes(needle))
+    .sort(([a], [b]) => a.localeCompare(b));
+  return matching.map(([, mod]) => {
+    const raw = decodeURIComponent(mod.default.split('/').pop() ?? '');
+    const title = raw.replace(/\.mp4$/, '');
+    return { type: 'mp4' as const, url: mod.default, title };
+  });
 }
 
 function GalleryImage({ img, index, projectTitle, onClick }: { img: string; index: number; projectTitle: string; onClick: () => void }) {
@@ -76,6 +94,7 @@ export function ProyectoDetalle() {
   const project = slug ? getProjectBySlug(slug) : undefined;
   const [galleryCount, setGalleryCount] = useState(12);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [videoLightboxIndex, setVideoLightboxIndex] = useState<number | null>(null);
 
   const galleryImages = useMemo(
     () => (slug ? getGalleryImages(slug) : []),
@@ -86,6 +105,16 @@ export function ProyectoDetalle() {
     () => (slug ? getAudioTracks(slug) : []),
     [slug],
   );
+
+  const localVideos = useMemo(
+    () => (slug ? getVideoFiles(slug) : []),
+    [slug],
+  );
+
+  const allVideos = useMemo(() => {
+    const staticVids = project?.videos ?? [];
+    return [...staticVids, ...localVideos];
+  }, [project?.videos, localVideos]);
 
   if (!project) return <Navigate to="/proyectos" replace />;
 
@@ -194,10 +223,9 @@ export function ProyectoDetalle() {
             <div className="space-y-0">
               {[
                 { label: 'Dirección', value: project.director },
-                { label: 'Fotografía', value: project.photography },
                 ...(project.fieldwork ? [{ label: 'Trabajo de campo', value: project.fieldwork }] : []),
                 ...(project.format ? [{ label: 'Formato', value: project.format }] : []),
-                { label: 'Duración', value: project.duration || 'N/D' },
+                ...(project.duration ? [{ label: 'Duración', value: project.duration }] : []),
                 { label: 'Localización', value: project.location },
                 { label: 'Año', value: project.year },
               ].map(item => (
@@ -323,6 +351,41 @@ export function ProyectoDetalle() {
             <FadeIn delay={0.08}>
               <AudioPlayer tracks={audioTracks} />
             </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* Videos */}
+      {allVideos.length > 0 && (
+        <section className="pb-20 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto">
+            <FadeIn className="mb-8">
+              <p
+                className="text-muted-foreground tracking-[0.25em] uppercase"
+                style={{ fontSize: 'var(--text-label)' }}
+              >
+                Videos
+              </p>
+            </FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {allVideos.map((video, i) => (
+                <div key={i}>
+                  <VideoThumbnail
+                    type={video.type}
+                    url={video.url}
+                    title={video.title}
+                    thumbnail={video.thumbnail}
+                    onClick={() => setVideoLightboxIndex(i)}
+                  />
+                  <p
+                    className="mt-2 text-muted-foreground"
+                    style={{ fontSize: '0.8rem' }}
+                  >
+                    {video.title}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -527,6 +590,17 @@ export function ProyectoDetalle() {
           startIndex={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           altPrefix={project.title}
+        />
+      )}
+
+      {/* Video Lightbox */}
+      {videoLightboxIndex !== null && allVideos.length > 0 && (
+        <VideoLightbox
+          videos={allVideos}
+          index={videoLightboxIndex}
+          onClose={() => setVideoLightboxIndex(null)}
+          onPrev={() => setVideoLightboxIndex(prev => prev! > 0 ? prev! - 1 : allVideos.length - 1)}
+          onNext={() => setVideoLightboxIndex(prev => prev! < allVideos.length - 1 ? prev! + 1 : 0)}
         />
       )}
     </div>

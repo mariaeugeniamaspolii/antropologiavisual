@@ -9,7 +9,7 @@ The React code is the implementation source of truth; this document describes it
 
 - **Warmth and restraint.** Earthy palette, no decorative excess. The work speaks.
 - **Typographic clarity.** Two fonts, clear hierarchy, fluid scaling.
-- **Sharp geometry.** No border-radius, no shadows. Precision over softness.
+- **Soft geometry.** Gently rounded corners (0.375rem), no shadows. Precision with warmth.
 - **Content-first.** Images and text dominate. UI chrome recedes.
 - **Accessible by default.** Contrast, focus, and semantics are not optional.
 
@@ -27,10 +27,10 @@ Warm, earthy palette. All values from `src/styles/theme.css`.
 |---|---|---|
 | `--background` | `#F2EBE0` | Page background (warm cream) |
 | `--foreground` | `#1A1510` | Primary text, dark sections (dark brown) |
-| `--accent` | `#8A6848` | Links, highlights, interactive accents (golden brown) |
+| `--accent` | `#7A5A3A` | Links, highlights, interactive accents (golden brown) |
 | `--secondary` | `#DFD6C6` | Card/section backgrounds (light tan) |
 | `--muted` | `#D0C5B2` | Subdued elements (muted tan) |
-| `--muted-foreground` | `#5C5040` | Secondary text (brown-gray, AA-compliant on `--background`) |
+| `--muted-foreground` | `#4A3535` | Secondary text (brown-gray, AA-compliant on `--background`) |
 | `--card` | `#E9E1D4` | Card surfaces |
 | `--primary` | `#1A1510` | Button backgrounds, dark surfaces |
 | `--primary-foreground` | `#F2EBE0` | Text on primary backgrounds |
@@ -54,7 +54,7 @@ Base font size: 16px (`--font-size`).
 
 ### Borders and radii
 
-- Border radius: `0rem` (sharp corners, no rounding)
+- Border radius: `0.375rem` (6px, softly rounded corners)
 - Border color: `rgba(26,21,16,0.12)` globally
 - Scrollbar: 4px wide, `--muted` color, 2px radius
 
@@ -79,10 +79,10 @@ Already defined in `src/styles/theme.css`:
 --foreground-rgb: 26, 21, 16;
 --background-rgb: 242, 235, 226;
 --white-rgb: 255, 255, 255;
---accent: #8A6848;
+--accent: #7A5A3A;
 --secondary: #DFD6C6;
 --muted: #D0C5B2;
---muted-foreground: #5C5040;
+--muted-foreground: #4A3535;
 --card: #E9E1D4;
 --primary: #1A1510;
 --primary-foreground: #F2EBE0;
@@ -475,7 +475,7 @@ Every input must have an associated `<label>` or `aria-label`.
 
 - Complete CSS variable system in `theme.css`
 - Two-font system (Playfair Display + DM Sans)
-- Sharp-corner design language (`--radius: 0rem`)
+- Soft-corner design language (`--radius: 0.375rem`)
 - No shadows, no decorative effects
 - Hero -> Content -> CTA page structure
 - Tailwind utility class infrastructure
@@ -498,7 +498,7 @@ Every input must have an associated `<label>` or `aria-label`.
 - `<html lang="es">` (was `en`)
 - `<main>` landmark added in Layout
 - `:focus-visible` styles added
-- `--muted-foreground` darkened to `#5C5040` (4.5:1 contrast)
+- `--muted-foreground` darkened to `#4A3535` (AA-compliant on `--background`)
 - Hero label opacity raised to `white/40` minimum
 - Footer text opacity raised to `/60` minimum
 - Footer form inputs given proper labels

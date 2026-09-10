@@ -217,13 +217,19 @@ export function ProyectoDetalle() {
                   Equipo
                 </p>
                 <p
-                  className="text-muted-foreground leading-relaxed"
+                  className="text-muted-foreground/75 leading-relaxed"
                   style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
                 >
                   {project.team.split(',').map((item, i, arr) => (
                     <span key={i}>
                       {item.trim()}
-                      {i < arr.length - 1 && <span className="mx-2 text-foreground/40">·</span>}
+                      {i < arr.length - 1 && (
+                        <span className="inline-block mx-3 align-middle">
+                          <svg width="6" height="6" viewBox="0 0 6 6" fill="var(--accent)">
+                            <path d="M3 0L6 3L3 6L0 3L3 0Z" />
+                          </svg>
+                        </span>
+                      )}
                     </span>
                   ))}
                 </p>

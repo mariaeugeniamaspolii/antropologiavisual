@@ -225,7 +225,6 @@ export function ProyectoDetalle() {
                 { label: 'Dirección', value: project.director },
                 ...(project.fieldwork ? [{ label: 'Trabajo de campo', value: project.fieldwork }] : []),
                 ...(project.format ? [{ label: 'Formato', value: project.format }] : []),
-                ...(project.duration ? [{ label: 'Duración', value: project.duration }] : []),
                 { label: 'Localización', value: project.location },
                 { label: 'Año', value: project.year },
               ].map(item => (

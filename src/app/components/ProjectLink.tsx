@@ -17,7 +17,7 @@ function ProjectLink({ href, label, className }: ProjectLinkProps) {
         "border border-border",
         "text-foreground/80 hover:text-foreground hover:bg-foreground/[0.03]",
         "transition-all duration-200 group",
-        "rounded-token",
+        "rounded-sm",
         className
       )}
     >

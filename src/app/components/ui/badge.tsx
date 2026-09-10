@@ -33,7 +33,7 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), "rounded-token", className)}
+      className={cn(badgeVariants({ variant }), "rounded-sm", className)}
       style={{
         fontSize: 'var(--text-nav)',
         padding: '6px 14px',

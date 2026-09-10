@@ -51,7 +51,7 @@ function GalleryImage({ img, index, projectTitle, onClick }: { img: string; inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.07, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden bg-secondary cursor-pointer group rounded-token"
+      className="relative overflow-hidden bg-secondary cursor-pointer group rounded-sm"
       style={{ aspectRatio: '4/3' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -373,7 +373,7 @@ export function ProyectoDetalle() {
             <FadeIn className="mt-8 text-center">
               <button
                 onClick={() => setGalleryCount(prev => prev + 12)}
-                className="inline-flex items-center gap-2 transition-colors duration-200 rounded-token"
+                className="inline-flex items-center gap-2 transition-colors duration-200 rounded-sm"
                 style={{
                   fontSize: '0.75rem',
                   letterSpacing: '0.15em',

@@ -8,7 +8,7 @@ export function FilterButton({ label, active, onClick }: FilterButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="transition-all duration-200 rounded-token"
+      className="transition-all duration-200 rounded-sm"
       style={{
         fontFamily: 'DM Sans, sans-serif',
         fontSize: '0.72rem',

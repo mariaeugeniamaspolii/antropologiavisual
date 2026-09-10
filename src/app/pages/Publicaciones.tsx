@@ -104,7 +104,7 @@ export function Publicaciones() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center border border-border p-8 md:p-12">
                 {/* Book cover */}
                 <div
-                  className="relative overflow-hidden bg-secondary group rounded-token"
+                  className="relative overflow-hidden bg-secondary group rounded-sm"
                   style={{ aspectRatio: '3/4', maxWidth: '360px', margin: '0 auto' }}
                 >
                   <img
@@ -216,7 +216,7 @@ export function Publicaciones() {
                     {/* Cover thumbnail */}
                     <div className="md:col-span-2">
                       <div
-                        className="relative overflow-hidden bg-secondary rounded-token"
+                        className="relative overflow-hidden bg-secondary rounded-sm"
                         style={{ aspectRatio: '3/4' }}
                       >
                         <img
@@ -239,7 +239,7 @@ export function Publicaciones() {
                             border: '1px solid var(--border)',
                             color: 'var(--accent)',
                           }}
-                          className="rounded-token"
+                          className="rounded-sm"
                         >
                           {pub.type}
                         </span>

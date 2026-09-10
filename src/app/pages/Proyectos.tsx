@@ -32,7 +32,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       >
         {/* Image container */}
         <div
-          className="relative overflow-hidden bg-secondary mb-4 rounded-token"
+          className="relative overflow-hidden bg-secondary mb-4 rounded-sm"
           style={{ aspectRatio: ratioMap[project.ratio] }}
         >
           <motion.img

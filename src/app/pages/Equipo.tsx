@@ -114,7 +114,7 @@ export function Equipo() {
               >
                 {/* Portrait */}
                 <div
-                  className="relative overflow-hidden bg-secondary mb-5 rounded-token"
+                  className="relative overflow-hidden bg-secondary mb-5 rounded-sm"
                   style={{ aspectRatio: '3/4' }}
                 >
                   <img
@@ -159,7 +159,7 @@ export function Equipo() {
               >
                 {/* Portrait */}
                 <div
-                  className="relative overflow-hidden bg-secondary mb-5 rounded-token"
+                  className="relative overflow-hidden bg-secondary mb-5 rounded-sm"
                   style={{ aspectRatio: '3/4' }}
                 >
                   <img

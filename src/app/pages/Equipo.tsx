@@ -57,8 +57,8 @@ export function Equipo() {
                 letterSpacing: '-0.025em',
               }}
             >
-              Distintas<br />
-              <em>miradas</em>
+              Una mirada<br />
+              <em>colectiva</em>
             </h1>
           </motion.div>
         </div>
@@ -77,7 +77,7 @@ export function Equipo() {
                   lineHeight: 1.55,
                   color: 'rgba(var(--foreground-rgb),0.82)',
                 }}>Somos un colectivo que explora el encuentro entre la imagen
-                y la reflexión antropológica. Desde hace {new Date().getFullYear() - 2006} años documentamos comunidades y
+                y la reflexión antropológica. Desde hace 20 años documentamos comunidades y
                 desarrollamos proyectos junto a instituciones culturales, universidades y organizaciones.</p>
             </FadeIn>
             <FadeIn className="md:col-span-5" delay={0.15}>

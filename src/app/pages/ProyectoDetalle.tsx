@@ -164,97 +164,96 @@ export function ProyectoDetalle() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
           >
-            <h1
-              className="text-white max-w-4xl mb-4"
-              style={{
-                fontFamily: 'var(--font-playfair)',
-                fontSize: 'clamp(2.4rem, 5.5vw, 5.5rem)',
-                fontWeight: 400,
-                lineHeight: 1.05,
-                letterSpacing: '-0.025em',
-              }}
-            >
-              {project.title}
-            </h1>
-            <p
-              className="text-white/75 max-w-2xl"
-              style={{
-                fontFamily: 'var(--font-playfair)',
-                fontStyle: 'italic',
-                fontSize: 'clamp(0.95rem, 1.8vw, 1.25rem)',
-                lineHeight: 1.5,
-              }}
-            >
-              {project.subtitle}
-            </p>
+            <div className="flex-1">
+              <h1
+                className="text-white max-w-4xl mb-4"
+                style={{
+                  fontFamily: 'var(--font-playfair)',
+                  fontSize: 'clamp(2.4rem, 5.5vw, 5.5rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.05,
+                  letterSpacing: '-0.025em',
+                }}
+              >
+                {project.title}
+              </h1>
+              <p
+                className="text-white/75 max-w-2xl"
+                style={{
+                  fontFamily: 'var(--font-playfair)',
+                  fontStyle: 'italic',
+                  fontSize: 'clamp(0.95rem, 1.8vw, 1.25rem)',
+                  lineHeight: 1.5,
+                }}
+              >
+                {project.subtitle}
+              </p>
+            </div>
+            {/* <div className="text-right">
+              <p className="ds-form-label text-xs text-white mb-3">{project.location}</p>
+              <p className="ds-form-label text-xs text-white">{project.year}</p>
+            </div> */}
           </motion.div>
         </div>
       </section>
 
+      
       {/* Introduction + credits */}
       <section className="py-20 md:py-28 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 justify-between">
           <FadeIn className="md:col-span-7">
-            <p
+            {/* <p
               className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
               style={{ fontSize: 'var(--text-label)' }}
             >
               Sobre el proyecto
-            </p>
+            </p> */}
             <p
               className="text-foreground/80 leading-relaxed"
               style={{ fontSize: '1rem', lineHeight: 1.88, whiteSpace: 'pre-line' }}
             >
               {project.description}
             </p>
-            <div className="w-10 h-px mt-8" style={{ backgroundColor: 'var(--accent)' }} />
-            {project.team && (
-              <div className="mt-8">
-                <p
-                  className="text-muted-foreground tracking-[0.25em] uppercase mb-3"
-                  style={{ fontSize: 'var(--text-label)' }}
-                >
-                  Equipo
-                </p>
-                <p
-                  className="text-muted-foreground/75 leading-relaxed"
-                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
-                >
-                  {project.team.split(',').map((item, i, arr) => (
-                    <span key={i}>
-                      {item.trim()}
-                      {i < arr.length - 1 && (
-                        <span className="inline-block mx-3 align-middle">
-                          <svg width="5" height="5" viewBox="0 0 5 5" fill="var(--accent)">
-                            <circle cx="2.5" cy="2.5" r="2.5" />
-                          </svg>
-                        </span>
-                      )}
-                    </span>
-                  ))}
-                </p>
-              </div>
-            )}
+            {/* <div className="w-10 h-px mt-8" style={{ backgroundColor: 'var(--accent)' }} /> */}
+            
           </FadeIn>
 
-          <FadeIn className="md:col-span-5" delay={0.12}>
-            <div className="space-y-0">
-              {[
-                { label: 'Localización', value: project.location },
-                { label: 'Año', value: project.year },
-              ].map(item => (
-                <div
-                  key={item.label}
-                  className="flex gap-4 mb-3 justify-end"
-                >
-                  <span
-                    className="ds-form-label text-xs"
+          <FadeIn className="md:col-span-4 md:col-start-9" delay={0.12}>
+            <div className="flex flex-col h-full">
+              <div className="text-right">
+                <p className="ds-form-label text-xs text-muted-foreground mb-3">{project.location}</p>
+                <p className="ds-form-label text-xs text-muted-foreground">{project.year}</p>
+                <div className="w-10 h-px mt-8 float-end bg-accent" />
+              </div>
+              {project.team && (
+                <div className="mt-auto pt-8">
+                  <p
+                    className="text-muted-foreground tracking-[0.25em] uppercase mb-5"
+                    style={{ fontSize: 'var(--text-label)' }}
                   >
-                    {item.value}
-                  </span>
+                    Equipo
+                  </p>
+                  <p
+                    className="text-muted-foreground/75 leading-relaxed"
+                    style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
+                  >
+                    {project.team.split('*').map((item, i, arr) => (
+                      <span key={i}>
+                        {item.trim()}
+                        {i < arr.length - 1 && (
+                          <span className="inline-block mx-3 align-middle">
+                            <svg width="5" height="5" viewBox="0 0 5 5" fill="var(--accent)">
+                              <circle cx="2.5" cy="2.5" r="2.5" />
+                            </svg>
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </p>
                 </div>
-              ))}
+              )}
             </div>
           </FadeIn>
         </div>
@@ -272,7 +271,7 @@ export function ProyectoDetalle() {
                 >
                   Enlaces
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex flex-wrap gap-3">
                   {project.links.map(link => (
                     <ProjectLink
                       key={link.url}
@@ -295,7 +294,7 @@ export function ProyectoDetalle() {
               <div className="border-t border-border pt-10">
                 <p
                   className="text-muted-foreground tracking-[0.25em] uppercase mb-6"
-              style={{ fontSize: 'var(--text-label)' }}
+                  style={{ fontSize: 'var(--text-label)' }}
                 >
                   Reconocimientos
                 </p>
@@ -371,42 +370,42 @@ export function ProyectoDetalle() {
 
       {/* Gallery */}
       {galleryImages.length > 0 && (
-      <section className="pb-20 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="mb-8">
-            <p
-              className="text-muted-foreground tracking-[0.25em] uppercase"
-              style={{ fontSize: 'var(--text-label)' }}
-            >
-              Galería
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {galleryImages.slice(0, galleryCount).map((img, i) => (
-              <GalleryImage key={i} img={img} index={i} projectTitle={project.title} onClick={() => setLightboxIndex(i)} />
-            ))}
-          </div>
-
-          {galleryImages.length > galleryCount && (
-            <FadeIn className="mt-8 text-center">
-              <button
-                onClick={() => setGalleryCount(prev => prev + 12)}
-                className="inline-flex items-center gap-2 rounded-sm transition-all duration-200 hover:bg-foreground hover:text-background"
-                style={{
-                  fontSize: '0.75rem',
-                  letterSpacing: '0.15em',
-                  color: 'var(--foreground)',
-                  padding: '10px 24px',
-                  border: '1px solid var(--foreground)',
-                }}
+        <section className="pb-20 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto">
+            <FadeIn className="mb-8">
+              <p
+                className="text-muted-foreground tracking-[0.25em] uppercase"
+                style={{ fontSize: 'var(--text-label)' }}
               >
-                Ver más
-              </button>
+                Galería
+              </p>
             </FadeIn>
-          )}
-        </div>
-      </section>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {galleryImages.slice(0, galleryCount).map((img, i) => (
+                <GalleryImage key={i} img={img} index={i} projectTitle={project.title} onClick={() => setLightboxIndex(i)} />
+              ))}
+            </div>
+
+            {galleryImages.length > galleryCount && (
+              <FadeIn className="mt-8 text-center">
+                <button
+                  onClick={() => setGalleryCount(prev => prev + 12)}
+                  className="inline-flex items-center gap-2 rounded-sm transition-all duration-200 hover:bg-foreground hover:text-background"
+                  style={{
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.15em',
+                    color: 'var(--foreground)',
+                    padding: '10px 24px',
+                    border: '1px solid var(--foreground)',
+                  }}
+                >
+                  Ver más
+                </button>
+              </FadeIn>
+            )}
+          </div>
+        </section>
       )}
 
       {/* Prev / Next navigation */}

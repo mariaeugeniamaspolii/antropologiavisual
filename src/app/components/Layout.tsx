@@ -291,10 +291,10 @@ export function Layout() {
               >
                 <strong>María Eugenia Máspoli</strong>
               </a>
-              {' '}y
+              {' '}y{' '}
 
               <a
-                href="https://www.linkedin.com/in/sofia-morelli-cobham/"
+                href="https://www.instagram.com/corrientealterna_disegno/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-primary-foreground/70 transition-colors duration-200"

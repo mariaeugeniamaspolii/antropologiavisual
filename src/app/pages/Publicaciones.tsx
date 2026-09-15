@@ -84,14 +84,14 @@ export function Publicaciones() {
               Libros, ensayos fotográficos, investigaciones académicas y catálogos de exposición que articulan imagen y pensamiento en torno a las culturas que documentamos.
             </p>
           </FadeIn>
-          <FadeIn className="md:col-span-5" delay={0.15}>
+          {/* <FadeIn className="md:col-span-5" delay={0.15}>
             <p
               className="text-muted-foreground leading-relaxed"
               style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
             >
               Entendemos la publicación como extensión del trabajo de campo: un espacio donde la imagen y la escritura se articulan para crear formas de conocimiento que persisten en el tiempo.
             </p>
-          </FadeIn>
+          </FadeIn> */}
         </div>
       </section>
 

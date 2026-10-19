@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router';
 import { motion } from 'motion/react';
+import { Instagram, Youtube, Facebook } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 
 const PAGE_TITLES: Record<string, string> = {
@@ -188,10 +189,10 @@ export function Layout() {
         style={{ backgroundColor: 'var(--foreground)' }}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-16 md:gap-12 mb-20">
 
             {/* Col 1: Brand + description */}
-            <div>
+            <div className="col-span-2 md:col-span-1">
               <Link to="/">
                 <p
                   className="text-primary-foreground/90 mb-4"
@@ -229,21 +230,21 @@ export function Layout() {
               >
                 Redes
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex gap-4">
                 {[
-                  { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/' },
-                  { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ' },
-                  { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org' },
-                ].map(({ name, url }) => (
+                  { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/', icon: <Instagram size={18} /> },
+                  { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ', icon: <Youtube size={18} /> },
+                  { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org', icon: <Facebook size={18} /> },
+                ].map(({ name, url, icon }) => (
                   <a
                     key={name}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={name}
                     className="text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors duration-200"
-                    style={{ fontSize: 'var(--text-nav)' }}
                   >
-                    {name}
+                    {icon}
                   </a>
                 ))}
               </div>
@@ -269,18 +270,18 @@ export function Layout() {
 
           {/* Bottom rule */}
           <div
-            className="border-t pt-8 flex items-center justify-between"
+            className="border-t pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
             style={{ borderColor: 'rgba(var(--background-rgb), 0.06)' }}
           >
             <p
-              className="text-primary-foreground/40"
+              className="text-primary-foreground/40 text-center md:text-left"
               style={{ fontSize: '0.7rem' }}
             >
               © {new Date().getFullYear()} Antropología Visual
             </p>
             <p
-              className="text-primary-foreground/40 italic"
-              style={{ fontFamily: 'var(--font-playfair)', fontSize: 'var(--text-label-lg)' }}
+              className="text-primary-foreground/40 italic text-right"
+              style={{ fontFamily: 'var(--font-playfair)', fontSize: 'var(--text-label-lg)', lineHeight: 1.6 }}
             >
               Diseño y desarrollo por{' '}
               <a
@@ -292,7 +293,6 @@ export function Layout() {
                 <strong>María Eugenia Máspoli</strong>
               </a>
               {' '}y{' '}
-
               <a
                 href="https://www.instagram.com/corrientealterna_disegno/"
                 target="_blank"

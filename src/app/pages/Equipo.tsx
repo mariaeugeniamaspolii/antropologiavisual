@@ -102,7 +102,7 @@ export function Equipo() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-3 gap-8 md:gap-10 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 mb-8">
             {team.slice(0, 3).map((member, i) => (
               <motion.div
                 key={member.name}
@@ -147,7 +147,7 @@ export function Equipo() {
             ))}
           </div>
 
-          <div className="grid grid-cols-5 gap-8 md:gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10">
             {team.slice(3).map((member, i) => (
               <motion.div
                 key={member.name}

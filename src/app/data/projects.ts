@@ -1,7 +1,7 @@
 export type ProjectRatio = 'square' | 'portrait' | 'landscape';
 
 export interface VideoItem {
-  type: 'mp4' | 'youtube';
+  type: 'mp4' | 'youtube' | 'vimeo';
   url: string;
   title: string;
   thumbnail?: string;
@@ -19,6 +19,7 @@ export interface Project {
   location: string;
   coverImage: string;
   heroImage: string;
+  heroMobile?: string;
   introduction: string;
   description: string;
   team: string;
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     location: 'Salto, Uruguay',
     coverImage: new URL('../../assets/projects/ciar/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/ciar/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/ciar/hero-mobile.webp', import.meta.url).href,
     introduction: 'Sumergite en el trabajo de campo arqueológico y descubre grabados que hicieron nuestros pobladores hace miles de años.',
     description: 'Antropología Visual y la Facultad de Humanidades y Ciencias de la Educación (FHCE) presentan el Centro de Interpretación del Arte Rupestre, un proyecto premiado por la Agencia Nacional de Investigación e Innovación (ANII).\n\nUna experiencia pensada para descubrir, conocer y relacionarnos de otra forma con las huellas que dejaron quienes habitaron este territorio antes que nosotros.\n\nCon el apoyo del Gobierno Departamental de Salto, el Departamento de Arqueología y el Área de Estudios Turísticos de la FHCE (Udelar), el proyecto propone nuevas maneras de acercarnos al arte rupestre y a la prehistoria del Uruguay.',
     team: 'Coordinación del proyecto: Gabriel de Souza* Realización audiovisual: Andrés Costa* Audio y realización audiovisual: Claudia Píriz* Equipo Departamento de Arqueología FHCE Diana Rosete* Diseño muestra lúdica: Verónica Albarellos',
@@ -66,6 +68,7 @@ export const projects: Project[] = [
     location: 'Rocha, Uruguay',
     coverImage: new URL('../../assets/projects/del-butia/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/del-butia/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/del-butia/hero-mobile.webp', import.meta.url).href,
     introduction: 'Una mirada antropológica del palmar de Butia odorata, conocido localmente como Butiá, desde la perspectiva de Vuelta del Palmar.',
     description: 'Una mirada antropológica sobre el palmar de Butia odorata, conocido localmente como Butiá. Para quienes viven allí, el palmar de Butiá de Castillos forma parte de la vida cotidiana y del vínculo con el territorio. Desde ese lugar decidimos representar el palmar, explorando la relación entre las personas, el entorno y el Butiá.',
     team: 'Dirección: Gabriel de Souza y Juan Martín Dabezies* Montaje del butiá gigante: Andres Cabrera* Ilustraciones: Denise Torena*',
@@ -88,6 +91,7 @@ export const projects: Project[] = [
     location: 'Nuevo Berlín, Uruguay',
     coverImage: new URL('../../assets/projects/voces-nuevo-berlin/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/voces-nuevo-berlin/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/voces-nuevo-berlin/hero-mobile.webp', import.meta.url).href,
     introduction: 'Un homenaje al pueblo Nuevo Berlín a través de las canciones de Ofelio Acosta, Laudemaro Moreno, Rubén Maidana, Wilson Vega y Miguel Ángel Rodríguez.',
     description: 'Proyecto Voces nace como un homenaje a Nuevo Berlín a través de sus músicos y sus canciones. Ofelio Acosta, Laudemaro Moreno, Rubén Maidana, Wilson Vega y Miguel Ángel Rodríguez ponen sus voces y composiciones al servicio de un retrato del pueblo, de su memoria y de su identidad. El espectáculo fue presentado el 22 de diciembre de 2018 en el Teatro Young de Fray Bentos.',
     team: 'Dirección: Gabriel de Souza y María Victoria Pena* Coordinación local: Silvia Fellosa Grupo de Turismo de Nuevo Berlín* Músicos: Ofelio Acosta, Laudemaro Moreno, Ruben Maidana, Wilson Vega y Miguel Ángel Rodríguez',
@@ -138,6 +142,7 @@ export const projects: Project[] = [
     location: 'Montevideo, Uruguay',
     coverImage: new URL('../../assets/projects/candombe/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/candombe/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/candombe/hero-mobile.webp', import.meta.url).href,
     introduction: 'El Candombe y su espacio sociocultural. Documentación, promoción y difusión de las llamadas tradicionales del Candombe.',
     description: 'Este proyecto documenta y difunde las llamadas tradicionales del Candombe como expresiones de identidad de los barrios Sur, Cordón y Palermo de Montevideo. Forma parte del Fondo de Patrimonio Cultural Inmaterial y fue desarrollado junto a la Comisión Nacional para la UNESCO, el equipo de coordinación del proyecto del Ministerio de Educación y Cultura (MEC) y la Comisión del Patrimonio Cultural de la Nación.\n\nA través de un mapa interactivo, se reúne información de 60 entrevistas realizadas a comparsas de distintas partes del país. El recorrido permite conocer sus historias, su vínculo con los barrios donde el candombe se comparte y se enseña, así como los horarios y recorridos de sus salidas.',
     team: 'Dirección: Gabriel de Souza',
@@ -163,6 +168,7 @@ export const projects: Project[] = [
     location: 'Laguna de Rocha, Uruguay',
     coverImage: new URL('../../assets/projects/pesca-artesanal/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/pesca-artesanal/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/pesca-artesanal/hero-mobile.webp', import.meta.url).href,
     introduction: 'Construcción participativa de un espacio interpretativo sobre bienes culturales asociados al oficio de la pesca en el Paisaje Protegido Laguna de Rocha.',
     description: 'Construcción participativa de un espacio interpretativo sobre el oficio de la pesca y su vínculo con el Paisaje Protegido Laguna de Rocha. A través de un fondo concursable del Ministerio de Educación y Cultura (MEC), busca recuperar y poner en valor historias, saberes y bienes culturales asociados a la pesca, involucrando a las comunidades de la zona.\n\nEl proyecto reúne las voces de niños y pescadores de distintas localidades de Rocha. Niños de las escuelas Nº 32 y Nº 75 de Rocha, la Escuela Costa Azul y la Escuela Nº 52 de La Paloma participaron creando cuentos e historias sobre su territorio. A esto se suman entrevistas a pescadores de la Laguna de Rocha y una colección de paisajes sonoros que permiten acercarse al lugar desde diferentes perspectivas.',
     team: 'Gabriel de Souza* Analía Pérez Landa* Estefanía Barnetche',
@@ -183,6 +189,7 @@ export const projects: Project[] = [
     location: 'Tacuarembó, Uruguay',
     coverImage: new URL('../../assets/projects/los-narradores-del-caraguata/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/los-narradores-del-caraguata/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/los-narradores-del-caraguata/hero-mobile.webp', import.meta.url).href,
     introduction: 'Un documental que hace emerger voces e imaginarios históricamente relegados en Uruguay.',
     description: 'Los Narradores del Caraguatá es un documental filmado en pequeños poblados de Tacuarembó y construye redes de testimonios en donde pobladores e investigadores reflexionan sobre nuestra identidad nacional, quebrando espejos a partir de los cuales nos pensamos desde la prehistoria hasta hoy. Un entramado tejido desde los niños excavando en cerritos de indios junto a arqueólogos, pasando por las visiones de los pobladores locales y el vínculo con el territorio, hasta la vida cotidiana actual de estas zonas rurales. Se trata de una expresión tan artística como científica construida a partir de una investigación arqueológica y antropológica, que muestra testimonios y acciones que trazan relaciones culturales con el territorio, realizadas por un grupo de investigación a lo largo de más de 5 años.\n\nEl grupo está coordinado por el Laboratorio de Arqueología del Paisaje y Patrimonio del Uruguay (LAPPU) y lo forman un equipo de arqueólogos y antropólogos pertenecientes a la Facultad de Humanidades de la Universidad de la República (UDELAR) con la colaboración de la Intendencia Municipal de Tacuarembó.\n\nEl documental fue estrenado simultáneamente en Santiago de Compostela (España) y en otras localidades uruguayas como Villa Ansina y Las Toscas de Caraguatá.',
     team: 'Dirección: Gabriel de Souza* Realización: Camila Gianotti, Juan Martín Dabezies, Gabriel de Souza, Gabriel Bendahan y Andrés Costa.',
@@ -284,7 +291,10 @@ export const projects: Project[] = [
     relatedSlugs: ['castillos-de-tierra', 'el-fogon-50-anos'],
     links: [],
     videos: [
-      { type: 'youtube', url: 'https://www.youtube.com/watch?v=gdYXvwnxvks', title: 'El tiempo de los abuelos' },
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=gdYXvwnxvks', title: 'El tiempo de los abuelos'},
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=vXJRq10ehig', title: 'El tiempo de los abuelos'},
+      { type: 'youtube', url: 'https://www.youtube.com/watch?v=sSxtDNC_Axo', title: 'Cortecito para llevar al abuelo'},
+      { type: 'vimeo', url: 'https://vimeo.com/11001681', title: 'Recuerdo | Videos & Películas'},
     ],
   },
 
@@ -299,6 +309,7 @@ export const projects: Project[] = [
     location: 'Uruguay',
     coverImage: new URL('../../assets/projects/tierra-en-pila/cover.webp', import.meta.url).href,
     heroImage: new URL('../../assets/projects/tierra-en-pila/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/tierra-en-pila/hero-mobile.webp', import.meta.url).href,
     introduction: 'Canal de audio de antropologiavisual.org.',
     description: 'Canal de audio antropologiavisual.org. Presentación Tierra en Pila en el Centro Universitario Región Este.',
     team: '',
@@ -316,15 +327,16 @@ export const projects: Project[] = [
     category: ['Audio'],
     ratio: 'landscape',
     location: 'Cabo Polonio, Rocha, Uruguay',
-    coverImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Imagen-140-400x280.jpg',
-    heroImage: 'https://www.antropologiavisual.org/wp-content/uploads/2015/08/Imagen-140-400x280.jpg',
+    coverImage: new URL('../../assets/projects/los-lobos-por-el-zorro/cover.webp', import.meta.url).href,
+    heroImage: new URL('../../assets/projects/los-lobos-por-el-zorro/hero.webp', import.meta.url).href,
+    heroMobile: new URL('../../assets/projects/los-lobos-por-el-zorro/hero-mobile.webp', import.meta.url).href,
     introduction: 'Testimonios de "El Zorro" antiguo lobero del Cabo Polonio sobre el trabajo en las Loberías.',
     description: 'Testimonios de "El Zorro" antiguo lobero del Cabo Polonio sobre el trabajo en las Loberías.',
     team: 'Realización: Gabriel de Souza* Grabado en Estudios Rock Yugular.',
     director: 'Gabriel de Souza',
     photography: 'Colectivo antropologiavisual.org',
     relatedSlugs: ['cafe-de-coco', 'tierra-en-pila'],
-    links: [],
+    links: [{url: 'https://soundcloud.com/antropologiavisual-org/loberia?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing - ', label: 'Escuchar en SoundCloud'}],
   },
 ];
 

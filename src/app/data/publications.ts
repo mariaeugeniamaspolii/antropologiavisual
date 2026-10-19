@@ -40,21 +40,9 @@ export const publications: Publication[] = [
     year: '2012',
     coverImage: getCoverImage('montevideo-electronico'),
     description: 'El libro Montevideo Electrónico fue el ganador del concurso «Tu tesis en Cultura» realizado por la Intendencia Municipal de Montevideo. Surge de las investigaciones en antropología urbana y antropología de la música del autor. Se metió dentro de los templos de la música techno de la noche montevideana y escribió un libro reflejando éticas y estéticas propias de movimientos jóvenes.',
-    featured: true,
     links: [
       { url: 'https://drive.google.com/file/d/16YdhZqwLZJOp3JaqKy9TSiv8eTaikYkG/view', label: 'Ver publicación' },
     ],
-  },
-  {
-    id: 3,
-    slug: 'nuevos-lenguajes-butia',
-    type: 'Artículo',
-    title: 'Nuevos lenguajes de representación y patrimonialización del Butiá en Rocha',
-    subtitle: 'Patrimonialización del palmar de Butiá',
-    authors: 'Gabriel de Souza',
-    year: '2010',
-    coverImage: getCoverImage('nuevos-lenguajes-butia'),
-    description: 'Publicación sobre nuevos lenguajes de representación y patrimonialización del palmar de Butiá en el departamento de Rocha.',
   },
   {
     id: 4,
@@ -66,6 +54,7 @@ export const publications: Publication[] = [
     year: '2013',
     coverImage: getCoverImage('trama-revista'),
     description: 'Trama, revista de la Asociación Uruguaya de Antropología Social y Cultural (AUAS), nace como proyecto premiado por Fondos Concursables para la Cultura / MEC en 2009. Cuatro años y cuatro números más tarde estamos dando continuidad al proyecto fundacional, a través de un nuevo número de Trama, esta vez en formato digital.',
+    featured: true,
     links: [
       { url: 'https://www.auas.org.uy/trama/index.php/Trama/issue/view/14', label: 'Ver publicación' },
     ],

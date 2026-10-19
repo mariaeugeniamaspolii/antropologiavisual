@@ -126,10 +126,18 @@ export function ProyectoDetalle() {
           animate={{ scale: 1 }}
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
+          {project.heroMobile && (
+            <img
+              src={project.heroMobile}
+              alt={project.title}
+              className="w-full h-full object-cover md:hidden"
+              style={{ filter: 'saturate(0.85) brightness(0.75)' }}
+            />
+          )}
           <img
             src={project.heroImage}
             alt={project.title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${project.heroMobile ? 'hidden md:block' : ''}`}
             style={{ filter: 'saturate(0.85) brightness(0.75)' }}
           />
         </motion.div>
@@ -300,7 +308,7 @@ export function ProyectoDetalle() {
                 </p>
                 <div className="flex flex-wrap gap-2.5">
                   {project.awards.map(award => (
-                    <Badge key={award}>
+                    <Badge key={award} className="whitespace-normal md:whitespace-nowrap shrink md:shrink-0 max-w-full">
                       <svg width="5" height="5" viewBox="0 0 5 5" fill="var(--accent)">
                         <circle cx="2.5" cy="2.5" r="2.5" />
                       </svg>

@@ -291,9 +291,7 @@ export const projects: Project[] = [
     relatedSlugs: ['castillos-de-tierra', 'el-fogon-50-anos'],
     links: [],
     videos: [
-      { type: 'youtube', url: 'https://www.youtube.com/watch?v=gdYXvwnxvks', title: 'El tiempo de los abuelos'},
       { type: 'youtube', url: 'https://www.youtube.com/watch?v=vXJRq10ehig', title: 'El tiempo de los abuelos'},
-      { type: 'youtube', url: 'https://www.youtube.com/watch?v=sSxtDNC_Axo', title: 'Cortecito para llevar al abuelo'},
       { type: 'vimeo', url: 'https://vimeo.com/11001681', title: 'Recuerdo | Videos & Películas'},
     ],
   },

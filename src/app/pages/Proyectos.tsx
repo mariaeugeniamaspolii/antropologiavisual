@@ -173,13 +173,13 @@ export function Proyectos() {
           backdropFilter: 'blur(8px)',
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-4 flex items-center gap-3 flex-wrap">
-          <span
+        <div className="max-w-6xl mx-auto px-6 md:px-0 py-4 flex items-center gap-3 flex-wrap">
+          {/* <span
             className="text-muted-foreground/50 tracking-widest uppercase mr-2 hidden md:block"
             style={{ fontSize: 'var(--text-badge)' }}
           >
             Filtrar
-          </span>
+          </span> */}
           {categories.map(cat => (
             <FilterButton
               key={cat}

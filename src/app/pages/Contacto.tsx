@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Instagram, Youtube, Facebook } from 'lucide-react';
 import { FadeIn } from '../components/FadeIn';
-
-import heroImg from '@/assets/contact/hero.jpg';
-
-const BASE = 'https://images.unsplash.com/photo-';
 
 const inquiryTypes = [
   'Colaboración en investigación',
@@ -26,8 +23,8 @@ export function Contacto() {
   };
 
   const fieldStyle = (name: string) => ({
-    fontSize: '0.9rem',
-    borderBottom: `1px solid ${focused === name ? 'rgba(var(--foreground-rgb),0.45)' : 'rgba(var(--foreground-rgb),0.12)'}`,
+    fontSize: 'var(--text-body-lg)',
+    borderBottom: `1px solid ${focused === name ? 'var(--accent)' : 'var(--ring)'}`,
     transition: 'border-color 0.25s',
   });
 
@@ -81,71 +78,53 @@ export function Contacto() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-20">
           {/* Left info */}
           <FadeIn className="md:col-span-4">
-            <p
-              className="mb-12 leading-relaxed"
-              style={{
-                fontFamily: 'var(--font-playfair)',
-                fontStyle: 'italic',
-                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-                lineHeight: 1.6,
-                color: 'rgba(var(--foreground-rgb),0.75)',
-              }}
-            >
+            <p className="ds-intro mb-12">
               Estamos abiertos a colaboraciones con investigadores, comunidades, instituciones culturales y medios de comunicación.
             </p>
 
             <div className="space-y-8">
               <div>
-                <p
-                  className="text-muted-foreground/45 tracking-widest uppercase mb-2"
-                  style={{ fontSize: 'var(--text-badge)' }}
-                >
+                <p className="ds-form-label mb-2">
                   Correo
                 </p>
                 <a
                   href="mailto:gadesouza@gmail.com"
-                  className="text-foreground/70 hover:text-accent transition-colors duration-200"
+                  className="text-foreground hover:text-accent transition-colors duration-200"
                   style={{ fontSize: 'var(--text-body)' }}
                 >
                   gadesouza@gmail.com
                 </a>
               </div>
               <div>
-                <p
-                  className="text-muted-foreground/45 tracking-widest uppercase mb-2"
-                  style={{ fontSize: 'var(--text-badge)' }}
-                >
+                <p className="ds-form-label mb-2">
                   Sede
                 </p>
                 <p
-                  className="text-foreground/60"
-                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.6 }}
+                  className="text-muted-foreground"
+                  style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
                 >
                   Montevideo, Uruguay
                 </p>
               </div>
               <div>
-                <p
-                  className="text-muted-foreground/45 tracking-widest uppercase mb-3"
-                  style={{ fontSize: 'var(--text-badge)' }}
-                >
+                <p className="ds-form-label mb-3">
                   Redes
                 </p>
-                <div className="flex flex-col gap-2">
+                <div className="flex gap-4">
                   {[
-                    { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/' },
-                    { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ' },
-                    { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org' },
-                  ].map(({ name, url }) => (
+                    { name: 'Instagram', url: 'https://www.instagram.com/antropologia_visual/', icon: <Instagram size={18} /> },
+                    { name: 'YouTube', url: 'https://www.youtube.com/channel/UC-vfGoqm4Y6Sd5gflR3Q5XQ', icon: <Youtube size={18} /> },
+                    { name: 'Facebook', url: 'https://www.facebook.com/antropologiaculturavisual.org', icon: <Facebook size={18} /> },
+                  ].map(({ name, url, icon }) => (
                     <a
                       key={name}
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-muted-foreground/45 hover:text-muted-foreground transition-colors duration-200"
-                      style={{ fontSize: 'var(--text-body-md)' }}
+                      aria-label={name}
+                      className="text-muted-foreground hover:text-accent transition-colors duration-200"
                     >
-                      {name}
+                      {icon}
                     </a>
                   ))}
                 </div>
@@ -163,26 +142,18 @@ export function Contacto() {
                 className="py-16"
               >
                 <div className="w-10 h-px mb-8" style={{ backgroundColor: 'var(--accent)' }} />
-                <h2
-                  className="text-foreground mb-5"
-                  style={{
-                    fontFamily: 'var(--font-playfair)',
-                    fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)',
-                    fontWeight: 400,
-                    lineHeight: 1.15,
-                  }}
-                >
+                <h2 className="ds-h2 text-foreground mb-5">
                   Mensaje recibido.
                 </h2>
                 <p
                   className="text-muted-foreground leading-relaxed max-w-md"
-                  style={{ fontSize: '0.9rem', lineHeight: 1.75 }}
+                  style={{ fontSize: 'var(--text-body-lg)', lineHeight: 1.75 }}
                 >
                   Gracias por escribirnos, <strong className="text-foreground font-normal">{form.name}</strong>. Revisamos todos los mensajes con cuidado y te responderemos pronto.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: '', email: '', organization: '', type: inquiryTypes[0], message: '' }); }}
-                  className="mt-10 text-muted-foreground/50 hover:text-muted-foreground transition-colors duration-200"
+                  className="mt-10 text-muted-foreground hover:text-accent transition-colors duration-200"
                   style={{ fontSize: 'var(--text-label-lg)', letterSpacing: '0.15em' }}
                 >
                   ENVIAR OTRO MENSAJE
@@ -193,10 +164,7 @@ export function Contacto() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {(['name', 'email'] as const).map(field => (
                     <div key={field}>
-                      <label
-                        className="block mb-2 tracking-widest uppercase"
-                        style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                      >
+                      <label className="ds-form-label block mb-2">
                         {field === 'name' ? 'Nombre *' : 'Correo *'}
                       </label>
                       <input
@@ -208,18 +176,15 @@ export function Contacto() {
                         onBlur={() => setFocused(null)}
                         required
                         placeholder={field === 'name' ? 'Tu nombre completo' : 'tu@correo.com'}
-                        className="w-full bg-transparent py-3 outline-none placeholder:text-muted-foreground/30 text-foreground"
-                        style={fieldStyle(field)}
+                        className="w-full bg-transparent py-3 outline-none placeholder:text-muted-foreground/50 text-foreground"
+                      style={fieldStyle(field)}
                       />
                     </div>
                   ))}
                 </div>
 
                 <div>
-                  <label
-                    className="block mb-2 tracking-widest uppercase"
-                    style={{ fontSize: 'var(--text-badge)', color: 'var(--muted-foreground)', opacity: 0.5 }}
-                  >
+                  <label className="ds-form-label block mb-2">
                     Mensaje *
                   </label>
                   <textarea
@@ -231,15 +196,15 @@ export function Contacto() {
                     required
                     rows={5}
                     placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                    className="w-full bg-transparent py-3 outline-none resize-none placeholder:text-muted-foreground/30 text-foreground"
+                    className="w-full bg-transparent py-3 outline-none resize-none placeholder:text-muted-foreground/50 text-foreground"
                     style={fieldStyle('message')}
                   />
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
                   <p
-                    className="text-muted-foreground/35"
-                    style={{ fontSize: '0.7rem' }}
+                    className="text-muted-foreground"
+                    style={{ fontSize: 'var(--text-label-lg)' }}
                   >
                     * Campos obligatorios
                   </p>

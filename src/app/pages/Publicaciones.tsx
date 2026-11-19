@@ -84,14 +84,14 @@ export function Publicaciones() {
               Libros, ensayos fotográficos, investigaciones académicas y catálogos de exposición que articulan imagen y pensamiento en torno a las culturas que documentamos.
             </p>
           </FadeIn>
-          <FadeIn className="md:col-span-5" delay={0.15}>
+          {/* <FadeIn className="md:col-span-5" delay={0.15}>
             <p
               className="text-muted-foreground leading-relaxed"
               style={{ fontSize: 'var(--text-body)', lineHeight: 1.8 }}
             >
               Entendemos la publicación como extensión del trabajo de campo: un espacio donde la imagen y la escritura se articulan para crear formas de conocimiento que persisten en el tiempo.
             </p>
-          </FadeIn>
+          </FadeIn> */}
         </div>
       </section>
 
@@ -192,8 +192,7 @@ export function Publicaciones() {
         <div className="max-w-6xl mx-auto">
           {/* Filter */}
           <div
-            className="flex items-center gap-3 flex-wrap mb-12 pb-8"
-            style={{ borderBottom: '1px solid var(--border)' }}
+            className="flex items-center gap-3 flex-wrap mb-5 pb-5"
           >
             {types.map(type => (
               <FilterButton
@@ -203,6 +202,12 @@ export function Publicaciones() {
                 onClick={() => setActiveType(type)}
               />
             ))}
+            <span
+            className="ml-auto text-muted-foreground/50"
+            style={{ fontSize: '0.7rem' }}
+          >
+            {filtered.length} publicaciones
+          </span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -315,10 +320,10 @@ export function Publicaciones() {
       </section>
 
       {/* Full-bleed separator */}
-      <section className="relative overflow-hidden" style={{ height: '35vh' }}>
+      {/* <section className="relative overflow-hidden" style={{ height: '35vh' }}>
         <div className="w-full h-full" style={{ backgroundColor: '#000' }} />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(var(--foreground-rgb),0.35)' }} />
-      </section>
+      </section> */}
     </div>
   );
 }

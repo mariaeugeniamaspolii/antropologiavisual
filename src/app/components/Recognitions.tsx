@@ -3,13 +3,14 @@ import { FadeIn } from './FadeIn';
 import { StatsHighlight } from './StatsHighlight';
 
 import aniiLogo from '@/assets/institutions/ANII.png';
+import auasLogo from '@/assets/institutions/AUAS.png';
 import fhceLogo from '@/assets/institutions/FHCE.png';
 import mecLogo from '@/assets/institutions/MEC.png';
 import fccLogo from '@/assets/institutions/FCC.png';
 
 const institutions = [
   { name: 'ANII ', logo: aniiLogo },
-  { name: 'Departamento de Arqueología', logo: aniiLogo },
+  { name: 'Asociación Uruguaya de Arqueología Social y Cultural', logo: auasLogo },
   { name: 'Área de Estudios Turísticos de la Facultad de Humanidades y Ciencias de la Educación UDELAR', logo: fhceLogo },
   { name: 'Ministerio de Educación y Cultura MEC', logo: mecLogo },
   { name: 'Patrimonio Cultural de la Nación', logo: fccLogo },

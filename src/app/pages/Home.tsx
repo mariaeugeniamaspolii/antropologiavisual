@@ -159,7 +159,7 @@ export function Home() {
               <Link
                 to={`/proyectos/${featured[0].slug}`}
                 className="group block relative overflow-hidden bg-secondary rounded-sm"
-                style={{ aspectRatio: '16/8' }}
+                style={{ aspectRatio: '4/3' }}
               >
                 <img
                   src={featured[0].coverImage}
@@ -170,7 +170,7 @@ export function Home() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(to top, rgba(var(--foreground-rgb),0.72) 0%, rgba(var(--foreground-rgb),0.08) 50%, transparent 75%)' }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
                   <div className="flex items-end justify-between">
                     <div>
                       <p
@@ -183,16 +183,15 @@ export function Home() {
                         className="text-white mb-1"
                         style={{
                           fontFamily: 'var(--font-playfair)',
-                          fontSize: 'clamp(1.8rem, 4vw, 3.8rem)',
+                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
                           fontWeight: 400,
-                          lineHeight: 1.05,
-                          letterSpacing: '-0.02em',
+                          lineHeight: 1.1,
                         }}
                       >
                         {featured[0].title}
                       </h2>
                       <p
-                        className="text-white/50"
+                        className="text-white/50 hidden md:block"
                         style={{ fontSize: 'var(--text-body)', fontStyle: 'italic' }}
                       >
                         {featured[0].location}
@@ -254,7 +253,7 @@ export function Home() {
                   <Link
                     to={`/proyectos/${featured[2].slug}`}
                     className="group block relative overflow-hidden bg-secondary rounded-sm"
-                    style={{ aspectRatio: '3/4' }}
+                    style={{ aspectRatio: '4/3' }}
                   >
                     <img
                       src={featured[2].coverImage}
@@ -276,9 +275,9 @@ export function Home() {
                         className="text-white"
                         style={{
                           fontFamily: 'var(--font-playfair)',
-                          fontSize: 'clamp(1.1rem, 2vw, 1.8rem)',
+                          fontSize: 'clamp(1.3rem, 2.5vw, 2.2rem)',
                           fontWeight: 400,
-                          lineHeight: 1.15,
+                          lineHeight: 1.1,
                         }}
                       >
                         {featured[2].title}

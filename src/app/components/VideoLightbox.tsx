@@ -16,6 +16,11 @@ function getYoutubeId(url: string): string {
   return match ? match[1] : '';
 }
 
+function getVimeoId(url: string): string {
+  const match = url.match(/vimeo\.com\/(?:channels\/[\w-]+\/|groups\/[\w-]+\/videos\/|album\/\d+\/video\/|video\/)?(\d+)/);
+  return match ? match[1] : '';
+}
+
 export function VideoLightbox({ videos, index, onClose, onPrev, onNext }: VideoLightboxProps) {
   const video = videos[index];
 
@@ -94,6 +99,17 @@ export function VideoLightbox({ videos, index, onClose, onPrev, onNext }: VideoL
                 className="w-full h-full rounded-sm"
                 style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={video.title}
+              />
+            </div>
+          ) : video.type === 'vimeo' ? (
+            <div className="w-full" style={{ aspectRatio: '16/9' }}>
+              <iframe
+                src={`https://player.vimeo.com/video/${getVimeoId(video.url)}?autoplay=1`}
+                className="w-full h-full rounded-sm"
+                style={{ border: 'none' }}
+                allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
                 title={video.title}
               />

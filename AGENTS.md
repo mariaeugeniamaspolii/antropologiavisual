@@ -14,6 +14,7 @@ Current phase: frontend/design refinement before future WordPress migration.
 - Do not modify unrelated files.
 - Preserve existing functionality unless a change is explicitly requested.
 - Do not perform broad refactors without explicit approval.
+- **Icons must come from an installed icon library, never hand-written inline SVGs.** Use `lucide-react` (already installed). Import the specific icon (e.g. `import { Instagram } from 'lucide-react'`) instead of writing SVG markup manually. If an icon is not available in Lucide, request approval before adding another library.
 - **NEVER run `npm run build` or `npm build`.** cPanel handles the build on deploy. Running build locally creates unnecessary changes.
 
 ## Git
@@ -45,6 +46,41 @@ Do NOT re-scan the entire repository at the start of each session.
 ## Design fidelity
 
 `docs/design.md` is the source of truth for the visual system.
+
+### Mandatory design system compliance
+
+- `docs/design.md` and the tokens defined in `src/styles/theme.css` are the mandatory reference for any visual decision.
+- Before implementing or modifying styles, identify the existing tokens, Tailwind classes, and components that match the requirement.
+- Reuse existing resources whenever possible, in CSS, Tailwind utility classes, and inline React styles alike.
+
+### No hardcoded visual values
+
+- Do not write visual values directly in the code when a token, class, or reusable resource exists to represent them.
+- For colors, always use existing tokens (e.g. `var(--foreground)`) instead of hardcoded hex values such as `#1A1510`.
+- Apply the same criterion to typography, text sizes, spacing, borders, radii, shadows, transitions, animations, and any other visual property.
+- Do not duplicate values that are already centralized; do not create redundant variables.
+- Do not add new arbitrary values simply because they are convenient for a given implementation.
+
+### Consultation before introducing new values
+
+- If a task requires a visual value not covered by `docs/design.md`, `src/styles/theme.css`, or existing patterns, stop before implementing it.
+- Explain what value is missing, where it is needed, and why current resources are insufficient.
+- Propose an alternative using the existing system, or request approval to add a new token or pattern.
+- Wait for explicit approval before introducing new visual values, creating variables, modifying existing tokens, or extending the design system.
+- Do not treat an implementation request as automatic authorization for new design decisions.
+
+### Technical exceptions
+
+- Literal values that are necessary for technical functionality and do not represent design-system decisions are not prohibited.
+- If a specific visual value cannot be reasonably resolved with existing resources, consult before deciding how to implement it.
+
+### Verification before finishing
+
+- Review the changes made to detect hardcoded visual values that should use existing tokens or resources.
+- Verify that no new tokens, colors, sizes, or visual patterns have been introduced without approval.
+- If a gap in the style guide is detected, report it and leave that decision pending rather than inventing a solution.
+
+### Unsolicited changes
 
 Do NOT make unsolicited design changes. Unless explicitly requested:
 
